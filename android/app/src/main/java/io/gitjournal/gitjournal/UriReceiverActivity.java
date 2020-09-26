@@ -1,4 +1,4 @@
-package io.gitjournal.gitjournal;
+package net.simplewave.simplewave;
 
 import android.os.Bundle;
 import android.util.Log;

@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:18856682550:android:fb0ceb03dbf2e58f",
         "android_client_info": {
-          "package_name": "io.gitjournal.gitjournal"
+          "package_name": "net.simplewave.simplewave"
         }
       },
       "oauth_client": [

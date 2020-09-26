@@ -1,4 +1,4 @@
-package io.gitjournal.gitjournal;
+package net.simplewave.simplewave;
 
 import androidx.annotation.NonNull;
 

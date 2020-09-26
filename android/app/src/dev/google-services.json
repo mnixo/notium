@@ -1,16 +1,16 @@
 {
   "project_info": {
     "project_number": "18856682550",
-    "firebase_url": "https://gitjournal-io.firebaseio.com",
-    "project_id": "gitjournal-io",
-    "storage_bucket": "gitjournal-io.appspot.com"
+    "firebase_url": "https://simplewave-net.firebaseio.com",
+    "project_id": "simplewave-net",
+    "storage_bucket": "simplewave.net"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:18856682550:android:fb0ceb03dbf2e58f",
         "android_client_info": {
-          "package_name": "io.gitjournal.gitjournal.dev"
+          "package_name": "net.simplewave.simplewave.dev"
         }
       },
       "oauth_client": [
