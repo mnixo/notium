@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 
 class Features {
-  static bool alwaysPro = false;
+  static bool alwaysPro = true;
   static bool perFolderConfig = false;
 
   static final all = <Feature>[

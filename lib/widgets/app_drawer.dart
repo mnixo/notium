@@ -111,54 +111,6 @@ class AppDrawer extends StatelessWidget {
           divider,
           _buildDrawerTile(
             context,
-            icon: Icons.share,
-            title: tr('drawer.share'),
-            onTap: () {
-              Navigator.pop(context);
-              Share.share('Checkout GitJournal https://gitjournal.io/');
-
-              logEvent(Event.DrawerShare);
-            },
-          ),
-          _buildDrawerTile(
-            context,
-            icon: Icons.feedback,
-            title: tr('drawer.rate'),
-            onTap: () {
-              LaunchReview.launch(
-                androidAppId: "io.gitjournal.gitjournal",
-                iOSAppId: "1466519634",
-              );
-
-              Navigator.pop(context);
-              logEvent(Event.DrawerRate);
-            },
-          ),
-          _buildDrawerTile(
-            context,
-            icon: Icons.rate_review,
-            title: tr('drawer.feedback'),
-            onTap: () async {
-              var versionText = await getVersionString();
-
-              var platform = Platform.operatingSystem;
-              var emailAddress = 'feedback@gitjournal.io';
-              var subject = 'GitJournal Feedback';
-              var body =
-                  "Hey!\n\nHere are some ways to improve GitJournal - \n \n\nVersion: $versionText\nPlatform: $platform";
-
-              subject = Uri.encodeComponent(subject);
-              body = Uri.encodeComponent(body);
-
-              var url = 'mailto:$emailAddress?subject=$subject&body=$body';
-              launch(url);
-
-              Navigator.pop(context);
-              logEvent(Event.DrawerFeedback);
-            },
-          ),
-          _buildDrawerTile(
-            context,
             icon: Icons.bug_report,
             title: tr('drawer.bug'),
             onTap: () async {
