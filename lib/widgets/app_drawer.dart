@@ -182,7 +182,7 @@ class _AppDrawerHeader extends StatelessWidget {
         DrawerHeader(
           margin: const EdgeInsets.all(0.0),
           decoration: BoxDecoration(
-            color: Theme.of(context).highlightColor,
+            color: Theme.of(context).primaryColor,
           ),
           child: const Padding(
             padding: EdgeInsets.all(8.0),
