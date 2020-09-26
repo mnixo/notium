@@ -1,6 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
@@ -18,4 +21,4 @@ about: Suggest an idea for this project
 
 **Alternatives you've considered:** <!-- if available, else delete -->  
 
-**Images:** <!-- if available, else delete -->  
+**Images:** <!-- if available, else delete -->

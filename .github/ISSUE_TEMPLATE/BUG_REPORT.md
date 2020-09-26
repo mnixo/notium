@@ -1,6 +1,9 @@
 ---
 name: Bug report
 about: Something is crashing or not working as intended
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
