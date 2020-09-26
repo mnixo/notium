@@ -6,10 +6,7 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:launch_review/launch_review.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:gitjournal/analytics.dart';
 import 'package:gitjournal/app_settings.dart';
@@ -52,22 +49,6 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           _AppDrawerHeader(),
           if (setupGitButton != null) ...[setupGitButton, divider],
-          if (!appSettings.proMode)
-            _buildDrawerTile(
-              context,
-              icon: Icons.power,
-              title: tr('drawer.pro'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, "/purchase");
-
-                logEvent(
-                  Event.PurchaseScreenOpen,
-                  parameters: {"from": "drawer"},
-                );
-              },
-            ),
-          if (!appSettings.proMode) divider,
           _buildDrawerTile(
             context,
             icon: Icons.note,
@@ -82,24 +63,6 @@ class AppDrawer extends StatelessWidget {
             onTap: () => _navTopLevel(context, '/folders'),
             selected: currentRoute == "/folders",
           ),
-          if (appSettings.experimentalFs)
-            _buildDrawerTile(
-              context,
-              icon: FontAwesomeIcons.solidFolderOpen,
-              isFontAwesome: true,
-              title: tr('drawer.fs'),
-              onTap: () => _navTopLevel(context, '/filesystem'),
-              selected: currentRoute == "/filesystem",
-            ),
-          if (appSettings.experimentalGraphView)
-            _buildDrawerTile(
-              context,
-              icon: FontAwesomeIcons.projectDiagram,
-              isFontAwesome: true,
-              title: tr('drawer.graph'),
-              onTap: () => _navTopLevel(context, '/graph'),
-              selected: currentRoute == "/graph",
-            ),
           _buildDrawerTile(
             context,
             icon: FontAwesomeIcons.tag,
@@ -120,9 +83,9 @@ class AppDrawer extends StatelessWidget {
 
               final Email email = Email(
                 body:
-                    "Hey!\n\nI found a bug in GitJournal - \n \n\nVersion: $versionText\nPlatform: $platform",
-                subject: 'GitJournal Bug',
-                recipients: ['bugs@gitjournal.io'],
+                    "Hey!\n\nI found a bug in simplewave - \n \n\nVersion: $versionText\nPlatform: $platform",
+                subject: 'simplewave bug report',
+                recipients: ['simplewave.app+bugs@gmail.com'],
                 attachmentPaths: [appLogsFilePath],
               );
 
@@ -232,35 +195,6 @@ class _AppDrawerHeader extends StatelessWidget {
             ),
           ),
         ),
-        /*
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: IconButton(
-              padding: const EdgeInsets.all(0),
-              icon: Icon(Icons.arrow_left, size: 42.0),
-              onPressed: () {},
-            ),
-          ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: IconButton(
-              padding: const EdgeInsets.all(0),
-              icon: Icon(Icons.arrow_right, size: 42.0),
-              onPressed: () {},
-            ),
-          ),
-        ),
-        */
-        if (appSettings.proMode)
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: ProButton(),
-            ),
-          ),
         Positioned.fill(
           child: Align(
             alignment: Alignment.topRight,
@@ -273,28 +207,6 @@ class _AppDrawerHeader extends StatelessWidget {
         ),
       ],
       fit: StackFit.passthrough,
-    );
-  }
-}
-
-class ProButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: theme.scaffoldBackgroundColor,
-          boxShadow: [
-            BoxShadow(color: theme.accentColor, spreadRadius: 0),
-          ],
-        ),
-        padding: const EdgeInsets.all(8.0),
-        child: Text('PRO', style: theme.textTheme.button),
-      ),
     );
   }
 }
