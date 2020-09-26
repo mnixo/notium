@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:dart_git/git.dart' as git;
+import 'package:flutter/foundation.dart';
 import 'package:git_bindings/git_bindings.dart';
-
 import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/notes_folder.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/error_reporting.dart';
 import 'package:simplewave/settings.dart';
 import 'package:simplewave/utils/logger.dart';
 
@@ -168,14 +167,30 @@ class GitNoteRepository {
     return _addNote(note, "Edited Note");
   }
 
-  Future<void> pull() async {
+  Future<void> fetch() async {
     try {
-      await _gitRepo.pull(
+      await _gitRepo.fetch("origin");
+    } on GitException catch (ex, stackTrace) {
+      Log.e("GitPull Failed", ex: ex, stacktrace: stackTrace);
+    }
+  }
+
+  Future<void> merge() async {
+    var repo = await git.GitRepository.load(gitDirPath);
+    var branch = await repo.currentBranch();
+    if (branch == null) {
+      logExceptionWarning(Exception("Current Branch null"), StackTrace.current);
+      return;
+    }
+
+    try {
+      await _gitRepo.merge(
+        branch: branch.remoteTrackingBranch(),
         authorEmail: settings.gitAuthorEmail,
         authorName: settings.gitAuthor,
       );
     } on GitException catch (ex, stackTrace) {
-      Log.e("GitPull Failed", ex: ex, stacktrace: stackTrace);
+      Log.e("Git Merge Failed", ex: ex, stacktrace: stackTrace);
     }
   }
 
@@ -189,10 +204,11 @@ class GitNoteRepository {
     } catch (_) {}
 
     try {
-      await _gitRepo.push();
+      await _gitRepo.push("origin");
     } on GitException catch (ex, stackTrace) {
       if (ex.cause == 'cannot push non-fastforwardable reference') {
-        await pull();
+        await fetch();
+        await merge();
         return push();
       }
       Log.e("GitPush Failed", ex: ex, stacktrace: stackTrace);
