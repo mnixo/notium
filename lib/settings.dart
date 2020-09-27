@@ -48,7 +48,7 @@ class Settings extends ChangeNotifier {
 
   String imageLocationSpec = "."; // . means the same folder
 
-  bool zenMode = false;
+  bool zenMode = true;
   bool saveTitleInH1 = true;
 
   bool swipeToDelete = true;

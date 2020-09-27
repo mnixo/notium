@@ -290,19 +290,6 @@ Widget _buildBottomMenuSheet(
             editor.renameNoteSelected(note);
           },
         ),
-        ProOverlay(
-          feature: Feature.zenMode,
-          child: ListTile(
-            leading: const FaIcon(FontAwesomeIcons.peace),
-            title: Text(tr(zenModeEnabled
-                ? 'editors.common.zen.disable'
-                : 'editors.common.zen.enable')),
-            onTap: () {
-              zenModeChanged();
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
       ],
     ),
   );
