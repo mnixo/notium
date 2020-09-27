@@ -30,8 +30,7 @@ dependencies:
   provider: ^3.2.0
   git_bindings: ^0.0.14
   dart_git:
-    git: https://github.com/GitJournal/dart_git.git
-    #path: /Users/vishesh/src/gitjournal/dart_git
+    git: https://github.com/simplewave/dart_git.git
   yaml_serializer: ^0.0.8
   connectivity: ^0.4.6+1
   flutter_emoji: ">= 2.0.0"
