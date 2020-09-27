@@ -16,7 +16,7 @@ class Themes {
     brightness: Brightness.dark,
     primaryColor: const Color.fromRGBO(48, 48, 48, 1),
     accentColor: const Color.fromRGBO(205, 109, 105, 1),
-    cursorColor: const Color.fromRGBO(66, 66, 66, 1),
+    cursorColor: const Color.fromRGBO(255, 255, 255, 1),
     textSelectionHandleColor: const Color.fromRGBO(255, 255, 255, 1),
     toggleableActiveColor: Color.fromRGBO(255, 109, 105, 1),
   );
