@@ -80,7 +80,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
         ),
         RedButton(
           text: tr('settings.ssh.reset'),
-          onPressed: () => _resetGitHost(context),
+          onPressed: _resetGitHost,
         ),
       ],
       crossAxisAlignment: CrossAxisAlignment.start,
