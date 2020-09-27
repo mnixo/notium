@@ -16,8 +16,8 @@ class Settings extends ChangeNotifier {
   static Settings get instance => _singleton;
 
   // Properties
-  String gitAuthor = "GitJournal";
-  String gitAuthorEmail = "app@gitjournal.io";
+  String gitAuthor = "simplewave";
+  String gitAuthorEmail = "simplewave.app@gmail.com";
   NoteFileNameFormat noteFileNameFormat = NoteFileNameFormat.Default;
 
   String yamlModifiedKey = "modified";
