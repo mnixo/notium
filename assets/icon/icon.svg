@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="simplewave-purple.svg">
+   sodipodi:docname="simplewave2.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="22.4"
-     inkscape:cx="23.285764"
+     inkscape:cx="31.321478"
      inkscape:cy="13.92798"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -60,7 +60,7 @@
      style="display:inline"
      transform="translate(-50.263135,-121.98028)">
     <path
-       style="fill:none;fill-opacity:1;stroke:#530070;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal"
        d="m 50.354482,124.91016 4.207643,-1.97166 c 1.181027,-0.53035 1.963064,-0.74372 2.484481,-0.73838 0.521418,0.005 0.782216,0.22942 0.920765,0.57394 0.341631,1.4969 0.127504,3.23931 1.682227,3.6999 1.951273,0.38517 2.313046,-1.53879 4.574528,-0.45057"
        id="path815"
        inkscape:connector-curvature="0"
