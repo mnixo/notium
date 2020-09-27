@@ -1,6 +1,6 @@
-name: gitjournal
-description: A Note Taking App Built on top of Git
-version: 1.70.1+10
+name: simplewave
+description: Let your ideas flow. A note editor built with focus, simplicity and long term usage in mind.
+version: 0.0.1
 
 dependencies:
   flutter:
