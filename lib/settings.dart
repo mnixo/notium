@@ -308,13 +308,13 @@ class NoteFileNameFormat {
   static const FromTitle =
       NoteFileNameFormat("FromTitle", 'settings.NoteFileNameFormat.title');
   static const SimpleDate =
-      NoteFileNameFormat("SimpleDate", 'settings.NoteFileNameFormat.simmple');
+      NoteFileNameFormat("SimpleDate", 'settings.NoteFileNameFormat.simple');
   static const UuidV4 =
       NoteFileNameFormat("uuidv4", 'settings.NoteFileNameFormat.uuid');
   static const Zettelkasten = NoteFileNameFormat(
       "Zettelkasten", 'settings.NoteFileNameFormat.zettelkasten');
 
-  static const Default = FromTitle;
+  static const Default = Iso8601WithTimeZoneWithoutColon;
 
   static const options = <NoteFileNameFormat>[
     SimpleDate,

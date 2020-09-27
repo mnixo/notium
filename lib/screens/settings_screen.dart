@@ -218,19 +218,6 @@ class SettingsListState extends State<SettingsList> {
           Navigator.of(context).push(route);
         },
       ),
-      SettingsHeader(tr('settings.storage.title')),
-      ListPreference(
-        title: tr('settings.note.fileName'),
-        currentOption: settings.noteFileNameFormat.toPublicString(),
-        options:
-            NoteFileNameFormat.options.map((f) => f.toPublicString()).toList(),
-        onChange: (String publicStr) {
-          var format = NoteFileNameFormat.fromPublicString(publicStr);
-          settings.noteFileNameFormat = format;
-          settings.save();
-          setState(() {});
-        },
-      ),
       ListTile(
         title: Text(tr("settings.noteMetaData.title")),
         subtitle: Text(tr("settings.noteMetaData.subtitle")),

@@ -280,16 +280,6 @@ Widget _buildBottomMenuSheet(
               },
             ),
           ),
-        ListTile(
-          leading: const Icon(Icons.edit),
-          title: Text(tr('editors.common.editFileName')),
-          onTap: () {
-            var note = editorState.getNote();
-            Navigator.of(context).pop();
-
-            editor.renameNoteSelected(note);
-          },
-        ),
       ],
     ),
   );
