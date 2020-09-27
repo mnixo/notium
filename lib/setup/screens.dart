@@ -466,7 +466,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       gitCloneErrorMessage = "";
     });
 
-    final appSettings = Provider.of<AppSettings>(context);
+    final appSettings = Provider.of<AppSettings>(context, listen: false);
     var basePath = appSettings.gitBaseDirectory;
 
     // Just in case it was half cloned because of an error

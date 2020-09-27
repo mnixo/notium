@@ -123,7 +123,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
     });
   }
 
-  void _resetGitHost(BuildContext context) async {
+  void _resetGitHost() async {
     var ok = await showDialog(
       context: context,
       builder: (_) => HostChangeConfirmationDialog(),
@@ -132,7 +132,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
       return;
     }
 
-    var stateContainer = Provider.of<StateContainer>(context);
+    var stateContainer = Provider.of<StateContainer>(context, listen: false);
     var appSettings = Provider.of<AppSettings>(context);
     var gitDir = appSettings.gitBaseDirectory;
 

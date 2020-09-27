@@ -48,7 +48,7 @@ class _EditorScaffoldState extends State<EditorScaffold> {
   void _initStateWithContext() {
     if (!mounted) return;
 
-    var settings = Provider.of<Settings>(context);
+    var settings = Provider.of<Settings>(context, listen: false);
 
     setState(() {
       hideUIElements = settings.zenMode;
@@ -72,7 +72,7 @@ class _EditorScaffoldState extends State<EditorScaffold> {
   }
 
   void _editorChanged() {
-    var settings = Provider.of<Settings>(context);
+    var settings = Provider.of<Settings>(context, listen: false);
 
     if (settings.zenMode && !hideUIElements) {
       setState(() {
@@ -82,7 +82,7 @@ class _EditorScaffoldState extends State<EditorScaffold> {
   }
 
   void _switchMode() {
-    var settings = Provider.of<Settings>(context);
+    var settings = Provider.of<Settings>(context, listen: false);
 
     setState(() {
       editingMode = !editingMode;
