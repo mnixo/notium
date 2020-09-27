@@ -54,23 +54,19 @@ class _SyncButtonState extends State<SyncButton> {
       );
     }
     if (appState.syncStatus == SyncStatus.Pulling) {
-      return BlinkingIcon(
-        child: GitPendingChangesBadge(
-          child: IconButton(
-            icon: const Icon(Icons.cloud_download),
-            onPressed: () {},
-          ),
+      return GitPendingChangesBadge(
+        child: IconButton(
+          icon: const Icon(Icons.cloud_download),
+          onPressed: () {},
         ),
       );
     }
 
     if (appState.syncStatus == SyncStatus.Pushing) {
-      return BlinkingIcon(
-        child: GitPendingChangesBadge(
-          child: IconButton(
-            icon: const Icon(Icons.cloud_upload),
-            onPressed: () {},
-          ),
+      return GitPendingChangesBadge(
+        child: IconButton(
+          icon: const Icon(Icons.cloud_upload),
+          onPressed: () {},
         ),
       );
     }
@@ -108,53 +104,6 @@ class _SyncButtonState extends State<SyncButton> {
       default:
         return Icons.cloud_done;
     }
-  }
-}
-
-class BlinkingIcon extends StatefulWidget {
-  final Widget child;
-  final int interval;
-
-  BlinkingIcon({@required this.child, this.interval = 500, Key key})
-      : super(key: key);
-
-  @override
-  _BlinkingIconState createState() => _BlinkingIconState();
-}
-
-class _BlinkingIconState extends State<BlinkingIcon>
-    with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      duration: Duration(milliseconds: widget.interval),
-      vsync: this,
-    );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.linear,
-    );
-
-    _controller.repeat(reverse: true);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: _animation,
-      child: widget.child,
-    );
   }
 }
 
