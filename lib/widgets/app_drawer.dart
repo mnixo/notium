@@ -195,35 +195,9 @@ class _AppDrawerHeader extends StatelessWidget {
             ),
           ),
         ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topRight,
-            child: SafeArea(
-                child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 16, 16, 0),
-              child: ThemeSwitcherButton(),
-            )),
-          ),
-        ),
       ],
       fit: StackFit.passthrough,
     );
   }
 }
 
-class ThemeSwitcherButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: const FaIcon(FontAwesomeIcons.solidMoon),
-      onTap: () {
-        var dynamicTheme = DynamicTheme.of(context);
-        var brightness = dynamicTheme.brightness;
-
-        dynamicTheme.setBrightness(brightness == Brightness.light
-            ? Brightness.dark
-            : Brightness.light);
-      },
-    );
-  }
-}
