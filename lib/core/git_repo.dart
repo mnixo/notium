@@ -6,11 +6,11 @@ import 'package:flutter/foundation.dart';
 import 'package:dart_git/git.dart' as git;
 import 'package:git_bindings/git_bindings.dart';
 
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_folder.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_folder.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class NoteRepoResult {
   bool error;

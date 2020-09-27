@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:gitjournal/core/processors/wiki_links_auto_add.dart';
+import 'package:simplewave/core/processors/wiki_links_auto_add.dart';
 
 void main() {
   test('Should process body', () {

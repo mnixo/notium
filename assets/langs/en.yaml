@@ -199,12 +199,9 @@ OnBoarding:
   Skip: Skip
   Next: Next
   getStarted: Get Started
-  subtitle: 'An Open Source Note Taking App
-built on top of Git'
-  page2: 'Your Notes are stored in a
-standard Markdown + YAML\nHeader format'
-  page3: 'Sync your Local Git Repo
-with any provider'
+  subtitle: 'Focus / Simplicity / Privacy'
+  page2: 'A simple, distraction-free experience to let your ideas flow.'
+  page3: 'Your notes are stored as text. Sync them with any Git hosting provider.'
 
 widgets:
   rename:

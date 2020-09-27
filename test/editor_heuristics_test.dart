@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:gitjournal/editors/heuristics.dart';
+import 'package:simplewave/editors/heuristics.dart';
 
 void main() {
   group('Editor Heuristic Tests', () {

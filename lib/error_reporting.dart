@@ -7,10 +7,10 @@ import 'package:device_info/device_info.dart';
 import 'package:package_info/package_info.dart';
 import 'package:sentry/sentry.dart';
 
-import 'package:gitjournal/.env.dart';
-import 'package:gitjournal/app.dart';
-import 'package:gitjournal/app_settings.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/.env.dart';
+import 'package:simplewave/app.dart';
+import 'package:simplewave/app_settings.dart';
+import 'package:simplewave/utils/logger.dart';
 
 SentryClient _sentryClient;
 Future<SentryClient> _initSentry() async {

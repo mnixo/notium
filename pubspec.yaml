@@ -77,8 +77,8 @@ flutter:
     - "assets/icon/icon.png"
     - "assets/icon/github-icon.png"
     - "assets/icon/gitlab-icon.png"
-    - "assets/OnBoardingMarkdown.png"
-    - "assets/OnBoardingGitProviders.png"
+    - "assets/less.png"
+    - "assets/git-hosting.png"
     - "assets/langs/en.yaml"
   fonts:
     - family: Lato

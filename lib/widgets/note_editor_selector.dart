@@ -4,8 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:font_awesome_flutter/fa_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/screens/note_editor.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/screens/note_editor.dart';
 
 class NoteEditorSelector extends StatelessWidget {
   final EditorType currentEditor;

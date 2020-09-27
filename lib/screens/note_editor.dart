@@ -7,23 +7,23 @@ import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/core/md_yaml_doc.dart';
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_folder.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/editors/checklist_editor.dart';
-import 'package:gitjournal/editors/journal_editor.dart';
-import 'package:gitjournal/editors/markdown_editor.dart';
-import 'package:gitjournal/editors/raw_editor.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/state_container.dart';
-import 'package:gitjournal/utils.dart';
-import 'package:gitjournal/utils/logger.dart';
-import 'package:gitjournal/widgets/folder_selection_dialog.dart';
-import 'package:gitjournal/widgets/note_delete_dialog.dart';
-import 'package:gitjournal/widgets/note_editor_selector.dart';
-import 'package:gitjournal/widgets/note_tag_editor.dart';
-import 'package:gitjournal/widgets/rename_dialog.dart';
+import 'package:simplewave/core/md_yaml_doc.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_folder.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/editors/checklist_editor.dart';
+import 'package:simplewave/editors/journal_editor.dart';
+import 'package:simplewave/editors/markdown_editor.dart';
+import 'package:simplewave/editors/raw_editor.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/state_container.dart';
+import 'package:simplewave/utils.dart';
+import 'package:simplewave/utils/logger.dart';
+import 'package:simplewave/widgets/folder_selection_dialog.dart';
+import 'package:simplewave/widgets/note_delete_dialog.dart';
+import 'package:simplewave/widgets/note_editor_selector.dart';
+import 'package:simplewave/widgets/note_tag_editor.dart';
+import 'package:simplewave/widgets/rename_dialog.dart';
 
 class ShowUndoSnackbar {}
 

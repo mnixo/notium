@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/virtual_notes_folder.dart';
-import 'package:gitjournal/folder_views/common.dart';
-import 'package:gitjournal/folder_views/standard_view.dart';
-import 'package:gitjournal/themes.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/virtual_notes_folder.dart';
+import 'package:simplewave/folder_views/common.dart';
+import 'package:simplewave/folder_views/standard_view.dart';
+import 'package:simplewave/themes.dart';
 
 class NoteSearchDelegate extends SearchDelegate<Note> {
   final List<Note> notes;

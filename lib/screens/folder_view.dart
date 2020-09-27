@@ -4,26 +4,26 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:git_bindings/git_bindings.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/core/md_yaml_doc_codec.dart';
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_folder.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/core/sorted_notes_folder.dart';
-import 'package:gitjournal/core/sorting_mode.dart';
-import 'package:gitjournal/folder_views/common.dart';
-import 'package:gitjournal/folder_views/standard_view.dart';
-import 'package:gitjournal/screens/note_editor.dart';
-import 'package:gitjournal/screens/settings_screen.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/state_container.dart';
-import 'package:gitjournal/utils.dart';
-import 'package:gitjournal/widgets/app_bar_menu_button.dart';
-import 'package:gitjournal/widgets/app_drawer.dart';
-import 'package:gitjournal/widgets/new_note_nav_bar.dart';
-import 'package:gitjournal/widgets/note_delete_dialog.dart';
-import 'package:gitjournal/widgets/note_search_delegate.dart';
-import 'package:gitjournal/widgets/sorting_mode_selector.dart';
-import 'package:gitjournal/widgets/sync_button.dart';
+import 'package:simplewave/core/md_yaml_doc_codec.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_folder.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/core/sorted_notes_folder.dart';
+import 'package:simplewave/core/sorting_mode.dart';
+import 'package:simplewave/folder_views/common.dart';
+import 'package:simplewave/folder_views/standard_view.dart';
+import 'package:simplewave/screens/note_editor.dart';
+import 'package:simplewave/screens/settings_screen.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/state_container.dart';
+import 'package:simplewave/utils.dart';
+import 'package:simplewave/widgets/app_bar_menu_button.dart';
+import 'package:simplewave/widgets/app_drawer.dart';
+import 'package:simplewave/widgets/new_note_nav_bar.dart';
+import 'package:simplewave/widgets/note_delete_dialog.dart';
+import 'package:simplewave/widgets/note_search_delegate.dart';
+import 'package:simplewave/widgets/sorting_mode_selector.dart';
+import 'package:simplewave/widgets/sync_button.dart';
 
 enum DropDownChoices {
   SortingOptions,

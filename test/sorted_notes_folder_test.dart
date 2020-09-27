@@ -4,10 +4,10 @@ import 'dart:math';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/core/sorted_notes_folder.dart';
-import 'package:gitjournal/core/sorting_mode.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/core/sorted_notes_folder.dart';
+import 'package:simplewave/core/sorting_mode.dart';
 
 void main() {
   group('Sorted Notes Folder Test', () {

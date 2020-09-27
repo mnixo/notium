@@ -4,18 +4,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/core/md_yaml_doc.dart';
-import 'package:gitjournal/core/md_yaml_doc_codec.dart';
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/note_serializer.dart';
-import 'package:gitjournal/core/notes_folder.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/editors/note_body_editor.dart';
-import 'package:gitjournal/editors/note_title_editor.dart';
-import 'package:gitjournal/features.dart';
-import 'package:gitjournal/screens/settings_widgets.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/widgets/pro_overlay.dart';
+import 'package:simplewave/core/md_yaml_doc.dart';
+import 'package:simplewave/core/md_yaml_doc_codec.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/note_serializer.dart';
+import 'package:simplewave/core/notes_folder.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/editors/note_body_editor.dart';
+import 'package:simplewave/editors/note_title_editor.dart';
+import 'package:simplewave/features.dart';
+import 'package:simplewave/screens/settings_widgets.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/widgets/pro_overlay.dart';
 
 class NoteMetadataSettingsScreen extends StatefulWidget {
   @override

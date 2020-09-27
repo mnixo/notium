@@ -4,11 +4,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/state_container.dart';
-import 'package:gitjournal/widgets/app_drawer.dart';
-import 'package:gitjournal/widgets/rename_dialog.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/state_container.dart';
+import 'package:simplewave/widgets/app_drawer.dart';
+import 'package:simplewave/widgets/rename_dialog.dart';
 
 class FileSystemScreen extends StatefulWidget {
   @override

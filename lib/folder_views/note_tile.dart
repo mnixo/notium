@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/utils/markdown.dart';
-import 'package:gitjournal/widgets/highlighted_text.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/utils/markdown.dart';
+import 'package:simplewave/widgets/highlighted_text.dart';
 
 class NoteTile extends StatelessWidget {
   final Note note;

@@ -1,7 +1,7 @@
 import 'package:markdown/markdown.dart' as md;
 import 'package:test/test.dart';
 
-import 'package:gitjournal/widgets/note_viewer.dart';
+import 'package:simplewave/widgets/note_viewer.dart';
 
 void main() {
   test('Parses Wiki Lnks and task items', () {

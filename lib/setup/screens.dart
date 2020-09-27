@@ -11,19 +11,19 @@ import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:gitjournal/analytics.dart';
-import 'package:gitjournal/apis/githost_factory.dart';
-import 'package:gitjournal/app_settings.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/setup/autoconfigure.dart';
-import 'package:gitjournal/setup/button.dart';
-import 'package:gitjournal/setup/clone_url.dart';
-import 'package:gitjournal/setup/loading_error.dart';
-import 'package:gitjournal/setup/repo_selector.dart';
-import 'package:gitjournal/setup/sshkey.dart';
-import 'package:gitjournal/utils.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/analytics.dart';
+import 'package:simplewave/apis/githost_factory.dart';
+import 'package:simplewave/app_settings.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/setup/autoconfigure.dart';
+import 'package:simplewave/setup/button.dart';
+import 'package:simplewave/setup/clone_url.dart';
+import 'package:simplewave/setup/loading_error.dart';
+import 'package:simplewave/setup/repo_selector.dart';
+import 'package:simplewave/setup/sshkey.dart';
+import 'package:simplewave/utils.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class GitHostSetupScreen extends StatefulWidget {
   final String repoFolderName;

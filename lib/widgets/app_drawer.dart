@@ -8,11 +8,11 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/analytics.dart';
-import 'package:gitjournal/app_settings.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/utils.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/analytics.dart';
+import 'package:simplewave/app_settings.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/utils.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class AppDrawer extends StatelessWidget {
   @override

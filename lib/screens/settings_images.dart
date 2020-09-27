@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/screens/settings_widgets.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/widgets/folder_selection_dialog.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/screens/settings_widgets.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/widgets/folder_selection_dialog.dart';
 
 class SettingsImagesScreen extends StatefulWidget {
   @override

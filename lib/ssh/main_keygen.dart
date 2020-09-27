@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:gitjournal/ssh/rsa_key_pair.dart';
+import 'package:simplewave/ssh/rsa_key_pair.dart';
 
 void main() {
   print("Generating new random key");

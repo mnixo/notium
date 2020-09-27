@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter_driver/driver_extension.dart';
-import 'package:gitjournal/app_settings.dart';
+import 'package:simplewave/app_settings.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:gitjournal/app.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/utils/datetime.dart';
+import 'package:simplewave/app.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/utils/datetime.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path/path.dart' as p;

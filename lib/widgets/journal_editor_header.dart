@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
-import 'package:gitjournal/core/note.dart';
+import 'package:simplewave/core/note.dart';
 
 class JournalEditorHeader extends StatelessWidget {
   final Note note;

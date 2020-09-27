@@ -9,8 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:gitjournal/utils.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/utils.dart';
+import 'package:simplewave/utils/logger.dart';
 import 'githost.dart';
 
 class GitHub implements GitHost {

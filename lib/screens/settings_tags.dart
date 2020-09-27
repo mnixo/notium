@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/screens/settings_screen.dart';
-import 'package:gitjournal/settings.dart';
+import 'package:simplewave/screens/settings_screen.dart';
+import 'package:simplewave/settings.dart';
 
 class SettingsTagsScreen extends StatefulWidget {
   @override

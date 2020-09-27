@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:gitjournal/core/notes_folder_fs.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
 import 'note.dart';
 import 'notes_folder.dart';
 

@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:gitjournal/core/processors/inline_tags.dart';
+import 'package:simplewave/core/processors/inline_tags.dart';
 
 void main() {
   test('Should parse simple tags', () {

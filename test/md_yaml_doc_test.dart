@@ -2,7 +2,7 @@ import 'dart:collection';
 
 import 'package:test/test.dart';
 
-import 'package:gitjournal/core/md_yaml_doc.dart';
+import 'package:simplewave/core/md_yaml_doc.dart';
 
 void main() {
   test('Equality', () {

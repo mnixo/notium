@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-import 'package:gitjournal/app.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/app.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/utils/logger.dart';
 
 Analytics getAnalytics() {
   return JournalApp.analytics;

@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:gitjournal/utils/merge_conflict_resolver.dart';
+import 'package:simplewave/utils/merge_conflict_resolver.dart';
 
 void main() {
   test("Body only conflict", () {

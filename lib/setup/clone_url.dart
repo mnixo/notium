@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:git_url_parse2/git_url_parse2.dart';
 
-import 'package:gitjournal/apis/githost_factory.dart';
+import 'package:simplewave/apis/githost_factory.dart';
 import 'button.dart';
 
 class GitCloneUrlPage extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:test/test.dart';
 
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/core/sorting_mode.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/core/sorting_mode.dart';
 
 void main() {
   group('Sorting Mode', () {

@@ -5,23 +5,23 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:gitjournal/app_settings.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/features.dart';
-import 'package:gitjournal/screens/debug_screen.dart';
-import 'package:gitjournal/screens/feature_timeline_screen.dart';
-import 'package:gitjournal/screens/settings_editors.dart';
-import 'package:gitjournal/screens/settings_experimental.dart';
-import 'package:gitjournal/screens/settings_git_remote.dart';
-import 'package:gitjournal/screens/settings_images.dart';
-import 'package:gitjournal/screens/settings_misc.dart';
-import 'package:gitjournal/screens/settings_note_metadata.dart';
-import 'package:gitjournal/screens/settings_tags.dart';
-import 'package:gitjournal/screens/settings_widgets.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/utils.dart';
-import 'package:gitjournal/widgets/folder_selection_dialog.dart';
-import 'package:gitjournal/widgets/pro_overlay.dart';
+import 'package:simplewave/app_settings.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/features.dart';
+import 'package:simplewave/screens/debug_screen.dart';
+import 'package:simplewave/screens/feature_timeline_screen.dart';
+import 'package:simplewave/screens/settings_editors.dart';
+import 'package:simplewave/screens/settings_experimental.dart';
+import 'package:simplewave/screens/settings_git_remote.dart';
+import 'package:simplewave/screens/settings_images.dart';
+import 'package:simplewave/screens/settings_misc.dart';
+import 'package:simplewave/screens/settings_note_metadata.dart';
+import 'package:simplewave/screens/settings_tags.dart';
+import 'package:simplewave/screens/settings_widgets.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/utils.dart';
+import 'package:simplewave/widgets/folder_selection_dialog.dart';
+import 'package:simplewave/widgets/pro_overlay.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override

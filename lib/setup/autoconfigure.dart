@@ -5,11 +5,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/analytics.dart';
-import 'package:gitjournal/apis/githost_factory.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/analytics.dart';
+import 'package:simplewave/apis/githost_factory.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/utils/logger.dart';
 import 'button.dart';
 import 'error.dart';
 import 'loading.dart';

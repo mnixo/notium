@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:git_bindings/git_bindings.dart';
 import 'package:path/path.dart' as p;
 
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/utils/logger.dart';
 
 //
 // FIXME: This isn't ideal as we are skipping all the edits / deletes

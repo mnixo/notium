@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:function_types/function_types.dart';
 
-import 'package:gitjournal/analytics.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/analytics.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class GitHostSetupButton extends StatelessWidget {
   final Func0<void> onPressed;

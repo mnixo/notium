@@ -8,14 +8,14 @@ import 'package:git_bindings/git_bindings.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/app_settings.dart';
-import 'package:gitjournal/screens/settings_widgets.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/setup/screens.dart';
-import 'package:gitjournal/setup/sshkey.dart';
-import 'package:gitjournal/state_container.dart';
-import 'package:gitjournal/utils.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/app_settings.dart';
+import 'package:simplewave/screens/settings_widgets.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/setup/screens.dart';
+import 'package:simplewave/setup/sshkey.dart';
+import 'package:simplewave/state_container.dart';
+import 'package:simplewave/utils.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class GitRemoteSettingsScreen extends StatefulWidget {
   @override

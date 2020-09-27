@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:gitjournal/app.dart';
-import 'package:gitjournal/app_settings.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/settings.dart';
+import 'package:simplewave/app.dart';
+import 'package:simplewave/app_settings.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

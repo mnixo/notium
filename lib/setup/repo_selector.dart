@@ -5,13 +5,13 @@ import 'package:function_types/function_types.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-import 'package:gitjournal/analytics.dart';
-import 'package:gitjournal/apis/githost_factory.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/setup/button.dart';
-import 'package:gitjournal/setup/error.dart';
-import 'package:gitjournal/setup/loading.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/analytics.dart';
+import 'package:simplewave/apis/githost_factory.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/setup/button.dart';
+import 'package:simplewave/setup/error.dart';
+import 'package:simplewave/setup/loading.dart';
+import 'package:simplewave/utils/logger.dart';
 
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

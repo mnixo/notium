@@ -7,18 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:synchronized/synchronized.dart';
 
-import 'package:gitjournal/analytics.dart';
-import 'package:gitjournal/apis/git_migration.dart';
-import 'package:gitjournal/appstate.dart';
-import 'package:gitjournal/core/git_repo.dart';
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_cache.dart';
-import 'package:gitjournal/core/notes_folder.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/features.dart';
-import 'package:gitjournal/settings.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/analytics.dart';
+import 'package:simplewave/apis/git_migration.dart';
+import 'package:simplewave/appstate.dart';
+import 'package:simplewave/core/git_repo.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_cache.dart';
+import 'package:simplewave/core/notes_folder.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/features.dart';
+import 'package:simplewave/settings.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class StateContainer with ChangeNotifier {
   final AppState appState;

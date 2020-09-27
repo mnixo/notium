@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:gitjournal/features.dart';
+import 'package:simplewave/features.dart';
 
 class AppSettings extends ChangeNotifier {
   // singleton

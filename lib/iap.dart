@@ -6,11 +6,11 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase/store_kit_wrappers.dart';
 import 'package:meta/meta.dart';
 
-import 'package:gitjournal/app.dart';
-import 'package:gitjournal/app_settings.dart';
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/features.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/app.dart';
+import 'package:simplewave/app_settings.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/features.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class InAppPurchases {
   static Future<void> confirmProPurchaseBoot() async {

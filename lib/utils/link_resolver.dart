@@ -1,8 +1,8 @@
 import 'package:path/path.dart' as p;
 
-import 'package:gitjournal/core/link.dart';
-import 'package:gitjournal/core/note.dart';
-import 'package:gitjournal/core/notes_folder_fs.dart';
+import 'package:simplewave/core/link.dart';
+import 'package:simplewave/core/note.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
 
 class LinkResolver {
   final Note inputNote;

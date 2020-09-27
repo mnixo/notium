@@ -11,9 +11,9 @@ import 'package:steel_crypt/PointyCastleN/pointycastle.dart';
 import 'package:steel_crypt/PointyCastleN/random/fortuna_random.dart';
 import 'package:steel_crypt/steel_crypt.dart';
 
-import 'package:gitjournal/error_reporting.dart';
-import 'package:gitjournal/ssh/binary_length_value.dart';
-import 'package:gitjournal/utils/logger.dart';
+import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/ssh/binary_length_value.dart';
+import 'package:simplewave/utils/logger.dart';
 
 class RsaKeyPair {
   RSAPublicKey publicKey;

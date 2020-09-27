@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:gitjournal/core/notes_folder_fs.dart';
+import 'package:simplewave/core/notes_folder_fs.dart';
 
 typedef void FolderSelectedCallback(NotesFolderFS folder);
 

@@ -6,7 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:provider/provider.dart';
 
-import 'package:gitjournal/app_settings.dart';
+import 'package:simplewave/app_settings.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen();
@@ -163,12 +163,12 @@ class OnBoardingPage1 extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           'assets/icon/icon.png',
-          height: 200,
+          height: 80,
           fit: BoxFit.fill,
         ),
         const SizedBox(height: 16.0),
         Text(
-          "GitJournal",
+          "simplewave",
           style: headerTextStyle,
         ),
       ],
@@ -202,8 +202,7 @@ class OnBoardingPage2 extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Image.asset(
-          'assets/OnBoardingMarkdown.png',
-          //height: 200,
+          'assets/less.png',
           fit: BoxFit.fill,
         ),
         const SizedBox(height: 16.0),
@@ -238,8 +237,7 @@ class OnBoardingPage3 extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Image.asset(
-          'assets/OnBoardingGitProviders.png',
-          //height: 200,
+          'assets/git-hosting.png',
           fit: BoxFit.fill,
         ),
         const SizedBox(height: 16.0),
@@ -255,7 +253,7 @@ class OnBoardingPage3 extends StatelessWidget {
             tr("OnBoarding.page3"),
             style: textTheme.headline5,
             textAlign: TextAlign.center,
-            maxLines: 2,
+            maxLines: 3,
           ),
         ],
         mainAxisAlignment: MainAxisAlignment.center,

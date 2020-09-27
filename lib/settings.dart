@@ -4,9 +4,9 @@ import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:gitjournal/core/sorting_mode.dart';
-import 'package:gitjournal/folder_views/common.dart';
-import 'package:gitjournal/screens/note_editor.dart';
+import 'package:simplewave/core/sorting_mode.dart';
+import 'package:simplewave/folder_views/common.dart';
+import 'package:simplewave/screens/note_editor.dart';
 
 class Settings extends ChangeNotifier {
   // singleton

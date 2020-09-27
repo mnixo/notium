@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:function_types/function_types.dart';
 
-import 'package:gitjournal/screens/note_editor.dart';
+import 'package:simplewave/screens/note_editor.dart';
 
 class NewNoteNavBar extends StatelessWidget {
   final Func1<EditorType, void> onPressed;
