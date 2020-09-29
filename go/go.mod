@@ -1,4 +1,4 @@
-module github.com/GitJournal/GitJournal/go
+module github.com/simplewave/simplewave/go
 
 go 1.13
 

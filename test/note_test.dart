@@ -142,7 +142,7 @@ bar: Foo
     });
 
     test('Should parse wiki style links', () async {
-      var content = "[[GitJournal]] needs some [[Wild Fire]]";
+      var content = "[[simplewave]] needs some [[Wild Fire]]";
 
       var notePath = p.join(tempDir.path, "note63.md");
       await File(notePath).writeAsString(content);
@@ -153,7 +153,7 @@ bar: Foo
 
       var links = await note.fetchLinks();
       expect(links[0].isWikiLink, true);
-      expect(links[0].wikiTerm, "GitJournal");
+      expect(links[0].wikiTerm, "simplewave");
 
       expect(links[1].isWikiLink, true);
       expect(links[1].wikiTerm, "Wild Fire");

@@ -320,13 +320,13 @@ class SettingsListState extends State<SettingsList> {
       ListTile(
         title: Text(tr('settings.privacy')),
         onTap: () {
-          launch("https://gitjournal.io/privacy");
+          launch("https://simplewave.net/privacy");
         },
       ),
       ListTile(
         title: Text(tr('settings.terms')),
         onTap: () {
-          launch("https://gitjournal.io/terms");
+          launch("https://simplewave.net/terms");
         },
       ),
     ]);

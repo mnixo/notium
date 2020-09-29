@@ -199,7 +199,7 @@ OnBoarding:
   Skip: Skip
   Next: Next
   getStarted: Get Started
-  subtitle: 'Focus / Simplicity / Privacy'
+  subtitle: 'Focus. Simplicity. Privacy.'
   page2: 'A simple, distraction-free experience to let your ideas flow.'
   page3: 'Your notes are stored as text. Sync them with any Git hosting provider.'
 
@@ -284,8 +284,8 @@ setup:
     step1: 1. List your existing repos or create a new repo
     step2: 2. Generate an SSH Key on this device
     step3: 3. Add the key as a deploy key with write access to the repository
-    warning: This will require granting GitJournal access to all private and public repos. If you're not comfortable with that please go back and chose the manual setup option.
-    authorize: Authorize GitJournal
+    warning: This will require granting simplewave access to all private and public repos. If you're not comfortable with that please go back and chose the manual setup option.
+    authorize: Authorize simplewave
     waitPerm: Waiting for Permissions ...
     readUser: Reading User Info
   repoSelector:
@@ -344,7 +344,7 @@ feature:
   fileNameCustomize: Customize Note FileName
   noteMetaDataCustomize:
     title: Customize Note Metadata
-    subtitle: Allows GitJournal to be used with static website generators
+    subtitle: Allows simplewave to be used with static website generators
   autoMergeConflicts: Automation Merge Conflict Resolution
   noteSorting: Configurable Note Sorting
   gitPushFreq: Configurable Git Sync Frequency
@@ -384,7 +384,7 @@ feature:
   markdownToolbar: Markdown Toolbar
   localization:
     title: Localization
-    subtitle: Allow GitJournal to be translated
+    subtitle: Allow simplewave to be translated
   inlineTags: Inline Tags
   singleJournalEntry: Single Journal Entry File per day
 
@@ -392,21 +392,21 @@ feature_timeline:
   title: Feature Timeline
   progress: In Progress
   plan: Planned
-  issues: GitJournal's development is tracked on Github. Please consider voting on the issues you consider important.
+  issues: simplewave's development is tracked on Github. Please consider voting on the issues you consider important.
 
 purchase_screen:
   title: Pro Version
-  desc: 'GitJournal is completely open source and is the result of significant development work. It has no venture capital or corporation backing and it never will. Your support directly sustains development.
+  desc: 'simplewave is completely open source and is the result of significant development work. It has no venture capital or corporation backing and it never will. Your support directly sustains development.
 
 
-GitJournal operates on a "pay what you want model (with a minimum)".'
+simplewave operates on a "pay what you want model (with a minimum)".'
   restore: Restore Purchase
   oneTime:
     title: One Time Purchase
-    desc: Permanently enables all Pro features currently in GitJournal and new features added in the following 12 months.
+    desc: Permanently enables all Pro features currently in simplewave and new features added in the following 12 months.
   monthly:
     title: Monthly Installments
     desc: Enables all Pro Features. After 12 months or after paying {minYearlyPurchase}, you will get all the benefits of the 'One Time Purchase'
   thanks:
     title: Thank You
-    subtitle: You're awesome for supporting GitJournal
+    subtitle: You're awesome for supporting simplewave

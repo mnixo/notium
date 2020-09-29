@@ -119,7 +119,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'GitJournal',
+          library: 'simplewave',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {
@@ -155,7 +155,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'GitJournal',
+          library: 'simplewave',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {
@@ -189,7 +189,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'GitJournal',
+          library: 'simplewave',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {
@@ -228,7 +228,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'GitJournal',
+          library: 'simplewave',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {

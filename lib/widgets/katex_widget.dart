@@ -26,7 +26,7 @@ class _KatexWidgetState extends State<KatexWidget> {
   JavascriptChannel jsChannel;
   StreamSubscription<WebViewStateChanged> _onStateChanged;
 
-  final selectedUrl = 'https://gitjournal.io/test_katex.html';
+  final selectedUrl = 'https://simplewave.net/test_katex.html';
 
   @override
   void initState() {

@@ -9,7 +9,7 @@ title: Foo
 ---
 
 <<<<<<< HEAD
-This is the body in GitJournal
+This is the body in simplewave
 =======
 This is the body from the remote/origin
 >>>>>>> remote/origin
@@ -20,7 +20,7 @@ Some more text.''';
 title: Foo
 ---
 
-This is the body in GitJournal
+This is the body in simplewave
 
 Some more text.''';
 

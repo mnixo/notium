@@ -22,7 +22,7 @@ import io.flutter.app.FlutterActivity;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity implements MethodCallHandler {
-    private static final String CHANNEL_NAME = "gitjournal.io/git";
+    private static final String CHANNEL_NAME = "simplewave.net/git";
     static MethodChannel channel;
 
     @Override

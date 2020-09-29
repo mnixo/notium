@@ -5,12 +5,12 @@ import 'package:simplewave/core/processors/wiki_links_auto_add.dart';
 void main() {
   test('Should process body', () {
     var body =
-        "GitJournal is the best? And it works quite well with Foam, Foam and Obsidian.";
+        "simplewave is the best? And it works quite well with Foam, Foam and Obsidian.";
 
     var p = WikiLinksAutoAddProcessor(null);
-    var newBody = p.processBody(body, ['GitJournal', 'Foam', 'Obsidian']);
+    var newBody = p.processBody(body, ['simplewave', 'Foam', 'Obsidian']);
     var expectedBody =
-        "[[GitJournal]] is the best? And it works quite well with [[Foam]], [[Foam]] and [[Obsidian]].";
+        "[[simplewave]] is the best? And it works quite well with [[Foam]], [[Foam]] and [[Obsidian]].";
 
     expect(newBody, expectedBody);
   });

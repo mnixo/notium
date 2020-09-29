@@ -394,7 +394,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       return;
     }
 
-    var comment = "GitJournal-" +
+    var comment = "simplewave-" +
         Platform.operatingSystem +
         "-" +
         DateTime.now().toIso8601String().substring(0, 10); // only the date
@@ -536,7 +536,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       setState(() {
         _autoConfigureMessage = tr('setup.sshKey.generate');
       });
-      var publicKey = await generateSSHKeys(comment: "GitJournal");
+      var publicKey = await generateSSHKeys(comment: "simplewave");
 
       Log.i("Adding as a deploy key");
       _autoConfigureMessage = tr('setup.sshKey.addDeploy');

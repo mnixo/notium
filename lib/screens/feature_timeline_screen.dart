@@ -153,7 +153,7 @@ class _Sign extends StatelessWidget {
 
 class _DevelopmentText extends StatelessWidget {
   static const githubUrl =
-      "https://github.com/GitJournal/GitJournal/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc";
+      "https://github.com/simplewave/simplewave/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc";
 
   @override
   Widget build(BuildContext context) {

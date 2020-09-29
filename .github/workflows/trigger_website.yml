@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Dispatch Event to GitJournal.io
-        run: 'curl -X POST ''https://api.github.com/repos/GitJournal/gitjournal.io/actions/workflows/main.yml/dispatches'' -u "vHanda:${{secrets.ACCESS_TOKEN_GITHUB}}" -H "Content-Type: application/json" --data ''{"ref": "master"}'''
+      - name: Dispatch Event to simplewave.net
+        run: 'curl -X POST ''https://api.github.com/repos/simplewave/simplewave.net/actions/workflows/main.yml/dispatches'' -u "vHanda:${{secrets.ACCESS_TOKEN_GITHUB}}" -H "Content-Type: application/json" --data ''{"ref": "master"}'''
         env:
           ACCESS_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_GITHUB }}

@@ -50,7 +50,7 @@ class GitCloneUrlPageState extends State<GitCloneUrlPage> {
         autofocus: true,
         style: Theme.of(context).textTheme.subtitle1,
         decoration: const InputDecoration(
-          hintText: 'git@github.com:GitJournal/GitJournal.git',
+          hintText: 'git@github.com:simplewave/simplewave.git',
         ),
         validator: _isCloneUrlValid,
         focusNode: inputFormFocus,
@@ -133,7 +133,7 @@ class GitCloneUrlKnownProviderPageState
         autofocus: true,
         style: Theme.of(context).textTheme.subtitle1,
         decoration: const InputDecoration(
-          hintText: 'git@github.com:GitJournal/GitJournal.git',
+          hintText: 'git@github.com:simplewave/simplewave.git',
         ),
         validator: _isCloneUrlValid,
         focusNode: inputFormFocus,

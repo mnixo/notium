@@ -36,4 +36,4 @@ class PurchaseThankYouScreen extends StatelessWidget {
 }
 
 // Ideas:
-// 1. Add a button to share about GitJournal on Twitter / Social Media over here
+// 1. Add a button to share about simplewave on Twitter / Social Media over here

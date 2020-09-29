@@ -18,7 +18,7 @@ class GitLab implements GitHost {
   static const _clientID =
       "faf33c3716faf05bfb701b1b31e36c83a23c3ec2d7161f4ff00fba2275524d09";
 
-  var _platform = const MethodChannel('gitjournal.io/git');
+  var _platform = const MethodChannel('simplewave.net/git');
   var _accessCode = "";
   var _stateOAuth = "";
 
@@ -178,7 +178,7 @@ class GitLab implements GitHost {
         "https://gitlab.com/api/v4/projects/$repo/deploy_keys?access_token=$_accessCode";
 
     var data = {
-      'title': "GitJournal",
+      'title': "simplewave",
       'key': sshPublicKey,
       'can_push': true,
     };

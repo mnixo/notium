@@ -41,7 +41,7 @@ Future<void> populateWithData(SharedPreferences pref) async {
   print("Filling fake data in $repoPath");
 
   // Write Folders
-  Directory(p.join(repoPath, "GitJournal")).createSync();
+  Directory(p.join(repoPath, "simplewave")).createSync();
   Directory(p.join(repoPath, "Journal/Work")).createSync(recursive: true);
   Directory(p.join(repoPath, "Journal/Personal")).createSync(recursive: true);
   Directory(p.join(repoPath, "Food")).createSync();

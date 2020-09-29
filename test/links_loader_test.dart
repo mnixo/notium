@@ -4,11 +4,11 @@ import 'package:simplewave/core/links_loader.dart';
 
 void main() {
   group('LinksLoader', () {
-    var contents = """[[GitJournal]]
+    var contents = """[[simplewave]]
 
-[GitJournal](./gitjournal.md)
-[GitJournal](gitjournal.md)
-[GitJournal](gitjournal "alt-text")
+[simplewave](./gitjournal.md)
+[simplewave](gitjournal.md)
+[simplewave](gitjournal "alt-text")
 
 [Google](https://google.com)
 
@@ -28,21 +28,21 @@ void main() {
       expect(links[0].headingID.isEmpty, true);
       expect(links[0].alt.isEmpty, true);
       expect(links[0].publicTerm.isEmpty, true);
-      expect(links[0].wikiTerm, "GitJournal");
+      expect(links[0].wikiTerm, "simplewave");
       expect(links[0].isWikiLink, true);
 
       expect(links[1].filePath, "/tmp/foo/gitjournal.md");
-      expect(links[1].publicTerm, "GitJournal");
+      expect(links[1].publicTerm, "simplewave");
       expect(links[1].alt.isEmpty, true);
       expect(links[1].wikiTerm.isEmpty, true);
 
       expect(links[2].filePath, "/tmp/foo/gitjournal.md");
-      expect(links[2].publicTerm, "GitJournal");
+      expect(links[2].publicTerm, "simplewave");
       expect(links[2].alt.isEmpty, true);
       expect(links[2].wikiTerm.isEmpty, true);
 
       expect(links[3].filePath, "/tmp/foo/gitjournal");
-      expect(links[3].publicTerm, "GitJournal");
+      expect(links[3].publicTerm, "simplewave");
       expect(links[3].alt, "alt-text");
       expect(links[3].wikiTerm.isEmpty, true);
 

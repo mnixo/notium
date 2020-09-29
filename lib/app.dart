@@ -304,7 +304,7 @@ class _JournalAppState extends State<JournalApp> {
     return MaterialApp(
       key: const ValueKey("App"),
       navigatorKey: _navigatorKey,
-      title: 'GitJournal',
+      title: 'simplewave',
 
       localizationsDelegates: EasyLocalization.of(context).delegates,
       supportedLocales: EasyLocalization.of(context).supportedLocales,

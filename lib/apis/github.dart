@@ -17,7 +17,7 @@ class GitHub implements GitHost {
   static const _clientID = "aa3072cbfb02b1db14ed";
   static const _clientSecret = "010d303ea99f82330f2b228977cef9ddbf7af2cd";
 
-  var _platform = const MethodChannel('gitjournal.io/git');
+  var _platform = const MethodChannel('simplewave.net/git');
   var _accessCode = "";
 
   @override
@@ -193,7 +193,7 @@ class GitHub implements GitHost {
     var url = "https://api.github.com/repos/$repo/keys";
 
     var data = <String, dynamic>{
-      'title': "GitJournal",
+      'title': "simplewave",
       'key': sshPublicKey,
       'read_only': false,
     };

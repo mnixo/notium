@@ -109,7 +109,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
   }
 
   void _generateSshKey(BuildContext context) {
-    var comment = "GitJournal-" +
+    var comment = "simplewave-" +
         Platform.operatingSystem +
         "-" +
         DateTime.now().toIso8601String().substring(0, 10); // only the date

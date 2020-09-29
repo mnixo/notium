@@ -4,7 +4,7 @@
 #include "gitjournal.h"
 
 void gj_log(const char *message) {
-    NSLog(@"GitJournalLib: %s", message);
+    NSLog(@"simplewaveLib: %s", message);
 }
 
 NSString* GetDirectoryOfType(NSSearchPathDirectory dir) {
@@ -22,7 +22,7 @@ static FlutterMethodChannel* gitChannel = 0;
 
     FlutterViewController* controller = (FlutterViewController*)self.window.rootViewController;
 
-    gitChannel = [FlutterMethodChannel methodChannelWithName:@"gitjournal.io/git"
+    gitChannel = [FlutterMethodChannel methodChannelWithName:@"simplewave.net/git"
                                              binaryMessenger:controller];
 
     [gitChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
@@ -267,13 +267,13 @@ bool handleError(FlutterResult result, int err) {
     gj_error* error = gj_error_info(err);
     if (error) {
         NSString* errorMessage = [NSString stringWithUTF8String:error->message];
-        NSLog(@"GitJournalLib-ios: %@", errorMessage);
+        NSLog(@"simplewaveLib-ios: %@", errorMessage);
         result([FlutterError errorWithCode:@"FAILED"
                                    message:errorMessage details:nil]);
 
         gj_error_free(error);
     } else {
-        NSLog(@"GitJournalLib-ios: Unknown error with code %d", err);
+        NSLog(@"simplewaveLib-ios: Unknown error with code %d", err);
         result([FlutterError errorWithCode:@"FAILED"
                                    message:@"Failed" details:nil]);
     }
