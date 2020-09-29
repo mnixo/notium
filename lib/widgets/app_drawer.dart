@@ -178,17 +178,21 @@ class _AppDrawerHeader extends StatelessWidget {
 
     return Stack(
       children: <Widget>[
-        DrawerHeader(
-          margin: const EdgeInsets.all(0.0),
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-          ),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/icon/icon.png'),
+        Container(
+        height: 80.0,
+          child:DrawerHeader(
+            margin: const EdgeInsets.all(0.0),
+            padding: const EdgeInsets.all(0.0),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+            ),
+            child: const Padding(
+              padding: EdgeInsets.zero,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/icon/icon-236-80.png'),
+                  ),
                 ),
               ),
             ),

@@ -75,6 +75,8 @@ flutter:
   uses-material-design: true
   assets:
     - "assets/icon/icon.png"
+    - "assets/icon/icon-small.png"
+    - "assets/icon/icon-236-80.png"
     - "assets/icon/github-icon.png"
     - "assets/icon/gitlab-icon.png"
     - "assets/less.png"
