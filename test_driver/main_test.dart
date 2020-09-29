@@ -73,7 +73,7 @@ void main() {
       await driver.tap(find.byValueKey("GetStarted"));
 
       // Main Screen
-      //final loadedFinder = find.text("Let's add some notes?");
+      //final loadedFinder = find.text("Let's add some notes!");
       // await driver.waitFor(loadedFinder, timeout: const Duration(seconds: 15));
       // await _takeScreenshot();
 
