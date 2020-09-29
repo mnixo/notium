@@ -5,7 +5,7 @@ class GJAppBarMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var appBarMenuButton = IconButton(
       key: const ValueKey("DrawerButton"),
-      icon: Image.asset('assets/icon/icon-small.png'),
+      icon: Image.asset('assets/icon/icon.png'),
       onPressed: () {
         Scaffold.of(context).openDrawer();
       },

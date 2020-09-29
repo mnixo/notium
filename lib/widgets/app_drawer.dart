@@ -182,7 +182,7 @@ class _AppDrawerHeader extends StatelessWidget {
         height: 80.0,
           child:DrawerHeader(
             margin: const EdgeInsets.all(0.0),
-            padding: const EdgeInsets.all(0.0),
+            padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
             ),
@@ -191,7 +191,7 @@ class _AppDrawerHeader extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/icon/icon-236-80.png'),
+                    image: AssetImage('assets/icon/icon.png'),
                   ),
                 ),
               ),
