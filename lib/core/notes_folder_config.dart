@@ -16,7 +16,7 @@ import 'package:simplewave/utils/logger.dart';
 
 @immutable
 class NotesFolderConfig extends Equatable {
-  static const FILENAME = ".gitjournal.yaml";
+  static const FILENAME = ".simplewave.yaml";
 
   final SortingMode sortingMode;
   final EditorType defaultEditor;
