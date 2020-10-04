@@ -18,21 +18,14 @@ class NewNoteNavBar extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: const EdgeInsets.fromLTRB(4.0,4.0,100.0,4.0),
             child: IconButton(
               icon: const FaIcon(FontAwesomeIcons.tasks),
               onPressed: () => onPressed(EditorType.Checklist),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: IconButton(
-              icon: const FaIcon(FontAwesomeIcons.markdown),
-              onPressed: () => onPressed(EditorType.Markdown),
-            ),
-          ),
         ],
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
       ),
     );

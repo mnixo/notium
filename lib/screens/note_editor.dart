@@ -13,7 +13,6 @@ import 'package:simplewave/core/notes_folder.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
 import 'package:simplewave/editors/checklist_editor.dart';
 import 'package:simplewave/editors/markdown_editor.dart';
-import 'package:simplewave/editors/raw_editor.dart';
 import 'package:simplewave/error_reporting.dart';
 import 'package:simplewave/state_container.dart';
 import 'package:simplewave/utils.dart';
@@ -79,7 +78,6 @@ class NoteEditorState extends State<NoteEditor> {
   EditorType editorType = EditorType.Markdown;
   MdYamlDoc originalNoteData = MdYamlDoc();
 
-  final _rawEditorKey = GlobalKey<RawEditorState>();
   final _markdownEditorKey = GlobalKey<MarkdownEditorState>();
   final _checklistEditorKey = GlobalKey<ChecklistEditorState>();
 
