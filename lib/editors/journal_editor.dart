@@ -16,8 +16,6 @@ class JournalEditor extends StatefulWidget implements Editor {
   @override
   final NoteCallback noteDeletionSelected;
   @override
-  final NoteCallback noteEditorChooserSelected;
-  @override
   final NoteCallback exitEditorSelected;
   @override
   final NoteCallback renameNoteSelected;
@@ -35,7 +33,6 @@ class JournalEditor extends StatefulWidget implements Editor {
     @required this.note,
     @required this.noteModified,
     @required this.noteDeletionSelected,
-    @required this.noteEditorChooserSelected,
     @required this.exitEditorSelected,
     @required this.renameNoteSelected,
     @required this.editTagsSelected,

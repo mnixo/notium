@@ -21,7 +21,6 @@ typedef NoteCallback = void Function(Note);
 
 abstract class Editor {
   NoteCallback get noteDeletionSelected;
-  NoteCallback get noteEditorChooserSelected;
   NoteCallback get exitEditorSelected;
   NoteCallback get renameNoteSelected;
   NoteCallback get editTagsSelected;
@@ -75,14 +74,6 @@ class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? const Icon(Icons.remove_red_eye)
               : const Icon(Icons.edit),
           onPressed: onEditingModeChange,
-        ),
-        IconButton(
-          key: const ValueKey("EditorSelector"),
-          icon: const Icon(Icons.library_books),
-          onPressed: () {
-            var note = editorState.getNote();
-            editor.noteEditorChooserSelected(note);
-          },
         ),
         IconButton(
           icon: const Icon(Icons.delete),

@@ -163,7 +163,6 @@ class NoteEditorState extends State<NoteEditor> {
           parentFolder: widget.parentFolderView,
           noteModified: _noteModified(note),
           noteDeletionSelected: _noteDeletionSelected,
-          noteEditorChooserSelected: _noteEditorChooserSelected,
           exitEditorSelected: _exitEditorSelected,
           renameNoteSelected: _renameNoteSelected,
           editTagsSelected: _editTagsSelected,
@@ -177,7 +176,6 @@ class NoteEditorState extends State<NoteEditor> {
           note: note,
           noteModified: _noteModified(note),
           noteDeletionSelected: _noteDeletionSelected,
-          noteEditorChooserSelected: _noteEditorChooserSelected,
           exitEditorSelected: _exitEditorSelected,
           renameNoteSelected: _renameNoteSelected,
           editTagsSelected: _editTagsSelected,
@@ -191,7 +189,6 @@ class NoteEditorState extends State<NoteEditor> {
           note: note,
           noteModified: _noteModified(note),
           noteDeletionSelected: _noteDeletionSelected,
-          noteEditorChooserSelected: _noteEditorChooserSelected,
           exitEditorSelected: _exitEditorSelected,
           renameNoteSelected: _renameNoteSelected,
           editTagsSelected: _editTagsSelected,
@@ -205,7 +202,6 @@ class NoteEditorState extends State<NoteEditor> {
           note: note,
           noteModified: _noteModified(note),
           noteDeletionSelected: _noteDeletionSelected,
-          noteEditorChooserSelected: _noteEditorChooserSelected,
           exitEditorSelected: _exitEditorSelected,
           renameNoteSelected: _renameNoteSelected,
           editTagsSelected: _editTagsSelected,
@@ -215,22 +211,6 @@ class NoteEditorState extends State<NoteEditor> {
         );
     }
     return null;
-  }
-
-  void _noteEditorChooserSelected(Note _note) async {
-    var newEditorType = await showDialog<EditorType>(
-      context: context,
-      builder: (BuildContext context) {
-        return NoteEditorSelector(editorType, _note.fileFormat);
-      },
-    );
-
-    if (newEditorType != null) {
-      setState(() {
-        note = _note;
-        editorType = newEditorType;
-      });
-    }
   }
 
   void _exitEditorSelected(Note note) async {
