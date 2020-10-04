@@ -121,7 +121,7 @@ class AppDrawer extends StatelessWidget {
     var theme = Theme.of(context);
     var listTileTheme = ListTileTheme.of(context);
     var textStyle = theme.textTheme.bodyText1.copyWith(
-      color: selected ? theme.accentColor : listTileTheme.textColor,
+      color: selected ? theme.focusColor : listTileTheme.textColor,
     );
 
     var iconW = !isFontAwesome

@@ -147,7 +147,7 @@ class EditorBottomBar extends StatelessWidget {
     );
 
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: Theme.of(context).bottomAppBarColor,
       child: SafeArea(
         top: false,
         child: Row(
