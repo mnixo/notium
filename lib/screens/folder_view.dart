@@ -45,7 +45,7 @@ class FolderView extends StatefulWidget {
 
 class _FolderViewState extends State<FolderView> {
   SortedNotesFolder sortedNotesFolder;
-  FolderViewType _viewType = FolderViewType.Standard;
+  FolderViewType _viewType = FolderViewType.Grid;
 
   StandardViewHeader _headerType = StandardViewHeader.TitleGenerated;
   bool _showSummary = true;
@@ -334,11 +334,6 @@ class _FolderViewState extends State<FolderView> {
           value: DropDownChoices.SortingOptions,
           child: Text(tr('widgets.FolderView.sortingOptions')),
         ),
-        if (_viewType == FolderViewType.Standard)
-          PopupMenuItem<DropDownChoices>(
-            value: DropDownChoices.ViewOptions,
-            child: Text(tr('widgets.FolderView.viewOptions')),
-          ),
       ],
     );
 

@@ -4,9 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/folder_views/card_view.dart';
 import 'package:simplewave/folder_views/grid_view.dart';
-import 'package:simplewave/folder_views/journal_view.dart';
 import 'package:simplewave/screens/note_editor.dart';
 import 'package:simplewave/state_container.dart';
 import 'package:simplewave/utils.dart';
@@ -14,9 +12,6 @@ import 'package:simplewave/utils/logger.dart';
 import 'standard_view.dart';
 
 enum FolderViewType {
-  Standard,
-  Journal,
-  Card,
   Grid,
 }
 

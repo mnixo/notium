@@ -497,12 +497,6 @@ class SettingsEditorType {
 }
 
 class SettingsFolderViewType {
-  static const Standard =
-      SettingsFolderViewType('widgets.FolderView.views.standard', "Standard");
-  static const Journal =
-      SettingsFolderViewType('widgets.FolderView.views.journal', "Journal");
-  static const Card =
-      SettingsFolderViewType('widgets.FolderView.views.card', "Card");
   static const Grid =
       SettingsFolderViewType('widgets.FolderView.views.grid', "Grid");
   static const Default = Grid;
@@ -520,9 +514,6 @@ class SettingsFolderViewType {
   }
 
   static const options = <SettingsFolderViewType>[
-    Standard,
-    Journal,
-    Card,
     Grid,
   ];
 
@@ -552,12 +543,6 @@ class SettingsFolderViewType {
 
   FolderViewType toFolderViewType() {
     switch (this) {
-      case Standard:
-        return FolderViewType.Standard;
-      case Journal:
-        return FolderViewType.Journal;
-      case Card:
-        return FolderViewType.Card;
       case Grid:
         return FolderViewType.Grid;
     }
@@ -567,12 +552,6 @@ class SettingsFolderViewType {
 
   static SettingsFolderViewType fromFolderViewType(FolderViewType viewType) {
     switch (viewType) {
-      case FolderViewType.Standard:
-        return SettingsFolderViewType.Standard;
-      case FolderViewType.Journal:
-        return SettingsFolderViewType.Journal;
-      case FolderViewType.Card:
-        return SettingsFolderViewType.Card;
       case FolderViewType.Grid:
         return SettingsFolderViewType.Grid;
     }
