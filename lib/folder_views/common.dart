@@ -30,50 +30,15 @@ Widget buildFolderView({
   @required NoteSelectedFunction noteLongPressed,
   @required NoteBoolPropertyFunction isNoteSelected,
   @required String searchTerm,
-}) {
-  switch (viewType) {
-    case FolderViewType.Standard:
-      return StandardView(
-        folder: folder,
-        noteTapped: noteTapped,
-        noteLongPressed: noteLongPressed,
-        emptyText: emptyText,
-        headerType: header,
-        showSummary: showSummary,
-        isNoteSelected: isNoteSelected,
-        searchTerm: searchTerm,
-      );
-    case FolderViewType.Journal:
-      return JournalView(
-        folder: folder,
-        noteTapped: noteTapped,
-        noteLongPressed: noteLongPressed,
-        emptyText: emptyText,
-        isNoteSelected: isNoteSelected,
-        searchTerm: searchTerm,
-      );
-    case FolderViewType.Card:
-      return CardView(
-        folder: folder,
-        noteTapped: noteTapped,
-        noteLongPressed: noteLongPressed,
-        emptyText: emptyText,
-        isNoteSelected: isNoteSelected,
-        searchTerm: searchTerm,
-      );
-    case FolderViewType.Grid:
-      return GridFolderView(
-        folder: folder,
-        noteTapped: noteTapped,
-        noteLongPressed: noteLongPressed,
-        emptyText: emptyText,
-        isNoteSelected: isNoteSelected,
-        searchTerm: searchTerm,
-      );
-  }
-
-  assert(false, "Code path should never be executed");
-  return Container();
+  }) {
+  return GridFolderView(
+    folder: folder,
+    noteTapped: noteTapped,
+    noteLongPressed: noteLongPressed,
+    emptyText: emptyText,
+    isNoteSelected: isNoteSelected,
+    searchTerm: searchTerm,
+  );
 }
 
 void openNoteEditor(

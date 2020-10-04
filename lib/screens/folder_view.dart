@@ -314,63 +314,6 @@ class _FolderViewState extends State<FolderView> {
     setState(() {});
   }
 
-  void _folderViewChooserSelected() async {
-    var onViewChange = (FolderViewType vt) => Navigator.of(context).pop(vt);
-
-    var newViewType = await showDialog<FolderViewType>(
-      context: context,
-      builder: (BuildContext context) {
-        var children = <Widget>[
-          RadioListTile<FolderViewType>(
-            title: Text(tr('widgets.FolderView.views.standard')),
-            value: FolderViewType.Standard,
-            groupValue: _viewType,
-            onChanged: onViewChange,
-          ),
-          RadioListTile<FolderViewType>(
-            title: Text(tr('widgets.FolderView.views.journal')),
-            value: FolderViewType.Journal,
-            groupValue: _viewType,
-            onChanged: onViewChange,
-          ),
-          RadioListTile<FolderViewType>(
-            title: Text(tr('widgets.FolderView.views.grid')),
-            value: FolderViewType.Grid,
-            groupValue: _viewType,
-            onChanged: onViewChange,
-          ),
-          RadioListTile<FolderViewType>(
-            title: Text(tr('widgets.FolderView.views.card')),
-            value: FolderViewType.Card,
-            groupValue: _viewType,
-            onChanged: onViewChange,
-          ),
-        ];
-
-        return AlertDialog(
-          title: Text(tr('widgets.FolderView.views.select')),
-          content: Column(
-            children: children,
-            mainAxisSize: MainAxisSize.min,
-          ),
-        );
-      },
-    );
-
-    if (newViewType != null) {
-      setState(() {
-        _viewType = newViewType;
-      });
-
-      widget.notesFolder.config = widget.notesFolder.config.copyWith(
-        defaultView: newViewType,
-      );
-
-      var container = Provider.of<StateContainer>(context, listen: false);
-      container.saveFolderConfig(widget.notesFolder.config);
-    }
-  }
-
   List<Widget> _buildNoteActions() {
     final settings = Provider.of<Settings>(context);
 
@@ -400,11 +343,6 @@ class _FolderViewState extends State<FolderView> {
     );
 
     return <Widget>[
-      IconButton(
-        icon: const Icon(Icons.library_books),
-        onPressed: _folderViewChooserSelected,
-        key: const ValueKey("FolderViewSelector"),
-      ),
       if (settings.remoteGitRepoConfigured) SyncButton(),
       IconButton(
         icon: const Icon(Icons.search),
