@@ -505,7 +505,7 @@ class SettingsFolderViewType {
       SettingsFolderViewType('widgets.FolderView.views.card', "Card");
   static const Grid =
       SettingsFolderViewType('widgets.FolderView.views.grid', "Grid");
-  static const Default = Standard;
+  static const Default = Grid;
 
   final String _str;
   final String _publicString;
@@ -562,7 +562,7 @@ class SettingsFolderViewType {
         return FolderViewType.Grid;
     }
 
-    return FolderViewType.Standard;
+    return FolderViewType.Grid;
   }
 
   static SettingsFolderViewType fromFolderViewType(FolderViewType viewType) {
