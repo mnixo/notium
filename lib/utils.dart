@@ -55,14 +55,6 @@ NotesFolderFS getFolderForEditor(
 ) {
   var spec = settings.defaultNewNoteFolderSpec;
 
-  switch (editorType) {
-    case EditorType.Journal:
-      spec = settings.journalEditordefaultNewNoteFolderSpec;
-      break;
-    default:
-      break;
-  }
-
   return rootFolder.getFolderWithSpec(spec) ?? rootFolder;
 }
 

@@ -171,17 +171,6 @@ class _FolderViewState extends State<FolderView> {
 
     var settings = Provider.of<Settings>(context);
 
-    if (editorType == EditorType.Journal && settings.journalEditorSingleNote) {
-      var note = await getTodayJournalEntry(fsFolder.rootFolder);
-      if (note != null) {
-        return openNoteEditor(
-          context,
-          note,
-          widget.notesFolder,
-          editMode: true,
-        );
-      }
-    }
     var routeType =
         SettingsEditorType.fromEditorType(editorType).toInternalString();
 

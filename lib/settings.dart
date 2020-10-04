@@ -28,7 +28,6 @@ class Settings extends ChangeNotifier {
   bool yamlHeaderEnabled = true;
   String defaultNewNoteFolderSpec = "";
   String journalEditordefaultNewNoteFolderSpec = "";
-  bool journalEditorSingleNote = false;
 
   RemoteSyncFrequency remoteSyncFrequency = RemoteSyncFrequency.Default;
   SortingField sortingField = SortingField.Default;
@@ -78,11 +77,6 @@ class Settings extends ChangeNotifier {
     yamlHeaderEnabled = pref.getBool("yamlHeaderEnabled") ?? yamlHeaderEnabled;
     defaultNewNoteFolderSpec =
         pref.getString("defaultNewNoteFolderSpec") ?? defaultNewNoteFolderSpec;
-    journalEditordefaultNewNoteFolderSpec =
-        pref.getString("journalEditordefaultNewNoteFolderSpec") ??
-            journalEditordefaultNewNoteFolderSpec;
-    journalEditorSingleNote =
-        pref.getBool("journalEditorSingleNote") ?? journalEditorSingleNote;
 
     remoteSyncFrequency = RemoteSyncFrequency.fromInternalString(
         pref.getString("remoteSyncFrequency"));
@@ -154,13 +148,6 @@ class Settings extends ChangeNotifier {
         defaultSet.yamlHeaderEnabled);
     _setString(pref, "defaultNewNoteFolderSpec", defaultNewNoteFolderSpec,
         defaultSet.defaultNewNoteFolderSpec);
-    _setString(
-        pref,
-        "journalEditordefaultNewNoteFolderSpec",
-        journalEditordefaultNewNoteFolderSpec,
-        defaultSet.journalEditordefaultNewNoteFolderSpec);
-    _setBool(pref, "journalEditorSingleNote", journalEditorSingleNote,
-        defaultSet.journalEditorSingleNote);
     _setString(
         pref,
         "remoteSyncFrequency",
@@ -261,9 +248,6 @@ class Settings extends ChangeNotifier {
       "customMetaData": customMetaData,
       "yamlHeaderEnabled": yamlHeaderEnabled.toString(),
       "defaultNewNoteFolderSpec": defaultNewNoteFolderSpec,
-      "journalEditordefaultNewNoteFolderSpec":
-          journalEditordefaultNewNoteFolderSpec,
-      'journalEditorSingleNote': journalEditorSingleNote.toString(),
       "defaultEditor": defaultEditor.toInternalString(),
       "defaultView": defaultView.toInternalString(),
       "sortingField": sortingField.toInternalString(),
@@ -416,9 +400,6 @@ class RemoteSyncFrequency {
 class SettingsEditorType {
   static const Markdown =
       SettingsEditorType('settings.editors.markdownEditor', "Markdown");
-  static const Raw = SettingsEditorType('settings.editors.rawEditor', "Raw");
-  static const Journal =
-      SettingsEditorType('settings.editors.journalEditor', "Journal");
   static const Checklist =
       SettingsEditorType('settings.editors.checklistEditor', "Checklist");
   static const Default = Markdown;
@@ -439,10 +420,6 @@ class SettingsEditorType {
     switch (this) {
       case Markdown:
         return EditorType.Markdown;
-      case Raw:
-        return EditorType.Raw;
-      case Journal:
-        return EditorType.Journal;
       case Checklist:
         return EditorType.Checklist;
       default:
@@ -454,20 +431,14 @@ class SettingsEditorType {
     switch (editorType) {
       case EditorType.Checklist:
         return SettingsEditorType.Checklist;
-      case EditorType.Raw:
-        return SettingsEditorType.Raw;
       case EditorType.Markdown:
         return SettingsEditorType.Markdown;
-      case EditorType.Journal:
-        return SettingsEditorType.Journal;
     }
     return SettingsEditorType.Default;
   }
 
   static const options = <SettingsEditorType>[
     Markdown,
-    Raw,
-    Journal,
     Checklist,
   ];
 

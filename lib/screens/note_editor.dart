@@ -12,7 +12,6 @@ import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/notes_folder.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
 import 'package:simplewave/editors/checklist_editor.dart';
-import 'package:simplewave/editors/journal_editor.dart';
 import 'package:simplewave/editors/markdown_editor.dart';
 import 'package:simplewave/editors/raw_editor.dart';
 import 'package:simplewave/error_reporting.dart';
@@ -21,7 +20,6 @@ import 'package:simplewave/utils.dart';
 import 'package:simplewave/utils/logger.dart';
 import 'package:simplewave/widgets/folder_selection_dialog.dart';
 import 'package:simplewave/widgets/note_delete_dialog.dart';
-import 'package:simplewave/widgets/note_editor_selector.dart';
 import 'package:simplewave/widgets/note_tag_editor.dart';
 import 'package:simplewave/widgets/rename_dialog.dart';
 
@@ -74,7 +72,7 @@ class NoteEditor extends StatefulWidget {
   }
 }
 
-enum EditorType { Markdown, Raw, Checklist, Journal }
+enum EditorType { Markdown, Checklist }
 
 class NoteEditorState extends State<NoteEditor> {
   Note note;
@@ -84,7 +82,6 @@ class NoteEditorState extends State<NoteEditor> {
   final _rawEditorKey = GlobalKey<RawEditorState>();
   final _markdownEditorKey = GlobalKey<MarkdownEditorState>();
   final _checklistEditorKey = GlobalKey<ChecklistEditorState>();
-  final _journalEditorKey = GlobalKey<JournalEditorState>();
 
   bool get _isNewNote {
     return widget.note == null;
@@ -124,9 +121,6 @@ class NoteEditorState extends State<NoteEditor> {
       editorType = widget.defaultEditorType;
     } else {
       switch (note.type) {
-        case NoteType.Journal:
-          editorType = EditorType.Journal;
-          break;
         case NoteType.Checklist:
           editorType = EditorType.Checklist;
           break;
@@ -139,7 +133,7 @@ class NoteEditorState extends State<NoteEditor> {
     // Txt files
     if (note.fileFormat == NoteFileFormat.Txt &&
         editorType == EditorType.Markdown) {
-      editorType = EditorType.Raw;
+      editorType = EditorType.Markdown;
     }
   }
 
@@ -170,35 +164,9 @@ class NoteEditorState extends State<NoteEditor> {
           discardChangesSelected: _discardChangesSelected,
           editMode: widget.editMode
         );
-      case EditorType.Raw:
-        return RawEditor(
-          key: _rawEditorKey,
-          note: note,
-          noteModified: _noteModified(note),
-          noteDeletionSelected: _noteDeletionSelected,
-          exitEditorSelected: _exitEditorSelected,
-          renameNoteSelected: _renameNoteSelected,
-          editTagsSelected: _editTagsSelected,
-          moveNoteToFolderSelected: _moveNoteToFolderSelected,
-          discardChangesSelected: _discardChangesSelected,
-          editMode: widget.editMode
-        );
       case EditorType.Checklist:
         return ChecklistEditor(
           key: _checklistEditorKey,
-          note: note,
-          noteModified: _noteModified(note),
-          noteDeletionSelected: _noteDeletionSelected,
-          exitEditorSelected: _exitEditorSelected,
-          renameNoteSelected: _renameNoteSelected,
-          editTagsSelected: _editTagsSelected,
-          moveNoteToFolderSelected: _moveNoteToFolderSelected,
-          discardChangesSelected: _discardChangesSelected,
-          editMode: widget.editMode
-        );
-      case EditorType.Journal:
-        return JournalEditor(
-          key: _journalEditorKey,
           note: note,
           noteModified: _noteModified(note),
           noteDeletionSelected: _noteDeletionSelected,
@@ -326,12 +294,8 @@ class NoteEditorState extends State<NoteEditor> {
     switch (editorType) {
       case EditorType.Markdown:
         return _markdownEditorKey.currentState.getNote();
-      case EditorType.Raw:
-        return _rawEditorKey.currentState.getNote();
       case EditorType.Checklist:
         return _checklistEditorKey.currentState.getNote();
-      case EditorType.Journal:
-        return _journalEditorKey.currentState.getNote();
     }
     return null;
   }
