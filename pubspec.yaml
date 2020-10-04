@@ -81,12 +81,13 @@ flutter:
     - "assets/git-hosting.png"
     - "assets/langs/en.yaml"
   fonts:
-    - family: Lato
+    - family: IBMPlexSans-Extralight
       fonts:
-        - asset: fonts/Lato-Regular.ttf
-    - family: Roboto Mono
+        - asset: fonts/IBMPlexSans-ExtraLight.ttf
+        - asset: fonts/IBMPlexSans-ExtraLightItalic.ttf
+    - family: IBMPlexMono-Regular
       fonts:
-        - asset: fonts/RobotoMono-Regular.ttf
+        - asset: fonts/IBMPlexMono-Regular.ttf
 
 flutter_icons:
   android: "launcher_icon"

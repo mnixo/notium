@@ -156,7 +156,7 @@ class OnBoardingPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
-    var headerTextStyle = textTheme.headline2.copyWith(fontFamily: "Lato");
+    var headerTextStyle = textTheme.headline2;
     var header = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

@@ -147,7 +147,7 @@ class _NoteEditor extends StatelessWidget {
     var style = Theme.of(context)
         .textTheme
         .subtitle1
-        .copyWith(fontFamily: "Roboto Mono");
+        .copyWith(fontFamily: "IBMPlexMono-Regular");
 
     return TextField(
       autofocus: autofocus,

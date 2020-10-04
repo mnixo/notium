@@ -204,7 +204,7 @@ class NoteOutputExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var style = theme.textTheme.subtitle1;
-    style = style.copyWith(fontFamily: "Roboto Mono");
+    style = style.copyWith(fontFamily: "IBMPlexSans-Extralight");
 
     var doc = MdYamlDoc();
     NoteSerializer.fromConfig(NotesFolderConfig.fromSettings(null)).encode(note, doc);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Themes {
   static final light = ThemeData(
     brightness: Brightness.light,
+    fontFamily: 'IBMPlexSans-Extralight',
     primaryColor: const Color.fromRGBO(48, 48, 48, 1),
     primaryColorLight: const Color.fromRGBO(66, 66, 66, 1),
     primaryColorDark: const Color.fromRGBO(48, 48, 48, 1),
@@ -14,10 +15,16 @@ class Themes {
 
   static final dark = ThemeData(
     brightness: Brightness.dark,
+    fontFamily: 'IBMPlexSans-Extralight',
     primaryColor: const Color.fromRGBO(48, 48, 48, 1),
     accentColor: const Color.fromRGBO(205, 109, 105, 1),
     cursorColor: const Color.fromRGBO(255, 255, 255, 1),
     textSelectionHandleColor: const Color.fromRGBO(255, 255, 255, 1),
     toggleableActiveColor: Color.fromRGBO(255, 109, 105, 1),
+    textTheme: TextTheme(
+      bodyText1: TextStyle(fontSize: 18.0), // Used for drawer
+      headline6: TextStyle(fontSize: 20.0), // Used for note title
+      subtitle1: TextStyle(fontSize: 20.0), // Used for note content
+    )
   );
 }

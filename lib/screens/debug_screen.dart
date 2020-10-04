@@ -127,7 +127,7 @@ class _DebugScreenState extends State<DebugScreen> {
     var textStyle = Theme.of(context)
         .textTheme
         .bodyText2
-        .copyWith(fontFamily: "Roboto Mono");
+        .copyWith(fontFamily: "IBMPlexMono-Regular");
 
     textStyle = textStyle.copyWith(color: _colorForLevel(msg.l));
 
@@ -185,7 +185,7 @@ class _DebugScreenState extends State<DebugScreen> {
     var textStyle = Theme.of(context)
         .textTheme
         .headline6
-        .copyWith(fontFamily: "Roboto Mono");
+        .copyWith(fontFamily: "IBMPlexMono-Regular");
 
     var text = dt.toIso8601String().substring(0, 10);
     return Padding(
