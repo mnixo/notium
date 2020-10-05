@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:function_types/function_types.dart';
-
-import 'package:simplewave/analytics.dart';
 import 'package:simplewave/utils/logger.dart';
 
 class GitHostSetupButton extends StatelessWidget {
@@ -28,7 +25,7 @@ class GitHostSetupButton extends StatelessWidget {
             style: Theme.of(context).textTheme.button,
           ),
           color: Theme.of(context).primaryColor,
-          onPressed: _onPressedWithAnalytics,
+          onPressed: _onPressedWithLog,
         ),
       );
     } else {
@@ -42,18 +39,14 @@ class GitHostSetupButton extends StatelessWidget {
           ),
           icon: Image.asset(iconUrl, width: 32, height: 32),
           color: Theme.of(context).primaryColor,
-          onPressed: _onPressedWithAnalytics,
+          onPressed: _onPressedWithLog,
         ),
       );
     }
   }
 
-  void _onPressedWithAnalytics() {
+  void _onPressedWithLog() {
     Log.d("githostsetup_button_click " + text);
-    logEvent(Event.GitHostSetupButtonClick, parameters: {
-      'text': text,
-      'icon_url': iconUrl == null ? "" : iconUrl,
-    });
     onPressed();
   }
 }

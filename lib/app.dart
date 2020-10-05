@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
-import 'package:simplewave/analytics.dart';
+import 'package:simplewave/event_logger.dart';
 import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/appstate.dart';
 import 'package:simplewave/core/md_yaml_doc_codec.dart';
@@ -47,10 +47,6 @@ class JournalApp extends StatefulWidget {
     var appSettings = AppSettings.instance;
     Log.i("AppSetting ${appSettings.toMap()}");
     Log.i("Setting ${settings.toLoggableMap()}");
-
-    if (appSettings.collectUsageStatistics) {
-      _enableAnalyticsIfPossible(settings);
-    }
 
     if (appSettings.gitBaseDirectory.isEmpty) {
       var dir = await getApplicationDocumentsDirectory();
@@ -117,40 +113,6 @@ class JournalApp extends StatefulWidget {
     ));
   }
 
-  static void _enableAnalyticsIfPossible(Settings settings) async {
-    JournalApp.isInDebugMode = foundation.kDebugMode;
-
-    var isPhysicalDevice = true;
-    try {
-      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-      if (Platform.isAndroid) {
-        var info = await deviceInfo.androidInfo;
-        isPhysicalDevice = info.isPhysicalDevice;
-        Log.d("Device Fingerprint: " + info.fingerprint);
-      } else if (Platform.isIOS) {
-        var info = await deviceInfo.iosInfo;
-        isPhysicalDevice = info.isPhysicalDevice;
-      }
-    } catch (e) {
-      Log.d(e);
-    }
-
-    if (isPhysicalDevice == false) {
-      JournalApp.isInDebugMode = true;
-    }
-
-    bool inFireBaseTestLab = await FlutterSentry.isFirebaseTestLab();
-    bool enabled = !JournalApp.isInDebugMode && !inFireBaseTestLab;
-
-    Log.d("Analytics Collection: $enabled");
-    JournalApp.analytics.setAnalyticsCollectionEnabled(enabled);
-
-    if (enabled) {
-      logEvent(Event.Settings, parameters: settings.toLoggableMap());
-    }
-  }
-
-  static final analytics = Analytics();
   static bool isInDebugMode = false;
 
   JournalApp(this.appState);
@@ -310,7 +272,7 @@ class _JournalAppState extends State<JournalApp> {
 
       theme: themeData,
       navigatorObservers: <NavigatorObserver>[
-        AnalyticsRouteObserver(),
+        EventLogRouteObserver(),
       ],
       initialRoute: initialRoute,
       debugShowCheckedModeBanner: false,

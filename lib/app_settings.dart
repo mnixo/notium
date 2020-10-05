@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uuid/uuid.dart';
-
 import 'package:simplewave/features.dart';
+import 'package:uuid/uuid.dart';
 
 class AppSettings extends ChangeNotifier {
   // singleton
@@ -16,7 +14,6 @@ class AppSettings extends ChangeNotifier {
   // Properties
   //
   var onBoardingCompleted = false;
-  var collectUsageStatistics = true;
   var collectCrashReports = true;
 
   int version = 0;
@@ -39,8 +36,6 @@ class AppSettings extends ChangeNotifier {
   void load(SharedPreferences pref) {
     onBoardingCompleted = pref.getBool("onBoardingCompleted") ?? false;
 
-    collectUsageStatistics =
-        pref.getBool("collectUsageStatistics") ?? collectUsageStatistics;
     collectCrashReports =
         pref.getBool("collectCrashReports") ?? collectCrashReports;
 
@@ -73,8 +68,6 @@ class AppSettings extends ChangeNotifier {
 
     pref.setBool("onBoardingCompleted", onBoardingCompleted);
 
-    _setBool(pref, "collectUsageStatistics", collectUsageStatistics,
-        defaultSet.collectUsageStatistics);
     _setBool(pref, "collectCrashReports", collectCrashReports,
         defaultSet.collectCrashReports);
 
@@ -99,7 +92,6 @@ class AppSettings extends ChangeNotifier {
   Map<String, String> toMap() {
     return {
       "onBoardingCompleted": onBoardingCompleted.toString(),
-      "collectUsageStatistics": collectUsageStatistics.toString(),
       "collectCrashReports": collectCrashReports.toString(),
       "version": version.toString(),
       "proMode": proMode.toString(),

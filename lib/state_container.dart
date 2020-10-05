@@ -3,11 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'package:path/path.dart' as p;
-import 'package:synchronized/synchronized.dart';
-
-import 'package:simplewave/analytics.dart';
 import 'package:simplewave/apis/git_migration.dart';
 import 'package:simplewave/appstate.dart';
 import 'package:simplewave/core/git_repo.dart';
@@ -16,9 +12,11 @@ import 'package:simplewave/core/notes_cache.dart';
 import 'package:simplewave/core/notes_folder.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
 import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/event_logger.dart';
 import 'package:simplewave/features.dart';
 import 'package:simplewave/settings.dart';
 import 'package:simplewave/utils/logger.dart';
+import 'package:synchronized/synchronized.dart';
 
 class StateContainer with ChangeNotifier {
   final AppState appState;
@@ -55,12 +53,6 @@ class StateContainer with ChangeNotifier {
     if (!settings.remoteGitRepoConfigured) {
       removeExistingRemoteClone();
     }
-
-    // Makes it easier to filter the analytics
-    getAnalytics().firebase.setUserProperty(
-          name: 'onboarded',
-          value: settings.remoteGitRepoConfigured.toString(),
-        );
 
     var cachePath = p.join(gitBaseDirectory, "cache.json");
     _notesCache = NotesCache(

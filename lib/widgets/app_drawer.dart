@@ -7,7 +7,7 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/analytics.dart';
+import 'package:simplewave/event_logger.dart';
 import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/settings.dart';
 import 'package:simplewave/utils.dart';

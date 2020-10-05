@@ -1,20 +1,17 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:function_types/function_types.dart';
 import 'package:git_bindings/git_bindings.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import 'package:simplewave/analytics.dart';
 import 'package:simplewave/apis/githost_factory.dart';
 import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/error_reporting.dart';
+import 'package:simplewave/event_logger.dart';
 import 'package:simplewave/settings.dart';
 import 'package:simplewave/setup/autoconfigure.dart';
 import 'package:simplewave/setup/button.dart';
@@ -24,6 +21,7 @@ import 'package:simplewave/setup/repo_selector.dart';
 import 'package:simplewave/setup/sshkey.dart';
 import 'package:simplewave/utils.dart';
 import 'package:simplewave/utils/logger.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GitHostSetupScreen extends StatefulWidget {
   final String repoFolderName;

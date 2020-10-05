@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/analytics.dart';
+import 'package:simplewave/event_logger.dart';
 import 'package:simplewave/apis/githost_factory.dart';
 import 'package:simplewave/error_reporting.dart';
 import 'package:simplewave/settings.dart';

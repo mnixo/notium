@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:simplewave/analytics.dart';
 import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/features.dart';
 
@@ -33,11 +30,6 @@ class ProOverlay extends StatelessWidget {
       ),
       onTap: () {
         Navigator.pushNamed(context, "/purchase");
-
-        logEvent(
-          Event.PurchaseScreenOpen,
-          parameters: {"from": feature.featureName},
-        );
       },
     );
   }

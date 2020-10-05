@@ -1,15 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:firebase_analytics/firebase_analytics.dart';
-
-import 'package:simplewave/app.dart';
 import 'package:simplewave/error_reporting.dart';
 import 'package:simplewave/utils/logger.dart';
-
-Analytics getAnalytics() {
-  return JournalApp.analytics;
-}
 
 enum Event {
   NoteAdded,
@@ -26,15 +17,8 @@ enum Event {
   RepoSynced,
 
   DrawerSetupGitHost,
-  DrawerShare,
-  DrawerRate,
-  DrawerFeedback,
   DrawerBugReport,
   DrawerSettings,
-
-  PurchaseScreenOpen,
-  PurchaseScreenClose,
-  PurchaseScreenThankYou,
 
   GitHostSetupError,
   GitHostSetupComplete,
@@ -42,20 +26,6 @@ enum Event {
   GitHostSetupButtonClick,
 
   Settings,
-  FeatureTimelineGithubClicked,
-
-  /*
-  Firebase Automatic Events:
-    app_update:
-      previous_app_version
-
-    first_open
-    in_app_purchase
-    screen_view
-    session_start
-    user_engagement
-
-  */
 }
 
 String _eventToString(Event e) {
@@ -90,23 +60,10 @@ String _eventToString(Event e) {
 
     case Event.DrawerSetupGitHost:
       return "drawer_setupGitHost";
-    case Event.DrawerShare:
-      return "drawer_share";
-    case Event.DrawerRate:
-      return "drawer_rate";
-    case Event.DrawerFeedback:
-      return "drawer_feedback";
     case Event.DrawerBugReport:
       return "drawer_bugreport";
     case Event.DrawerSettings:
       return "drawer_settings";
-
-    case Event.PurchaseScreenOpen:
-      return "purchase_screen_open";
-    case Event.PurchaseScreenClose:
-      return "purchase_screen_close";
-    case Event.PurchaseScreenThankYou:
-      return "purchase_screen_thank_you";
 
     case Event.GitHostSetupError:
       return "githostsetup_error";
@@ -119,40 +76,19 @@ String _eventToString(Event e) {
 
     case Event.Settings:
       return "settings";
-
-    case Event.FeatureTimelineGithubClicked:
-      return "feature_timeline_github_clicked";
   }
 
-  return "unknown_event";
-}
-
-class Analytics {
-  var firebase = FirebaseAnalytics();
-  bool enabled = false;
-
-  Future<void> log({
-    @required Event e,
-    Map<String, String> parameters = const {},
-  }) async {
-    String name = _eventToString(e);
-    await firebase.logEvent(name: name, parameters: parameters);
-    captureErrorBreadcrumb(name: name, parameters: parameters);
-  }
-
-  Future<void> setAnalyticsCollectionEnabled(bool enabled) async {
-    this.enabled = enabled;
-    return firebase.setAnalyticsCollectionEnabled(enabled);
-  }
+  return "unknown_event: " + e.toString();
 }
 
 void logEvent(Event event, {Map<String, String> parameters = const {}}) {
-  getAnalytics().log(e: event, parameters: parameters);
   Log.d("Event $event");
+  Log.d("Parameters: $parameters");
+  Log.d("------------");
 }
 
-class AnalyticsRouteObserver extends RouteObserver<PageRoute<dynamic>> {
-  void _sendScreenView(PageRoute<dynamic> route) async {
+class EventLogRouteObserver extends RouteObserver<PageRoute<dynamic>> {
+  void _logScreenView(PageRoute<dynamic> route) async {
     var screenName = route.settings.name;
     if (route.runtimeType.toString().startsWith("_SearchPageRoute")) {
       screenName = "/search";
@@ -164,18 +100,14 @@ class AnalyticsRouteObserver extends RouteObserver<PageRoute<dynamic>> {
       return;
     }
 
-    try {
-      await getAnalytics().firebase.setCurrentScreen(screenName: screenName);
-    } catch (e, stackTrace) {
-      Log.e("AnalyticsRouteObserver", ex: e, stacktrace: stackTrace);
-    }
+    Log.d("Screen view: $route " + screenName);
   }
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPush(route, previousRoute);
     if (route is PageRoute) {
-      _sendScreenView(route);
+      _logScreenView(route);
     } else {
       // print("route in not a PageRoute! $route");
     }
@@ -185,7 +117,7 @@ class AnalyticsRouteObserver extends RouteObserver<PageRoute<dynamic>> {
   void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
     if (newRoute is PageRoute) {
-      _sendScreenView(newRoute);
+      _logScreenView(newRoute);
     } else {
       // print("newRoute in not a PageRoute! $newRoute");
     }
@@ -195,7 +127,7 @@ class AnalyticsRouteObserver extends RouteObserver<PageRoute<dynamic>> {
   void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
     super.didPop(route, previousRoute);
     if (previousRoute is PageRoute && route is PageRoute) {
-      _sendScreenView(previousRoute);
+      _logScreenView(previousRoute);
     } else {
       // print("previousRoute in not a PageRoute! $previousRoute");
       // print("route in not a PageRoute! $route");

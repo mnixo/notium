@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:simplewave/core/sorting_mode.dart';
 import 'package:simplewave/folder_views/common.dart';
 import 'package:simplewave/screens/note_editor.dart';
