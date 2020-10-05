@@ -2,7 +2,6 @@
     package="net.simplewave.simplewave">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.vending.BILLING" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
