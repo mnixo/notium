@@ -59,8 +59,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="gitjournal" android:host="login.oauth2" />
-                <!-- Triggering URI would be gitjournal://login.oauth2 -->
+                <data android:scheme="simplewave" android:host="login.oauth2" />
+                <!-- Triggering URI would be simplewave://login.oauth2 -->
             </intent-filter>
         </activity>
 
