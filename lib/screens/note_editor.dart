@@ -19,7 +19,6 @@ import 'package:simplewave/utils.dart';
 import 'package:simplewave/utils/logger.dart';
 import 'package:simplewave/widgets/folder_selection_dialog.dart';
 import 'package:simplewave/widgets/note_delete_dialog.dart';
-import 'package:simplewave/widgets/note_tag_editor.dart';
 import 'package:simplewave/widgets/rename_dialog.dart';
 
 class ShowUndoSnackbar {}
@@ -157,7 +156,6 @@ class NoteEditorState extends State<NoteEditor> {
           noteDeletionSelected: _noteDeletionSelected,
           exitEditorSelected: _exitEditorSelected,
           renameNoteSelected: _renameNoteSelected,
-          editTagsSelected: _editTagsSelected,
           moveNoteToFolderSelected: _moveNoteToFolderSelected,
           discardChangesSelected: _discardChangesSelected,
           editMode: widget.editMode
@@ -170,7 +168,6 @@ class NoteEditorState extends State<NoteEditor> {
           noteDeletionSelected: _noteDeletionSelected,
           exitEditorSelected: _exitEditorSelected,
           renameNoteSelected: _renameNoteSelected,
-          editTagsSelected: _editTagsSelected,
           moveNoteToFolderSelected: _moveNoteToFolderSelected,
           discardChangesSelected: _discardChangesSelected,
           editMode: widget.editMode
@@ -321,31 +318,5 @@ class NoteEditorState extends State<NoteEditor> {
     }
 
     Navigator.pop(context);
-  }
-
-  void _editTagsSelected(Note _note) async {
-    Log.i("Note Tags: ${_note.tags}");
-
-    final rootFolder = Provider.of<NotesFolderFS>(context);
-    var allTags = rootFolder.getNoteTagsRecursively();
-    Log.i("All Tags: $allTags");
-
-    var route = MaterialPageRoute(
-      builder: (context) => NoteTagEditor(
-        selectedTags: note.tags,
-        allTags: allTags,
-      ),
-      settings: const RouteSettings(name: '/editTags/'),
-    );
-    var newTags = await Navigator.of(context).push(route);
-    assert(newTags != null);
-
-    Function eq = const SetEquality().equals;
-    if (!eq(note.tags, newTags)) {
-      setState(() {
-        Log.i("Settings tags to: $newTags");
-        note.tags = newTags;
-      });
-    }
   }
 }

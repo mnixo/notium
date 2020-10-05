@@ -23,7 +23,6 @@ abstract class Editor {
   NoteCallback get noteDeletionSelected;
   NoteCallback get exitEditorSelected;
   NoteCallback get renameNoteSelected;
-  NoteCallback get editTagsSelected;
   NoteCallback get moveNoteToFolderSelected;
   NoteCallback get discardChangesSelected;
 }
@@ -257,20 +256,6 @@ Widget _buildBottomMenuSheet(
             shareNote(note);
           },
         ),
-        if (metaDataEditable)
-          ProOverlay(
-            feature: Feature.tags,
-            child: ListTile(
-              leading: const FaIcon(FontAwesomeIcons.tag),
-              title: Text(tr('editors.common.tags')),
-              onTap: () {
-                var note = editorState.getNote();
-                Navigator.of(context).pop();
-
-                editor.editTagsSelected(note);
-              },
-            ),
-          ),
       ],
     ),
   );
