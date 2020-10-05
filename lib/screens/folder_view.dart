@@ -25,11 +25,6 @@ import 'package:simplewave/widgets/note_search_delegate.dart';
 import 'package:simplewave/widgets/sorting_mode_selector.dart';
 import 'package:simplewave/widgets/sync_button.dart';
 
-enum DropDownChoices {
-  SortingOptions,
-  ViewOptions,
-}
-
 class FolderView extends StatefulWidget {
   final NotesFolder notesFolder;
   final Map<String, dynamic> newNoteExtraProps;
@@ -194,27 +189,6 @@ class _FolderViewState extends State<FolderView> {
     _scaffoldKey.currentState.removeCurrentSnackBar();
   }
 
-  void _sortButtonPressed() async {
-    var newSortingMode = await showDialog<SortingMode>(
-      context: context,
-      builder: (BuildContext context) =>
-          SortingModeSelector(sortedNotesFolder.sortingMode),
-    );
-
-    if (newSortingMode != null) {
-      sortedNotesFolder.config = sortedNotesFolder.config.copyWith(
-        sortingMode: newSortingMode,
-      );
-
-      var container = Provider.of<StateContainer>(context, listen: false);
-      container.saveFolderConfig(sortedNotesFolder.config);
-
-      setState(() {
-        sortedNotesFolder.changeSortingMode(newSortingMode);
-      });
-    }
-  }
-
   void _configureViewButtonPressed() async {
     await showDialog<SortingMode>(
       context: context,
@@ -306,26 +280,6 @@ class _FolderViewState extends State<FolderView> {
   List<Widget> _buildNoteActions() {
     final settings = Provider.of<Settings>(context);
 
-    var extraActions = PopupMenuButton<DropDownChoices>(
-      onSelected: (DropDownChoices choice) {
-        switch (choice) {
-          case DropDownChoices.SortingOptions:
-            _sortButtonPressed();
-            break;
-
-          case DropDownChoices.ViewOptions:
-            _configureViewButtonPressed();
-            break;
-        }
-      },
-      itemBuilder: (BuildContext context) => <PopupMenuEntry<DropDownChoices>>[
-        PopupMenuItem<DropDownChoices>(
-          value: DropDownChoices.SortingOptions,
-          child: Text(tr('widgets.FolderView.sortingOptions')),
-        ),
-      ],
-    );
-
     return <Widget>[
       if (settings.remoteGitRepoConfigured) SyncButton(),
       IconButton(
@@ -339,8 +293,7 @@ class _FolderViewState extends State<FolderView> {
             ),
           );
         },
-      ),
-      extraActions,
+      )
     ];
   }
 
