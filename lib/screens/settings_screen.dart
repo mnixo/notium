@@ -13,8 +13,6 @@ import 'package:simplewave/screens/settings_editors.dart';
 import 'package:simplewave/screens/settings_experimental.dart';
 import 'package:simplewave/screens/settings_git_remote.dart';
 import 'package:simplewave/screens/settings_images.dart';
-import 'package:simplewave/screens/settings_misc.dart';
-import 'package:simplewave/screens/settings_note_metadata.dart';
 import 'package:simplewave/screens/settings_tags.dart';
 import 'package:simplewave/screens/settings_widgets.dart';
 import 'package:simplewave/settings.dart';
@@ -217,17 +215,6 @@ class SettingsListState extends State<SettingsList> {
           Navigator.of(context).push(route);
         },
       ),
-      ListTile(
-        title: Text(tr("settings.noteMetaData.title")),
-        subtitle: Text(tr("settings.noteMetaData.subtitle")),
-        onTap: () {
-          var route = MaterialPageRoute(
-            builder: (context) => NoteMetadataSettingsScreen(),
-            settings: const RouteSettings(name: '/settings/noteMetaData'),
-          );
-          Navigator.of(context).push(route);
-        },
-      ),
       ProOverlay(
         feature: Feature.inlineTags,
         child: ListTile(
@@ -249,16 +236,6 @@ class SettingsListState extends State<SettingsList> {
           var route = MaterialPageRoute(
             builder: (context) => SettingsImagesScreen(),
             settings: const RouteSettings(name: '/settings/images'),
-          );
-          Navigator.of(context).push(route);
-        },
-      ),
-      ListTile(
-        title: Text(tr('settings.misc.title')),
-        onTap: () {
-          var route = MaterialPageRoute(
-            builder: (context) => SettingsMisc(),
-            settings: const RouteSettings(name: '/settings/misc'),
           );
           Navigator.of(context).push(route);
         },
@@ -303,18 +280,6 @@ class SettingsListState extends State<SettingsList> {
             settings: const RouteSettings(name: '/settings/experimental'),
           );
           Navigator.of(context).push(route);
-        },
-      ),
-      ListTile(
-        title: Text(tr('settings.privacy')),
-        onTap: () {
-          launch("https://simplewave.net/privacy");
-        },
-      ),
-      ListTile(
-        title: Text(tr('settings.terms')),
-        onTap: () {
-          launch("https://simplewave.net/terms");
         },
       ),
     ]);
