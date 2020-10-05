@@ -6,7 +6,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 
 import 'package:simplewave/analytics.dart';
-import 'package:simplewave/screens/feature_timeline_screen.dart';
 import 'package:simplewave/widgets/purchase_widget.dart';
 import 'package:simplewave/widgets/scroll_view_without_animation.dart';
 

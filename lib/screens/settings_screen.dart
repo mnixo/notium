@@ -9,7 +9,6 @@ import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
 import 'package:simplewave/features.dart';
 import 'package:simplewave/screens/debug_screen.dart';
-import 'package:simplewave/screens/feature_timeline_screen.dart';
 import 'package:simplewave/screens/settings_editors.dart';
 import 'package:simplewave/screens/settings_experimental.dart';
 import 'package:simplewave/screens/settings_git_remote.dart';
@@ -260,17 +259,6 @@ class SettingsListState extends State<SettingsList> {
           var route = MaterialPageRoute(
             builder: (context) => SettingsMisc(),
             settings: const RouteSettings(name: '/settings/misc'),
-          );
-          Navigator.of(context).push(route);
-        },
-      ),
-      const SizedBox(height: 16.0),
-      ListTile(
-        title: Text(tr("feature_timeline.title")),
-        onTap: () {
-          var route = MaterialPageRoute(
-            builder: (context) => FeatureTimelineScreen(),
-            settings: const RouteSettings(name: '/featureTimeline'),
           );
           Navigator.of(context).push(route);
         },

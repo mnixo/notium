@@ -25,8 +25,6 @@ import 'package:simplewave/screens/filesystem_screen.dart';
 import 'package:simplewave/screens/folder_listing.dart';
 import 'package:simplewave/screens/graph_view.dart';
 import 'package:simplewave/screens/note_editor.dart';
-import 'package:simplewave/screens/purchase_screen.dart';
-import 'package:simplewave/screens/purchase_thankyou_screen.dart';
 import 'package:simplewave/screens/tag_listing.dart';
 import 'package:simplewave/settings.dart';
 import 'package:simplewave/state_container.dart';
@@ -367,10 +365,6 @@ class _JournalAppState extends State<JournalApp> {
         );
       case '/onBoarding':
         return OnBoardingScreen();
-      case '/purchase':
-        return PurchaseScreen();
-      case '/purchase_thank_you':
-        return PurchaseThankYouScreen();
     }
 
     if (route.startsWith('/newNote/')) {
