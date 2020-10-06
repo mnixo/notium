@@ -90,11 +90,6 @@ class Settings extends ChangeNotifier {
 
     markdownDefaultView = SettingsMarkdownDefaultView.fromInternalString(
         pref.getString("markdownDefaultView"));
-    markdownLastUsedView = SettingsMarkdownDefaultView.fromInternalString(
-        pref.getString("markdownLastUsedView"));
-    if (markdownLastUsedView == SettingsMarkdownDefaultView.LastUsed) {
-      markdownLastUsedView = SettingsMarkdownDefaultView.Edit;
-    }
 
     showNoteSummary = pref.getBool("showNoteSummary") ?? showNoteSummary;
     folderViewHeaderType =

@@ -54,14 +54,7 @@ class _EditorScaffoldState extends State<EditorScaffold> {
       hideUIElements = settings.zenMode;
       widget.editorState.addListener(_editorChanged);
 
-      if (settings.markdownDefaultView ==
-          SettingsMarkdownDefaultView.LastUsed) {
-        editingMode =
-            settings.markdownLastUsedView == SettingsMarkdownDefaultView.Edit;
-      } else {
-        editingMode =
-            settings.markdownDefaultView == SettingsMarkdownDefaultView.Edit;
-      }
+      editingMode = settings.markdownDefaultView == SettingsMarkdownDefaultView.Edit;
 
       if (widget.editMode) {
         editingMode = true;
@@ -93,14 +86,6 @@ class _EditorScaffoldState extends State<EditorScaffold> {
 
     setState(() {
       editingMode = !editingMode;
-      switch (editingMode) {
-        case true:
-          settings.markdownLastUsedView = SettingsMarkdownDefaultView.Edit;
-          break;
-        case false:
-          settings.markdownLastUsedView = SettingsMarkdownDefaultView.View;
-          break;
-      }
       settings.save();
       note = widget.editorState.getNote();
     });
