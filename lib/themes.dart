@@ -16,6 +16,7 @@ class Themes {
     bottomAppBarColor: const Color.fromRGBO(255, 255, 255, 1),
     textTheme: TextTheme(
       bodyText1: TextStyle(fontSize: 18.0), // Used for drawer
+      bodyText2: TextStyle(fontSize: 18.0), // Used for note view mode
       headline6: TextStyle(fontSize: 20.0), // Used for note title
       subtitle1: TextStyle(fontSize: 20.0), // Used for note content
     )
