@@ -105,7 +105,18 @@ class _EditorScaffoldState extends State<EditorScaffold> {
       body: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
-          if (settings.zenMode) {
+          if (hideUIElements == true) {
+            setState(() {
+              hideUIElements = false;
+            });
+          }
+        },
+        onDoubleTap: () {
+          if (hideUIElements == false) {
+            setState(() {
+              hideUIElements = true;
+            });
+          } else {
             setState(() {
               hideUIElements = false;
             });
