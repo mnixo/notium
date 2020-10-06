@@ -487,20 +487,10 @@ class SettingsFolderViewType {
   ];
 
   static SettingsFolderViewType fromInternalString(String str) {
-    for (var opt in options) {
-      if (opt.toInternalString() == str) {
-        return opt;
-      }
-    }
     return Default;
   }
 
   static SettingsFolderViewType fromPublicString(String str) {
-    for (var opt in options) {
-      if (opt.toPublicString() == str) {
-        return opt;
-      }
-    }
     return Default;
   }
 
@@ -511,20 +501,11 @@ class SettingsFolderViewType {
   }
 
   FolderViewType toFolderViewType() {
-    switch (this) {
-      case Grid:
-        return FolderViewType.Grid;
-    }
-
     return FolderViewType.Grid;
   }
 
   static SettingsFolderViewType fromFolderViewType(FolderViewType viewType) {
-    switch (viewType) {
-      case FolderViewType.Grid:
-        return SettingsFolderViewType.Grid;
-    }
-    return SettingsFolderViewType.Default;
+    return SettingsFolderViewType.Grid;
   }
 }
 
