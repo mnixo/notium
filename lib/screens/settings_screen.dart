@@ -6,7 +6,6 @@ import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
 import 'package:simplewave/features.dart';
 import 'package:simplewave/screens/debug_screen.dart';
-import 'package:simplewave/screens/settings_editors.dart';
 import 'package:simplewave/screens/settings_experimental.dart';
 import 'package:simplewave/screens/settings_git_remote.dart';
 import 'package:simplewave/screens/settings_images.dart';
@@ -201,17 +200,6 @@ class SettingsListState extends State<SettingsList> {
         enabled: remoteGitConfigured,
       ),
       const SizedBox(height: 16.0),
-      ListTile(
-        title: Text(tr("settings.editors.title")),
-        subtitle: Text(tr("settings.editors.subtitle")),
-        onTap: () {
-          var route = MaterialPageRoute(
-            builder: (context) => SettingsEditorsScreen(),
-            settings: const RouteSettings(name: '/settings/editors'),
-          );
-          Navigator.of(context).push(route);
-        },
-      ),
       ProOverlay(
         feature: Feature.inlineTags,
         child: ListTile(

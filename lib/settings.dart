@@ -531,11 +531,7 @@ class SettingsFolderViewType {
 class SettingsMarkdownDefaultView {
   static const Edit =
       SettingsMarkdownDefaultView('settings.EditorDefaultView.edit', "Edit");
-  static const View =
-      SettingsMarkdownDefaultView('settings.EditorDefaultView.view', "View");
-  static const LastUsed = SettingsMarkdownDefaultView(
-      'settings.EditorDefaultView.lastUsed', "Last Used");
-  static const Default = LastUsed;
+  static const Default = Edit;
 
   final String _str;
   final String _publicStr;
@@ -551,25 +547,13 @@ class SettingsMarkdownDefaultView {
 
   static const options = <SettingsMarkdownDefaultView>[
     Edit,
-    View,
-    LastUsed,
   ];
 
   static SettingsMarkdownDefaultView fromInternalString(String str) {
-    for (var opt in options) {
-      if (opt.toInternalString() == str) {
-        return opt;
-      }
-    }
     return Default;
   }
 
   static SettingsMarkdownDefaultView fromPublicString(String str) {
-    for (var opt in options) {
-      if (opt.toPublicString() == str) {
-        return opt;
-      }
-    }
     return Default;
   }
 
