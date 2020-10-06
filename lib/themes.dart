@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Themes {
+
+  static final appTextTheme = TextTheme(
+  bodyText1: TextStyle(fontSize: 16.0), // Used for drawer
+  bodyText2: TextStyle(fontSize: 18.0), // Used for note view mode
+  headline6: TextStyle(fontSize: 20.0), // Used for note title
+  subtitle1: TextStyle(fontSize: 20.0), // Used for note content
+  );
+
   static final light = ThemeData(
     brightness: Brightness.light,
     fontFamily: 'IBMPlexSans-Extralight',
@@ -14,12 +22,7 @@ class Themes {
     selectedRowColor: const Color.fromRGBO(184, 184, 184, 1),
     focusColor: const Color.fromRGBO(255, 255, 255, 1),
     bottomAppBarColor: const Color.fromRGBO(255, 255, 255, 1),
-    textTheme: TextTheme(
-      bodyText1: TextStyle(fontSize: 18.0), // Used for drawer
-      bodyText2: TextStyle(fontSize: 18.0), // Used for note view mode
-      headline6: TextStyle(fontSize: 20.0), // Used for note title
-      subtitle1: TextStyle(fontSize: 20.0), // Used for note content
-    )
+    textTheme: appTextTheme,
   );
 
   static final dark = ThemeData(
@@ -35,11 +38,6 @@ class Themes {
     selectedRowColor: const Color.fromRGBO(66, 66, 66, 1),
     focusColor: const Color.fromRGBO(255, 255, 255, 1),
     bottomAppBarColor: const Color.fromRGBO(48, 48, 48, 1),
-    textTheme: TextTheme(
-      bodyText1: TextStyle(fontSize: 16.0), // Used for drawer
-      bodyText2: TextStyle(fontSize: 18.0), // Used for note view mode
-      headline6: TextStyle(fontSize: 18.0), // Used for note title
-      subtitle1: TextStyle(fontSize: 18.0), // Used for note content
-    )
+    textTheme: appTextTheme,
   );
 }
