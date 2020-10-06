@@ -32,9 +32,10 @@ class Themes {
     selectedRowColor: const Color.fromRGBO(66, 66, 66, 1),
     focusColor: const Color.fromRGBO(255, 255, 255, 1),
     textTheme: TextTheme(
-      bodyText1: TextStyle(fontSize: 18.0), // Used for drawer
-      headline6: TextStyle(fontSize: 20.0), // Used for note title
-      subtitle1: TextStyle(fontSize: 20.0), // Used for note content
+      bodyText1: TextStyle(fontSize: 16.0), // Used for drawer
+      bodyText2: TextStyle(fontSize: 18.0), // Used for note view mode
+      headline6: TextStyle(fontSize: 18.0), // Used for note title
+      subtitle1: TextStyle(fontSize: 18.0), // Used for note content
     )
   );
 }
