@@ -73,7 +73,7 @@ editors:
   checklist:
     add: Add Item
   common:
-    defaultBodyHint: Write here
+    defaultBodyHint: Write here. Double tap for magic.
     defaultTitleHint: Title
     discard: Discard Changes
     share: Share Note
