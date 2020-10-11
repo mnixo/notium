@@ -6,7 +6,6 @@ import 'package:path/path.dart' as p;
 import 'package:path/path.dart';
 import 'package:synchronized/synchronized.dart';
 
-import 'package:simplewave/features.dart';
 import 'package:simplewave/utils/logger.dart';
 import 'note.dart';
 import 'notes_folder.dart';
@@ -194,11 +193,6 @@ class NotesFolderFS with NotesFolderNotifier implements NotesFolder {
   // FIXME: This should not reconstruct the Notes or NotesFolders once constructed.
   Future<void> _load() async {
     Set<String> pathsFound = {};
-
-    // Load the Folder config if exists
-    if (Features.perFolderConfig) {
-      _config = await NotesFolderConfig.fromFS(this);
-    }
 
     _ignoredFiles = <IgnoredFile>[];
 
@@ -491,19 +485,12 @@ class NotesFolderFS with NotesFolderNotifier implements NotesFolder {
 
   @override
   NotesFolderConfig get config {
-    if (Features.perFolderConfig && _config != null) {
-      return _config;
-    }
     return NotesFolderConfig.fromSettings(this);
   }
 
   @override
   set config(NotesFolderConfig config) {
-    if (Features.perFolderConfig) {
-      _config = config;
-    } else {
-      config.saveToSettings();
-    }
+    config.saveToSettings();
   }
 
   Set<String> getNoteTagsRecursively() {

@@ -9,11 +9,9 @@ import 'package:simplewave/appstate.dart';
 import 'package:simplewave/core/git_repo.dart';
 import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/notes_cache.dart';
-import 'package:simplewave/core/notes_folder.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
 import 'package:simplewave/error_reporting.dart';
 import 'package:simplewave/event_logger.dart';
-import 'package:simplewave/features.dart';
 import 'package:simplewave/settings.dart';
 import 'package:simplewave/utils/logger.dart';
 import 'package:synchronized/synchronized.dart';
@@ -317,24 +315,6 @@ class StateContainer with ChangeNotifier {
       Log.d("Got updateNote lock");
 
       _gitRepo.updateNote(note).then((NoteRepoResult _) {
-        _syncNotes();
-        appState.numChanges += 1;
-        notifyListeners();
-      });
-    });
-  }
-
-  void saveFolderConfig(NotesFolderConfig config) async {
-    if (!Features.perFolderConfig) {
-      return;
-    }
-    logEvent(Event.FolderConfigUpdated);
-
-    return _opLock.synchronized(() async {
-      Log.d("Got saveFolderConfig lock");
-
-      await config.saveToFS();
-      _gitRepo.addFolderConfig(config).then((NoteRepoResult _) {
         _syncNotes();
         appState.numChanges += 1;
         notifyListeners();

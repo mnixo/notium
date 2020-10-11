@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/features.dart';
 import 'package:simplewave/screens/debug_screen.dart';
 import 'package:simplewave/screens/settings_experimental.dart';
 import 'package:simplewave/screens/settings_git_remote.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:simplewave/features.dart';
 import 'package:uuid/uuid.dart';
 
 class AppSettings extends ChangeNotifier {
@@ -17,9 +16,6 @@ class AppSettings extends ChangeNotifier {
   var collectCrashReports = true;
 
   int version = 0;
-
-  var proMode = Features.alwaysPro;
-  var proExpirationDate = "";
 
   String _pseudoId;
   String get pseudoId => _pseudoId;
@@ -40,9 +36,6 @@ class AppSettings extends ChangeNotifier {
         pref.getBool("collectCrashReports") ?? collectCrashReports;
 
     version = pref.getInt("appSettingsVersion") ?? version;
-    proMode = pref.getBool("proMode") ?? proMode;
-    proExpirationDate =
-        pref.getString("proExpirationDate") ?? proExpirationDate;
 
     _pseudoId = pref.getString("pseudoId");
     if (_pseudoId == null) {
@@ -71,9 +64,6 @@ class AppSettings extends ChangeNotifier {
     _setBool(pref, "collectCrashReports", collectCrashReports,
         defaultSet.collectCrashReports);
 
-    _setString(pref, "proExpirationDate", proExpirationDate,
-        defaultSet.proExpirationDate);
-    _setBool(pref, "proMode", proMode, defaultSet.proMode);
     _setString(pref, "debugLogLevel", debugLogLevel, defaultSet.debugLogLevel);
     _setBool(pref, "experimentalBacklinks", experimentalBacklinks,
         defaultSet.experimentalBacklinks);
@@ -94,8 +84,6 @@ class AppSettings extends ChangeNotifier {
       "onBoardingCompleted": onBoardingCompleted.toString(),
       "collectCrashReports": collectCrashReports.toString(),
       "version": version.toString(),
-      "proMode": proMode.toString(),
-      'proExpirationDate': proExpirationDate,
       'pseudoId': pseudoId,
       'debugLogLevel': debugLogLevel,
       'experimentalBacklinks': experimentalBacklinks.toString(),

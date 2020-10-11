@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:git_bindings/git_bindings.dart';
 import 'package:provider/provider.dart';
-
 import 'package:simplewave/core/md_yaml_doc_codec.dart';
 import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/notes_folder.dart';
@@ -22,7 +20,6 @@ import 'package:simplewave/widgets/app_drawer.dart';
 import 'package:simplewave/widgets/new_note_nav_bar.dart';
 import 'package:simplewave/widgets/note_delete_dialog.dart';
 import 'package:simplewave/widgets/note_search_delegate.dart';
-import 'package:simplewave/widgets/sorting_mode_selector.dart';
 import 'package:simplewave/widgets/sync_button.dart';
 
 class FolderView extends StatefulWidget {
@@ -201,8 +198,6 @@ class _FolderViewState extends State<FolderView> {
           sortedNotesFolder.config = sortedNotesFolder.config.copyWith(
             viewHeader: _headerType,
           );
-          var container = Provider.of<StateContainer>(context, listen: false);
-          container.saveFolderConfig(sortedNotesFolder.config);
         };
 
         var summaryChanged = (bool newVal) {
@@ -213,8 +208,6 @@ class _FolderViewState extends State<FolderView> {
           sortedNotesFolder.config = sortedNotesFolder.config.copyWith(
             showNoteSummary: newVal,
           );
-          var container = Provider.of<StateContainer>(context, listen: false);
-          container.saveFolderConfig(sortedNotesFolder.config);
         };
 
         return StatefulBuilder(
