@@ -96,10 +96,6 @@ class MarkdownEditorState extends State<MarkdownEditor>
     var editor = EditorScrollView(
       child: Column(
         children: <Widget>[
-          NoteTitleEditor(
-            _titleTextController,
-            _noteTextChanged,
-          ),
           NoteBodyEditor(
             textController: _textController,
             autofocus: widget.editMode,
