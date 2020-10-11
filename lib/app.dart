@@ -1,26 +1,20 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart' as foundation;
-import 'package:flutter/material.dart';
-
 import 'package:dart_git/git.dart';
-import 'package:device_info/device_info.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
-import 'package:flutter_sentry/flutter_sentry.dart';
+import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-
-import 'package:simplewave/event_logger.dart';
 import 'package:simplewave/app_settings.dart';
 import 'package:simplewave/appstate.dart';
 import 'package:simplewave/core/md_yaml_doc_codec.dart';
-import 'package:simplewave/iap.dart';
+import 'package:simplewave/event_logger.dart';
 import 'package:simplewave/screens/filesystem_screen.dart';
 import 'package:simplewave/screens/folder_listing.dart';
 import 'package:simplewave/screens/graph_view.dart';
@@ -31,6 +25,7 @@ import 'package:simplewave/state_container.dart';
 import 'package:simplewave/themes.dart';
 import 'package:simplewave/utils.dart';
 import 'package:simplewave/utils/logger.dart';
+
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screens.dart';
 import 'screens/settings_screen.dart';
@@ -99,8 +94,6 @@ class JournalApp extends StatefulWidget {
       value: appSettings,
       child: app,
     );
-
-    InAppPurchases.confirmProPurchaseBoot();
 
     runApp(EasyLocalization(
       child: app,

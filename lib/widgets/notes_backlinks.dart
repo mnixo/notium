@@ -1,16 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:easy_localization/easy_localization.dart';
-
 import 'package:simplewave/core/link.dart';
 import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/notes_folder.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/features.dart';
 import 'package:simplewave/folder_views/common.dart';
 import 'package:simplewave/utils/link_resolver.dart';
-import 'package:simplewave/widgets/pro_overlay.dart';
 
 class NoteBacklinkRenderer extends StatefulWidget {
   final Note note;
@@ -111,7 +107,7 @@ class _NoteBacklinkRendererState extends State<NoteBacklinkRenderer> {
         child: c,
       ),
     );
-    return ProOverlay(feature: Feature.backlinks, child: child);
+    return child;
   }
 }
 

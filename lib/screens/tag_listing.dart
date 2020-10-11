@@ -1,20 +1,16 @@
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
-
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-
 import 'package:simplewave/core/flattened_notes_folder.dart';
 import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/note_serializer.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/features.dart';
 import 'package:simplewave/screens/folder_view.dart';
 import 'package:simplewave/widgets/app_bar_menu_button.dart';
 import 'package:simplewave/widgets/app_drawer.dart';
-import 'package:simplewave/widgets/pro_overlay.dart';
 
 class TagListingScreen extends StatelessWidget {
   @override
@@ -50,10 +46,7 @@ class TagListingScreen extends StatelessWidget {
         leading: GJAppBarMenuButton(),
       ),
       body: Scrollbar(
-        child: ProOverlay(
-          feature: Feature.tags,
-          child: body,
-        ),
+        child: body,
       ),
       drawer: AppDrawer(),
     );

@@ -14,7 +14,6 @@ import 'package:simplewave/screens/settings_widgets.dart';
 import 'package:simplewave/settings.dart';
 import 'package:simplewave/utils.dart';
 import 'package:simplewave/widgets/folder_selection_dialog.dart';
-import 'package:simplewave/widgets/pro_overlay.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -152,21 +151,18 @@ class SettingsListState extends State<SettingsList> {
           dynamicTheme.setBrightness(b);
         },
       ),
-      ProOverlay(
-        feature: Feature.customizeHomeScreen,
-        child: ListPreference(
-          title: tr('settings.display.homeScreen'),
-          currentOption: settings.homeScreen.toPublicString(),
-          options: SettingsHomeScreen.options
-              .map((f) => f.toPublicString())
-              .toList(),
-          onChange: (String publicStr) {
-            var s = SettingsHomeScreen.fromPublicString(publicStr);
-            settings.homeScreen = s;
-            settings.save();
-            setState(() {});
-          },
-        ),
+      ListPreference(
+        title: tr('settings.display.homeScreen'),
+        currentOption: settings.homeScreen.toPublicString(),
+        options: SettingsHomeScreen.options
+            .map((f) => f.toPublicString())
+            .toList(),
+        onChange: (String publicStr) {
+          var s = SettingsHomeScreen.fromPublicString(publicStr);
+          settings.homeScreen = s;
+          settings.save();
+          setState(() {});
+        },
       ),
       SettingsHeader(tr('settings.note.title')),
       ListTile(
@@ -200,19 +196,16 @@ class SettingsListState extends State<SettingsList> {
         enabled: remoteGitConfigured,
       ),
       const SizedBox(height: 16.0),
-      ProOverlay(
-        feature: Feature.inlineTags,
-        child: ListTile(
-          title: Text(tr("settings.tags.title")),
-          subtitle: Text(tr("settings.tags.subtitle")),
-          onTap: () {
-            var route = MaterialPageRoute(
-              builder: (context) => SettingsTagsScreen(),
-              settings: const RouteSettings(name: '/settings/tags'),
-            );
-            Navigator.of(context).push(route);
-          },
-        ),
+      ListTile(
+        title: Text(tr("settings.tags.title")),
+        subtitle: Text(tr("settings.tags.subtitle")),
+        onTap: () {
+          var route = MaterialPageRoute(
+            builder: (context) => SettingsTagsScreen(),
+            settings: const RouteSettings(name: '/settings/tags'),
+          );
+          Navigator.of(context).push(route);
+        },
       ),
       ListTile(
         title: Text(tr('settings.images.title')),

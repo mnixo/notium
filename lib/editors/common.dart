@@ -1,19 +1,14 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:easy_localization/easy_localization.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:function_types/function_types.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:simplewave/core/note.dart';
 import 'package:simplewave/core/notes_folder_fs.dart';
 import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/features.dart';
 import 'package:simplewave/utils.dart';
-import 'package:simplewave/widgets/pro_overlay.dart';
 
 export 'package:simplewave/editors/scaffold.dart';
 
