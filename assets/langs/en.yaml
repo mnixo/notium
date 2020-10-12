@@ -59,6 +59,7 @@ settings:
     enable: Parse Inline Tags
     prefixes: Inline Tags Prefixes
   HomeScreen:
+    newNote: New Note
     allNotes: All Notes
     allFolders: All Folders
   ssh:

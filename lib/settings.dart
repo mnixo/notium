@@ -542,11 +542,13 @@ class SettingsMarkdownDefaultView {
 }
 
 class SettingsHomeScreen {
+  static const NewNote =
+    SettingsHomeScreen("settings.HomeScreen.newNote", "new_note");
   static const AllNotes =
-      SettingsHomeScreen("settings.HomeScreen.allNotes", "all_notes");
+    SettingsHomeScreen("settings.HomeScreen.allNotes", "all_notes");
   static const AllFolders =
-      SettingsHomeScreen("settings.HomeScreen.allFolders", "all_folders");
-  static const Default = AllNotes;
+    SettingsHomeScreen("settings.HomeScreen.allFolders", "all_folders");
+  static const Default = NewNote;
 
   final String _str;
   final String _publicString;
@@ -561,6 +563,7 @@ class SettingsHomeScreen {
   }
 
   static const options = <SettingsHomeScreen>[
+    NewNote,
     AllNotes,
     AllFolders,
   ];

@@ -253,6 +253,9 @@ class _JournalAppState extends State<JournalApp> {
     if (settings.homeScreen == SettingsHomeScreen.AllFolders) {
       initialRoute = '/folders';
     }
+    if (settings.homeScreen == SettingsHomeScreen.NewNote) {
+      initialRoute = '/newNote/' + settings.defaultEditor.toInternalString();
+    }
 
     return MaterialApp(
       key: const ValueKey("App"),
@@ -358,7 +361,6 @@ class _JournalAppState extends State<JournalApp> {
       );
     }
 
-    assert(false, "Not found named route in _screenForRoute");
-    return null;
+    return HomeScreen();
   }
 }
