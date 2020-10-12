@@ -1,9 +1,9 @@
 # Summary
 
-Simplewave is a note taking app built with focus, simplicity and privacy in mind.
+Notium is a note taking app built with focus, simplicity and privacy in mind.
 
 ## Focus and Simplicity
-Simplewave provides a simple, distraction free experience to let your ideas flow.
+Notium provides a simple, distraction free experience to let your ideas flow.
 
 ## Privacy by Design
 - Your notes are stored as text and can be synced using any Git hosting provider.
