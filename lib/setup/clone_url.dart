@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:git_url_parse2/git_url_parse2.dart';
 
-import 'package:simplewave/apis/githost_factory.dart';
+import 'package:notium/apis/githost_factory.dart';
 import 'button.dart';
 
 class GitCloneUrlPage extends StatefulWidget {
@@ -50,7 +50,7 @@ class GitCloneUrlPageState extends State<GitCloneUrlPage> {
         autofocus: true,
         style: Theme.of(context).textTheme.subtitle1,
         decoration: const InputDecoration(
-          hintText: 'git@github.com:simplewave/simplewave.git',
+          hintText: 'git@github.com:notium/notium.git',
         ),
         validator: _isCloneUrlValid,
         focusNode: inputFormFocus,
@@ -133,7 +133,7 @@ class GitCloneUrlKnownProviderPageState
         autofocus: true,
         style: Theme.of(context).textTheme.subtitle1,
         decoration: const InputDecoration(
-          hintText: 'git@github.com:simplewave/simplewave.git',
+          hintText: 'git@github.com:notium/notium.git',
         ),
         validator: _isCloneUrlValid,
         focusNode: inputFormFocus,

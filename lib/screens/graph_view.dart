@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/core/graph.dart';
-import 'package:simplewave/core/interactive_viewer.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:notium/core/graph.dart';
+import 'package:notium/core/interactive_viewer.dart';
+import 'package:notium/core/notes_folder_fs.dart';
 
 class GraphViewScreen extends StatefulWidget {
   @override

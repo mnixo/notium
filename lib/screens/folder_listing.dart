@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/state_container.dart';
-import 'package:simplewave/widgets/app_bar_menu_button.dart';
-import 'package:simplewave/widgets/app_drawer.dart';
-import 'package:simplewave/widgets/folder_tree_view.dart';
-import 'package:simplewave/widgets/rename_dialog.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/state_container.dart';
+import 'package:notium/widgets/app_bar_menu_button.dart';
+import 'package:notium/widgets/app_drawer.dart';
+import 'package:notium/widgets/folder_tree_view.dart';
+import 'package:notium/widgets/rename_dialog.dart';
 import 'folder_view.dart';
 
 class FolderListingScreen extends StatefulWidget {

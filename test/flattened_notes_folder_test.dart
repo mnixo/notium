@@ -4,9 +4,9 @@ import 'dart:math';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
-import 'package:simplewave/core/flattened_notes_folder.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:notium/core/flattened_notes_folder.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder_fs.dart';
 
 void main() {
   var random = Random(DateTime.now().millisecondsSinceEpoch);

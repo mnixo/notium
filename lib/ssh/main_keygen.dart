@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:simplewave/ssh/rsa_key_pair.dart';
+import 'package:notium/ssh/rsa_key_pair.dart';
 
 void main() {
   print("Generating new random key");

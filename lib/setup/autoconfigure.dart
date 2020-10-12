@@ -5,11 +5,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/event_logger.dart';
-import 'package:simplewave/apis/githost_factory.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/event_logger.dart';
+import 'package:notium/apis/githost_factory.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/utils/logger.dart';
 import 'button.dart';
 import 'error.dart';
 import 'loading.dart';

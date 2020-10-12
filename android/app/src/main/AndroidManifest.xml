@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.simplewave.simplewave">
+    package="org.notium.notium">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature android:name="android.hardware.camera" android:required="false" />
@@ -59,8 +59,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="simplewave" android:host="login.oauth2" />
-                <!-- Triggering URI would be simplewave://login.oauth2 -->
+                <data android:scheme="notium" android:host="login.oauth2" />
+                <!-- Triggering URI would be notium://login.oauth2 -->
             </intent-filter>
         </activity>
 

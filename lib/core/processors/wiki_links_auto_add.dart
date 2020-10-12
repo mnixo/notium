@@ -1,5 +1,5 @@
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
 
 class WikiLinksAutoAddProcessor {
   final NotesFolder rootFolder;

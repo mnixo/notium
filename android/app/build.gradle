@@ -44,7 +44,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "net.simplewave.simplewave"
+        applicationId "org.notium.notium"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()

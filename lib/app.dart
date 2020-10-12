@@ -11,20 +11,20 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-import 'package:simplewave/app_settings.dart';
-import 'package:simplewave/appstate.dart';
-import 'package:simplewave/core/md_yaml_doc_codec.dart';
-import 'package:simplewave/event_logger.dart';
-import 'package:simplewave/screens/filesystem_screen.dart';
-import 'package:simplewave/screens/folder_listing.dart';
-import 'package:simplewave/screens/graph_view.dart';
-import 'package:simplewave/screens/note_editor.dart';
-import 'package:simplewave/screens/tag_listing.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/state_container.dart';
-import 'package:simplewave/themes.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/app_settings.dart';
+import 'package:notium/appstate.dart';
+import 'package:notium/core/md_yaml_doc_codec.dart';
+import 'package:notium/event_logger.dart';
+import 'package:notium/screens/filesystem_screen.dart';
+import 'package:notium/screens/folder_listing.dart';
+import 'package:notium/screens/graph_view.dart';
+import 'package:notium/screens/note_editor.dart';
+import 'package:notium/screens/tag_listing.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/state_container.dart';
+import 'package:notium/themes.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
 
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screens.dart';
@@ -260,7 +260,7 @@ class _JournalAppState extends State<JournalApp> {
     return MaterialApp(
       key: const ValueKey("App"),
       navigatorKey: _navigatorKey,
-      title: 'simplewave',
+      title: 'notium',
 
       localizationsDelegates: EasyLocalization.of(context).delegates,
       supportedLocales: EasyLocalization.of(context).supportedLocales,

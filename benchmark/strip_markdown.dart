@@ -1,6 +1,6 @@
 // Import BenchmarkBase class.
 import 'package:benchmark_harness/benchmark_harness.dart';
-import 'package:simplewave/utils/markdown.dart';
+import 'package:notium/utils/markdown.dart';
 
 // Create a new benchmark by extending BenchmarkBase
 class StripMarkdownBenchmark extends BenchmarkBase {

@@ -10,15 +10,15 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
 import 'githost.dart';
 
 class GitLab implements GitHost {
   static const _clientID =
       "faf33c3716faf05bfb701b1b31e36c83a23c3ec2d7161f4ff00fba2275524d09";
 
-  var _platform = const MethodChannel('simplewave.net/git');
+  var _platform = const MethodChannel('notium.org/git');
   var _accessCode = "";
   var _stateOAuth = "";
 
@@ -178,7 +178,7 @@ class GitLab implements GitHost {
         "https://gitlab.com/api/v4/projects/$repo/deploy_keys?access_token=$_accessCode";
 
     var data = {
-      'title': "simplewave",
+      'title': "notium",
       'key': sshPublicKey,
       'can_push': true,
     };

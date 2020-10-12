@@ -3,8 +3,8 @@ import 'dart:isolate';
 
 import 'package:synchronized/synchronized.dart';
 
-import 'package:simplewave/core/md_yaml_doc.dart';
-import 'package:simplewave/core/md_yaml_doc_codec.dart';
+import 'package:notium/core/md_yaml_doc.dart';
+import 'package:notium/core/md_yaml_doc_codec.dart';
 
 class MdYamlDocLoader {
   Isolate _isolate;

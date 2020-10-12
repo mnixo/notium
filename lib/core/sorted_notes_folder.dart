@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:simplewave/core/sorting_mode.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/core/sorting_mode.dart';
+import 'package:notium/utils/logger.dart';
 import 'note.dart';
 import 'notes_folder.dart';
 import 'notes_folder_notifier.dart';

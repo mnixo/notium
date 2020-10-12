@@ -1,2 +1,2 @@
 json_key_file("./google-play-api-key.json")
-package_name("net.simplewave.simplewave")
+package_name("org.notium.notium")

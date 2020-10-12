@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:simplewave/utils/datetime.dart';
+import 'package:notium/utils/datetime.dart';
 
 void main() {
   group('DateTime Utils', () {

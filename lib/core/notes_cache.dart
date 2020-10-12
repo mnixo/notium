@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:path/path.dart' as p;
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/core/sorting_mode.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/core/sorting_mode.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/utils/logger.dart';
 
 class NotesCache {
   final String filePath;

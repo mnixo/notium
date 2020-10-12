@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:simplewave/utils/merge_conflict_resolver.dart';
+import 'package:notium/utils/merge_conflict_resolver.dart';
 
 void main() {
   test("Body only conflict", () {
@@ -9,7 +9,7 @@ title: Foo
 ---
 
 <<<<<<< HEAD
-This is the body in simplewave
+This is the body in notium
 =======
 This is the body from the remote/origin
 >>>>>>> remote/origin
@@ -20,7 +20,7 @@ Some more text.''';
 title: Foo
 ---
 
-This is the body in simplewave
+This is the body in notium
 
 Some more text.''';
 

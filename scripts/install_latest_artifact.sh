@@ -2,10 +2,10 @@
 
 set -eu
 
-BUILD_NUM=`curl -s 'https://circleci.com/api/v1.1/project/github/simplewave/simplewave?limit=1&offset=0&filter=successful' | jq .[0] | jq -r .build_num`
+BUILD_NUM=`curl -s 'https://circleci.com/api/v1.1/project/github/notium/notium?limit=1&offset=0&filter=successful' | jq .[0] | jq -r .build_num`
 echo "CircleCI Buld Number: $BUILD_NUM"
 
-URL=`curl -s https://circleci.com/api/v1.1/project/github/simplewave/simplewave/$BUILD_NUM/artifacts | jq .[1] | jq -r .url`
+URL=`curl -s https://circleci.com/api/v1.1/project/github/notium/notium/$BUILD_NUM/artifacts | jq .[1] | jq -r .url`
 APK_LOCATION="/tmp/gitjournal.apk"
 
 echo "Downloading $URL"

@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
-import 'package:simplewave/core/link.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/utils/link_resolver.dart';
+import 'package:notium/core/link.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/utils/link_resolver.dart';
 
 void main() {
   Directory tempDir;

@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/editors/common.dart';
-import 'package:simplewave/editors/disposable_change_notifier.dart';
-import 'package:simplewave/editors/heuristics.dart';
-import 'package:simplewave/editors/note_body_editor.dart';
-import 'package:simplewave/editors/note_title_editor.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/utils/logger.dart';
-import 'package:simplewave/widgets/editor_scroll_view.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/editors/common.dart';
+import 'package:notium/editors/disposable_change_notifier.dart';
+import 'package:notium/editors/heuristics.dart';
+import 'package:notium/editors/note_body_editor.dart';
+import 'package:notium/editors/note_title_editor.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/utils/logger.dart';
+import 'package:notium/widgets/editor_scroll_view.dart';
 
 class MarkdownEditor extends StatefulWidget implements Editor {
   final Note note;

@@ -8,14 +8,14 @@ import 'package:git_bindings/git_bindings.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/app_settings.dart';
-import 'package:simplewave/screens/settings_widgets.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/setup/screens.dart';
-import 'package:simplewave/setup/sshkey.dart';
-import 'package:simplewave/state_container.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/app_settings.dart';
+import 'package:notium/screens/settings_widgets.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/setup/screens.dart';
+import 'package:notium/setup/sshkey.dart';
+import 'package:notium/state_container.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
 
 class GitRemoteSettingsScreen extends StatefulWidget {
   @override
@@ -109,7 +109,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
   }
 
   void _generateSshKey(BuildContext context) {
-    var comment = "simplewave-" +
+    var comment = "notium-" +
         Platform.operatingSystem +
         "-" +
         DateTime.now().toIso8601String().substring(0, 10); // only the date

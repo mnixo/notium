@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/folder_views/grid_view.dart';
-import 'package:simplewave/screens/note_editor.dart';
-import 'package:simplewave/state_container.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/folder_views/grid_view.dart';
+import 'package:notium/screens/note_editor.dart';
+import 'package:notium/state_container.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
 import 'standard_view.dart';
 
 enum FolderViewType {

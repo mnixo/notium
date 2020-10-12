@@ -6,17 +6,17 @@ import 'package:path/path.dart' as p;
 import 'package:yaml/yaml.dart';
 import 'package:yaml_serializer/yaml_serializer.dart';
 
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/core/sorting_mode.dart';
-import 'package:simplewave/folder_views/common.dart';
-import 'package:simplewave/folder_views/standard_view.dart';
-import 'package:simplewave/screens/note_editor.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/core/sorting_mode.dart';
+import 'package:notium/folder_views/common.dart';
+import 'package:notium/folder_views/standard_view.dart';
+import 'package:notium/screens/note_editor.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/utils/logger.dart';
 
 @immutable
 class NotesFolderConfig extends Equatable {
-  static const FILENAME = ".simplewave.yaml";
+  static const FILENAME = ".notium.yaml";
 
   final SortingMode sortingMode;
   final EditorType defaultEditor;

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/folder_views/card_view.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/folder_views/card_view.dart';
 
 class GridFolderView extends StatelessWidget {
   final NoteSelectedFunction noteTapped;

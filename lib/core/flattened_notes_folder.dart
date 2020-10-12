@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/core/notes_folder_notifier.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/core/notes_folder_notifier.dart';
 
 typedef NotesFilter = bool Function(Note note);
 

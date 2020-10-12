@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter_emoji/flutter_emoji.dart';
 import 'package:yaml/yaml.dart';
 
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/utils/datetime.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/utils/datetime.dart';
+import 'package:notium/utils/logger.dart';
 import 'md_yaml_doc.dart';
 import 'note.dart';
 

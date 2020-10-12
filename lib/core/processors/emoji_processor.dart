@@ -1,6 +1,6 @@
 import 'package:flutter_emoji/flutter_emoji.dart';
 
-import 'package:simplewave/core/note.dart';
+import 'package:notium/core/note.dart';
 
 class EmojiProcessor {
   static final _emojiParser = EmojiParser();

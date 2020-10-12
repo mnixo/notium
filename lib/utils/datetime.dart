@@ -2,7 +2,7 @@ import 'dart:core';
 
 import 'package:intl/intl.dart';
 
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/utils/logger.dart';
 
 final _simpleDateFormat = DateFormat("yyyy-MM-dd-HH-mm-ss");
 final _iso8601DateFormat = DateFormat("yyyy-MM-ddTHH:mm:ss");

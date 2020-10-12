@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/state_container.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/widgets/icon_dismissable.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/state_container.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/widgets/icon_dismissable.dart';
 
 typedef Widget NoteTileBuilder(BuildContext context, Note note);
 

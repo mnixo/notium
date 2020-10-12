@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:function_types/function_types.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/utils/logger.dart';
 
 class GitHostSetupButton extends StatelessWidget {
   final Func0<void> onPressed;

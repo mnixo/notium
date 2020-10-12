@@ -11,17 +11,17 @@ import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:simplewave/app_settings.dart';
-import 'package:simplewave/core/link.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/folder_views/common.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/link_resolver.dart';
-import 'package:simplewave/utils/logger.dart';
-import 'package:simplewave/widgets/editor_scroll_view.dart';
-import 'package:simplewave/widgets/notes_backlinks.dart';
+import 'package:notium/app_settings.dart';
+import 'package:notium/core/link.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/folder_views/common.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/link_resolver.dart';
+import 'package:notium/utils/logger.dart';
+import 'package:notium/widgets/editor_scroll_view.dart';
+import 'package:notium/widgets/notes_backlinks.dart';
 
 class NoteViewer extends StatelessWidget {
   final Note note;

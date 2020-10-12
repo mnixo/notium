@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/core/sorting_mode.dart';
-import 'package:simplewave/folder_views/list_view.dart';
-import 'package:simplewave/widgets/highlighted_text.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/core/sorting_mode.dart';
+import 'package:notium/folder_views/list_view.dart';
+import 'package:notium/widgets/highlighted_text.dart';
 
 enum StandardViewHeader {
   TitleOrFileName,

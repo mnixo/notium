@@ -4,10 +4,10 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
-import 'package:simplewave/core/md_yaml_doc.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/utils/datetime.dart';
+import 'package:notium/core/md_yaml_doc.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/utils/datetime.dart';
 
 void main() {
   group('NoteStorage', () {

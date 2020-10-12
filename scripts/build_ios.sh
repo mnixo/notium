@@ -18,7 +18,7 @@ if [[ $(git status -s | grep -v '??') ]]; then
 fi
 
 # Download the required libraries
-export LIBS_URL="https://github.com/simplewave/ios-libraries/releases/download/v1.1/libs.zip"
+export LIBS_URL="https://github.com/notium/ios-libraries/releases/download/v1.1/libs.zip"
 
 if [ ! -d "ios/libs" ]; then
     echo "Downloading Libs"
@@ -32,7 +32,7 @@ fi
 # Place gj_common
 if [ ! -L "gj_common" ]; then
     echo "=> gj_common doesn't exist. Cloning"
-    git clone https://github.com/simplewave/git_bindings.git
+    git clone https://github.com/notium/git_bindings.git
     ln -s git_bindings/gj_common gj_common
 fi
 

@@ -2,10 +2,10 @@ import 'dart:collection';
 
 import 'package:test/test.dart';
 
-import 'package:simplewave/core/md_yaml_doc.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/note_serializer.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:notium/core/md_yaml_doc.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/note_serializer.dart';
+import 'package:notium/core/notes_folder_fs.dart';
 
 void main() {
   group('Note Serializer Test', () {

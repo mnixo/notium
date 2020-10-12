@@ -1,4 +1,4 @@
-module github.com/simplewave/simplewave/go
+module github.com/notium/notium/go
 
 go 1.13
 

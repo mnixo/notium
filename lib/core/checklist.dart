@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/error_reporting.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/error_reporting.dart';
 
 class ChecklistItem {
   bool checked;

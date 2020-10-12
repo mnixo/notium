@@ -1,4 +1,4 @@
-import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:notium/core/notes_folder_fs.dart';
 
 enum SyncStatus {
   Unknown,

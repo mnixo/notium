@@ -1,6 +1,6 @@
-application-name: "simplewave"
-#executable-name: "simplewave" # Uncomment to modify this value. Only lowercase a-z, numbers, underscores and no spaces
-#package-name: "simplewave" # Uncomment to modify this value. Only lowercase a-z, numbers and no underscores or spaces
+application-name: "notium"
+#executable-name: "notium" # Uncomment to modify this value. Only lowercase a-z, numbers, underscores and no spaces
+#package-name: "notium" # Uncomment to modify this value. Only lowercase a-z, numbers and no underscores or spaces
 license: "AGPL-3.0-or-later"
 target: lib/main.dart
 docker: false

@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:simplewave/core/processors/image_extractor.dart';
+import 'package:notium/core/processors/image_extractor.dart';
 
 void main() {
   test('Should parse simple tags', () {

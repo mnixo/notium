@@ -1,4 +1,4 @@
-package net.simplewave.simplewave;
+package org.notium.notium;
 
 import android.os.Bundle;
 import android.util.Log;

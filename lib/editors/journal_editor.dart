@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/editors/common.dart';
-import 'package:simplewave/editors/disposable_change_notifier.dart';
-import 'package:simplewave/editors/note_body_editor.dart';
-import 'package:simplewave/widgets/editor_scroll_view.dart';
-import 'package:simplewave/widgets/journal_editor_header.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/editors/common.dart';
+import 'package:notium/editors/disposable_change_notifier.dart';
+import 'package:notium/editors/note_body_editor.dart';
+import 'package:notium/widgets/editor_scroll_view.dart';
+import 'package:notium/widgets/journal_editor_header.dart';
 
 class JournalEditor extends StatefulWidget implements Editor {
   final Note note;

@@ -4,16 +4,16 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
-import 'package:simplewave/apis/git_migration.dart';
-import 'package:simplewave/appstate.dart';
-import 'package:simplewave/core/git_repo.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_cache.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/event_logger.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/apis/git_migration.dart';
+import 'package:notium/appstate.dart';
+import 'package:notium/core/git_repo.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_cache.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/event_logger.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/utils/logger.dart';
 import 'package:synchronized/synchronized.dart';
 
 class StateContainer with ChangeNotifier {

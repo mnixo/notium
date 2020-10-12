@@ -7,7 +7,7 @@
 
 - version: "1.70"
   date: 2020-09-16
-  reddit: "https://www.reddit.com/r/simplewave/comments/iu47ej/gitjournal_v170/"
+  reddit: "https://www.reddit.com/r/notium/comments/iu47ej/gitjournal_v170/"
   features:
     - text: "Implement Basic Search highlighting #14"
       image: search_highlight.gif
@@ -19,7 +19,7 @@
   improvements:
     - text: Purchase Screen - Make it prettier for smaller screen sizes
     - text: Make all strings in the app translatable
-    - text: Configuring the default Image settings is now part of `simplewave Basic`
+    - text: Configuring the default Image settings is now part of `notium Basic`
   bugs:
     - text: Do not show Tag Editing screen if the Note cannot have metadata
     - text: "Zettelkasten FileName Mode - Add leading zero to minutes < 10 - #247"
@@ -31,7 +31,7 @@
     - text: Add a fast dark mode switcher. Inspired by Telegram.
       image: dark_mode_switcher.gif
     - title: Inline Tags
-      text: "By default now typing with '#feature' will mark the note with the 'feature' tag. As simplewave is used in so many different ways, the inline tags prefix is quite configurable - #44"
+      text: "By default now typing with '#feature' will mark the note with the 'feature' tag. As notium is used in so many different ways, the inline tags prefix is quite configurable - #44"
       image: inline_tags.jpeg
   improvements:
     - text: "RepoSelector: Show the datetime in relative terms"
@@ -54,9 +54,9 @@
     - title: Make Swipe to delete configurable
       text: Apparently, many users hate it and accidentally trigger it quite often.
     - title: Allow Markdown to be previewd from all Editors
-      text: All of simplewave's editors are compatible and operate on the same markdown file. Earlier you could only preview the rendered markdown when with the Markdown Editor.
+      text: All of notium's editors are compatible and operate on the same markdown file. Earlier you could only preview the rendered markdown when with the Markdown Editor.
     - title: Git Host Automatic Setup
-      text: Make it clearer that simplewave will require permissions to all your repos
+      text: Make it clearer that notium will require permissions to all your repos
       image: oauth_perm_screen.jpeg
     - text: Beautify the purchase slider
     - text: Allow `tags` to be a space seperated string in the YAML header. Earlier it had to be list.
@@ -150,9 +150,9 @@
   date: 2020-06-10
   improvements:
     - text: Better support for auto adding list items when typing
-    - text: In general, improve the error handling workflow of simplewave, so errors are never silently ignored.
+    - text: In general, improve the error handling workflow of notium, so errors are never silently ignored.
   bugs:
-    - text: "Fix a rare case where all the simplewave would reset in iOS and the notes would no longer be shown - #159"
+    - text: "Fix a rare case where all the notium would reset in iOS and the notes would no longer be shown - #159"
 
 - version: "1.56"
   date: 2020-06-04
@@ -198,7 +198,7 @@
     - text: "Add Tags Support - #114"
     - text: "Add App Shortcuts - #134"
       image: shortcuts.jpeg
-    - text: "Allow Sharing Files to simplewave - #38"
+    - text: "Allow Sharing Files to notium - #38"
 
 - version: "1.51"
   date: 2020-05-08
@@ -345,7 +345,7 @@
 - version: "1.31"
   date: 2020-01-06
   improvements:
-    - text: "Allow the modified key in notes to be configured. This improves compatibility with Hugo blog posts, as simplewave can now update the 'lastmod' field as used by Hugo front matter - #15"
+    - text: "Allow the modified key in notes to be configured. This improves compatibility with Hugo blog posts, as notium can now update the 'lastmod' field as used by Hugo front matter - #15"
 
 - version: "1.30"
   date: 2020-01-04

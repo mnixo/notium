@@ -74,7 +74,7 @@ void main() {
   // https://github.com/dart-lang/markdown/issues/293
   //
   test('Should parse both', () async {
-    var body = "[[simplewave]] should match.\n- [ ] task item";
+    var body = "[[notium]] should match.\n- [ ] task item";
     var lines = body.split('\n');
 
     var doc = md.Document(
@@ -86,7 +86,7 @@ void main() {
     var html = md.renderToHtml(nodes);
 
     var expectedHtml =
-        """<p><a type="wiki" href="[[simplewave]]" term="simplewave">simplewave</a> should match.</p>
+        """<p><a type="wiki" href="[[notium]]" term="notium">notium</a> should match.</p>
 <ul>
 <li><input type="checkbox" disabled="true" checked="false"></input>task item</li>
 </ul>""";

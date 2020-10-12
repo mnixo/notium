@@ -8,19 +8,19 @@ import 'package:function_types/function_types.dart';
 import 'package:git_bindings/git_bindings.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
-import 'package:simplewave/apis/githost_factory.dart';
-import 'package:simplewave/app_settings.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/event_logger.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/setup/autoconfigure.dart';
-import 'package:simplewave/setup/button.dart';
-import 'package:simplewave/setup/clone_url.dart';
-import 'package:simplewave/setup/loading_error.dart';
-import 'package:simplewave/setup/repo_selector.dart';
-import 'package:simplewave/setup/sshkey.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/apis/githost_factory.dart';
+import 'package:notium/app_settings.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/event_logger.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/setup/autoconfigure.dart';
+import 'package:notium/setup/button.dart';
+import 'package:notium/setup/clone_url.dart';
+import 'package:notium/setup/loading_error.dart';
+import 'package:notium/setup/repo_selector.dart';
+import 'package:notium/setup/sshkey.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GitHostSetupScreen extends StatefulWidget {
@@ -392,7 +392,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       return;
     }
 
-    var comment = "simplewave-" +
+    var comment = "notium-" +
         Platform.operatingSystem +
         "-" +
         DateTime.now().toIso8601String().substring(0, 10); // only the date
@@ -534,7 +534,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       setState(() {
         _autoConfigureMessage = tr('setup.sshKey.generate');
       });
-      var publicKey = await generateSSHKeys(comment: "simplewave");
+      var publicKey = await generateSSHKeys(comment: "notium");
 
       Log.i("Adding as a deploy key");
       _autoConfigureMessage = tr('setup.sshKey.addDeploy');

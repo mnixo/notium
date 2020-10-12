@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:notium/core/notes_folder_fs.dart';
 import 'note.dart';
 import 'notes_folder.dart';
 
@@ -119,7 +119,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'simplewave',
+          library: 'notium',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {
@@ -155,7 +155,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'simplewave',
+          library: 'notium',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {
@@ -189,7 +189,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'simplewave',
+          library: 'notium',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {
@@ -228,7 +228,7 @@ class NotesFolderNotifier implements ChangeNotifier {
         FlutterError.reportError(FlutterErrorDetails(
           exception: exception,
           stack: stack,
-          library: 'simplewave',
+          library: 'notium',
           context: ErrorDescription(
               'while dispatching notifications for $runtimeType'),
           informationCollector: () sync* {

@@ -6,11 +6,11 @@ import 'package:flutter/services.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:simplewave/core/checklist.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/editors/common.dart';
-import 'package:simplewave/editors/disposable_change_notifier.dart';
-import 'package:simplewave/editors/note_title_editor.dart';
+import 'package:notium/core/checklist.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/editors/common.dart';
+import 'package:notium/editors/disposable_change_notifier.dart';
+import 'package:notium/editors/note_title_editor.dart';
 
 class ChecklistEditor extends StatefulWidget implements Editor {
   final Note note;

@@ -1,16 +1,16 @@
 import 'package:test/test.dart';
 
-import 'package:simplewave/core/processors/wiki_links_auto_add.dart';
+import 'package:notium/core/processors/wiki_links_auto_add.dart';
 
 void main() {
   test('Should process body', () {
     var body =
-        "simplewave is the best? And it works quite well with Foam, Foam and Obsidian.";
+        "notium is the best? And it works quite well with Foam, Foam and Obsidian.";
 
     var p = WikiLinksAutoAddProcessor(null);
-    var newBody = p.processBody(body, ['simplewave', 'Foam', 'Obsidian']);
+    var newBody = p.processBody(body, ['notium', 'Foam', 'Obsidian']);
     var expectedBody =
-        "[[simplewave]] is the best? And it works quite well with [[Foam]], [[Foam]] and [[Obsidian]].";
+        "[[notium]] is the best? And it works quite well with [[Foam]], [[Foam]] and [[Obsidian]].";
 
     expect(newBody, expectedBody);
   });

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/utils/logger.dart';
 
 enum Event {
   NoteAdded,

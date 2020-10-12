@@ -1,5 +1,5 @@
-app_identifier("net.simplewave.simplewave") # The bundle identifier of your app
-apple_id("apple@simplewave.net") # Your Apple email address
+app_identifier("org.notium.notium") # The bundle identifier of your app
+apple_id("apple@notium.org") # Your Apple email address
 
 itc_team_id("111") # App Store Connect Team ID
 team_id("toto") # Developer Portal Team ID

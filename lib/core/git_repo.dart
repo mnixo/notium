@@ -4,12 +4,12 @@ import 'dart:io';
 import 'package:dart_git/git.dart' as git;
 import 'package:flutter/foundation.dart';
 import 'package:git_bindings/git_bindings.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/utils/logger.dart';
 
 class NoteRepoResult {
   bool error;

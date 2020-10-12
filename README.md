@@ -13,4 +13,4 @@ Simplewave provides a simple, distraction free experience to let your ideas flow
 
 # Contributing
 
-Feel free to [open an issue](https://github.com/simplewave/simplewave/issues/new) for any bug or feature request.
+Feel free to [open an issue](https://github.com/notium/notium/issues/new) for any bug or feature request.

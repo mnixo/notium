@@ -9,15 +9,15 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
 import 'githost.dart';
 
 class GitHub implements GitHost {
   static const _clientID = "aa3072cbfb02b1db14ed";
   static const _clientSecret = "010d303ea99f82330f2b228977cef9ddbf7af2cd";
 
-  var _platform = const MethodChannel('simplewave.net/git');
+  var _platform = const MethodChannel('notium.org/git');
   var _accessCode = "";
 
   @override
@@ -193,7 +193,7 @@ class GitHub implements GitHost {
     var url = "https://api.github.com/repos/$repo/keys";
 
     var data = <String, dynamic>{
-      'title': "simplewave",
+      'title': "notium",
       'key': sshPublicKey,
       'read_only': false,
     };

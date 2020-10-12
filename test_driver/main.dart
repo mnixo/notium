@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter_driver/driver_extension.dart';
-import 'package:simplewave/app_settings.dart';
+import 'package:notium/app_settings.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:simplewave/app.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/utils/datetime.dart';
+import 'package:notium/app.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/utils/datetime.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path/path.dart' as p;
@@ -41,7 +41,7 @@ Future<void> populateWithData(SharedPreferences pref) async {
   print("Filling fake data in $repoPath");
 
   // Write Folders
-  Directory(p.join(repoPath, "simplewave")).createSync();
+  Directory(p.join(repoPath, "notium")).createSync();
   Directory(p.join(repoPath, "Journal/Work")).createSync(recursive: true);
   Directory(p.join(repoPath, "Journal/Personal")).createSync(recursive: true);
   Directory(p.join(repoPath, "Food")).createSync();

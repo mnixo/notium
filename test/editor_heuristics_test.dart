@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:simplewave/editors/heuristics.dart';
+import 'package:notium/editors/heuristics.dart';
 
 void main() {
   group('Editor Heuristic Tests', () {

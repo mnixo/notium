@@ -7,19 +7,19 @@ import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/core/md_yaml_doc.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/editors/checklist_editor.dart';
-import 'package:simplewave/editors/markdown_editor.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/state_container.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
-import 'package:simplewave/widgets/folder_selection_dialog.dart';
-import 'package:simplewave/widgets/note_delete_dialog.dart';
-import 'package:simplewave/widgets/rename_dialog.dart';
+import 'package:notium/core/md_yaml_doc.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/editors/checklist_editor.dart';
+import 'package:notium/editors/markdown_editor.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/state_container.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
+import 'package:notium/widgets/folder_selection_dialog.dart';
+import 'package:notium/widgets/note_delete_dialog.dart';
+import 'package:notium/widgets/rename_dialog.dart';
 
 class ShowUndoSnackbar {}
 

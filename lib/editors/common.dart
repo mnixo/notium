@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:function_types/function_types.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/error_reporting.dart';
-import 'package:simplewave/utils.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/error_reporting.dart';
+import 'package:notium/utils.dart';
 
-export 'package:simplewave/editors/scaffold.dart';
+export 'package:notium/editors/scaffold.dart';
 
 typedef NoteCallback = void Function(Note);
 

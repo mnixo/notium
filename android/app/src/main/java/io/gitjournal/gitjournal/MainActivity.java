@@ -1,4 +1,4 @@
-package net.simplewave.simplewave;
+package org.notium.notium;
 
 import androidx.annotation.NonNull;
 
@@ -21,7 +21,7 @@ import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 
 public class MainActivity extends FlutterActivity {
-    private static final String CHANNEL_NAME = "simplewave.net/git";
+    private static final String CHANNEL_NAME = "notium.org/git";
     static MethodChannel channel;
 
     @Override

@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
 
-import 'package:simplewave/core/notes_cache.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
+import 'package:notium/core/notes_cache.dart';
+import 'package:notium/core/notes_folder_fs.dart';
 
 void main() {
   group('Notes Cache', () {

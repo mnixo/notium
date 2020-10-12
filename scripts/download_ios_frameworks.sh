@@ -9,11 +9,11 @@ mkdir -p libs
 cd libs
 
 curl -J -L \
-    https://github.com/simplewave/build-openssl-ios/releases/download/v1.1.1b/release.tgz \
+    https://github.com/notium/build-openssl-ios/releases/download/v1.1.1b/release.tgz \
     -o release_openssl.tar.gz
 
 curl -J -L \
-    https://github.com/simplewave/ios-libraries/releases/download/v1.0/release.tgz \
+    https://github.com/notium/ios-libraries/releases/download/v1.0/release.tgz \
     -o release.tar.gz
 
 tar -xf release_openssl.tar.gz

@@ -5,9 +5,9 @@ import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/screens/note_editor.dart';
-import 'package:simplewave/settings.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/screens/note_editor.dart';
+import 'package:notium/settings.dart';
 import 'app.dart';
 import 'core/note.dart';
 import 'state_container.dart';

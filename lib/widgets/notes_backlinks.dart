@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:simplewave/core/link.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/folder_views/common.dart';
-import 'package:simplewave/utils/link_resolver.dart';
+import 'package:notium/core/link.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/folder_views/common.dart';
+import 'package:notium/utils/link_resolver.dart';
 
 class NoteBacklinkRenderer extends StatefulWidget {
   final Note note;

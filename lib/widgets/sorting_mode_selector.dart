@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:simplewave/core/sorting_mode.dart';
-import 'package:simplewave/screens/settings_screen.dart';
+import 'package:notium/core/sorting_mode.dart';
+import 'package:notium/screens/settings_screen.dart';
 
 class SortingModeSelector extends StatefulWidget {
   final SortingMode selectedMode;

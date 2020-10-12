@@ -8,9 +8,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:git_bindings/git_bindings.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/appstate.dart';
-import 'package:simplewave/state_container.dart';
-import 'package:simplewave/utils.dart';
+import 'package:notium/appstate.dart';
+import 'package:notium/state_container.dart';
+import 'package:notium/utils.dart';
 
 class SyncButton extends StatefulWidget {
   @override

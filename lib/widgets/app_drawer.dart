@@ -7,11 +7,11 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/event_logger.dart';
-import 'package:simplewave/app_settings.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/utils.dart';
-import 'package:simplewave/utils/logger.dart';
+import 'package:notium/event_logger.dart';
+import 'package:notium/app_settings.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/utils.dart';
+import 'package:notium/utils/logger.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -82,9 +82,9 @@ class AppDrawer extends StatelessWidget {
 
               final Email email = Email(
                 body:
-                    "Hey!\n\nI found a bug in simplewave - \n \n\nVersion: $versionText\nPlatform: $platform",
-                subject: 'simplewave bug report',
-                recipients: ['simplewave.app+bugs@gmail.com'],
+                    "Hey!\n\nI found a bug in notium - \n \n\nVersion: $versionText\nPlatform: $platform",
+                subject: 'notium bug report',
+                recipients: ['notium.app+bugs@gmail.com'],
                 attachmentPaths: [appLogsFilePath],
               );
 

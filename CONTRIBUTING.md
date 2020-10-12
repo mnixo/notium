@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at <https://github.com/simplewave/simplewave/issues>.
+Report bugs at <https://github.com/notium/notium/issues>.
 
 If you are reporting a bug, please include:
 
@@ -31,7 +31,7 @@ Look through the GitHub issues for features. Anything tagged with
 ### Submit Feedback
 
 The best way to send feedback is to file an issue at
-<https://github.com/simplewave/simplewave/issues>.
+<https://github.com/notium/notium/issues>.
 
 If you are proposing a feature:
 
@@ -43,13 +43,13 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up simplewave for local development.
+Ready to contribute? Here's how to set up notium for local development.
 
-1.  Fork the simplewave repo on GitHub.
+1.  Fork the notium repo on GitHub.
 
 2.  Clone your fork locally:
     
-        $ git clone git@github.com:your_name_here/simplewave.git
+        $ git clone git@github.com:your_name_here/notium.git
 
 3.  Refer to [build instructions](BUILD.md) for local development.
 

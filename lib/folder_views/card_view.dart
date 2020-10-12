@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder.dart';
-import 'package:simplewave/folder_views/note_tile.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder.dart';
+import 'package:notium/folder_views/note_tile.dart';
 
 class CardView extends StatelessWidget {
   final NoteSelectedFunction noteTapped;

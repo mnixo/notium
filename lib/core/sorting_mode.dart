@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:simplewave/core/note.dart';
+import 'package:notium/core/note.dart';
 
 typedef NoteSortingFunction = int Function(Note a, Note b);
 

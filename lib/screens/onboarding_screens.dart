@@ -6,7 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:function_types/function_types.dart';
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/app_settings.dart';
+import 'package:notium/app_settings.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen();
@@ -168,7 +168,7 @@ class OnBoardingPage1 extends StatelessWidget {
         ),
         const SizedBox(height: 16.0),
         Text(
-          "simplewave",
+          "notium",
           style: headerTextStyle,
         ),
       ],

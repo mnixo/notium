@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:simplewave/utils/markdown.dart';
+import 'package:notium/utils/markdown.dart';
 
 void main() {
   group('Markdown Remove Formatting', () {

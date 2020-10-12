@@ -4,13 +4,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:simplewave/core/flattened_notes_folder.dart';
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/note_serializer.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/screens/folder_view.dart';
-import 'package:simplewave/widgets/app_bar_menu_button.dart';
-import 'package:simplewave/widgets/app_drawer.dart';
+import 'package:notium/core/flattened_notes_folder.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/note_serializer.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/screens/folder_view.dart';
+import 'package:notium/widgets/app_bar_menu_button.dart';
+import 'package:notium/widgets/app_drawer.dart';
 
 class TagListingScreen extends StatelessWidget {
   @override

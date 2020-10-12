@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:test/test.dart';
 
-import 'package:simplewave/apis/githost_factory.dart';
-import 'package:simplewave/apis/github.dart';
+import 'package:notium/apis/githost_factory.dart';
+import 'package:notium/apis/github.dart';
 
 void main() {
   test('Parse json', () async {

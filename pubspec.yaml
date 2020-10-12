@@ -1,4 +1,4 @@
-name: simplewave
+name: notium
 description: Let your ideas flow. A note editor built with focus, simplicity and privacy in mind.
 version: 0.0.1
 
@@ -29,7 +29,7 @@ dependencies:
   provider: ^4.3.2+2
   git_bindings: ^0.0.15
   dart_git:
-    git: https://github.com/simplewave/dart_git.git
+    git: https://github.com/notium/dart_git.git
   yaml_serializer: ^0.0.8
   connectivity: ^0.4.6+1
   flutter_emoji: ">= 2.0.0"
@@ -67,7 +67,7 @@ dev_dependencies:
 
 dependency_overrides:
   markdown:
-    git: https://github.com/simplewave/markdown.git
+    git: https://github.com/notium/markdown.git
 
 flutter:
   uses-material-design: true

@@ -3,11 +3,11 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:simplewave/core/note.dart';
-import 'package:simplewave/core/notes_folder_fs.dart';
-import 'package:simplewave/editors/common.dart';
-import 'package:simplewave/settings.dart';
-import 'package:simplewave/widgets/note_viewer.dart';
+import 'package:notium/core/note.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/editors/common.dart';
+import 'package:notium/settings.dart';
+import 'package:notium/widgets/note_viewer.dart';
 
 class EditorScaffold extends StatefulWidget {
   final Editor editor;
