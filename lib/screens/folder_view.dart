@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:git_bindings/git_bindings.dart';
+import 'package:notium/appstate.dart';
 import 'package:provider/provider.dart';
 import 'package:notium/core/md_yaml_doc_codec.dart';
 import 'package:notium/core/note.dart';
@@ -274,7 +275,12 @@ class _FolderViewState extends State<FolderView> {
     final settings = Provider.of<Settings>(context);
 
     return <Widget>[
-      if (settings.remoteGitRepoConfigured) SyncButton(),
+      if (settings.remoteGitRepoConfigured)
+        AnimatedOpacity(
+          opacity: Provider.of<StateContainer>(context).appState.syncStatus == SyncStatus.Done ? 0.1 : 1.0,
+          duration: Duration(milliseconds: 1000),
+          child: SyncButton()
+        ),
       IconButton(
         icon: const Icon(Icons.search),
         onPressed: () {

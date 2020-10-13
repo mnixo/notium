@@ -1,16 +1,14 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:badges/badges.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:git_bindings/git_bindings.dart';
-import 'package:provider/provider.dart';
-
 import 'package:notium/appstate.dart';
 import 'package:notium/state_container.dart';
 import 'package:notium/utils.dart';
+import 'package:provider/provider.dart';
 
 class SyncButton extends StatefulWidget {
   @override
@@ -20,6 +18,7 @@ class SyncButton extends StatefulWidget {
 class _SyncButtonState extends State<SyncButton> {
   StreamSubscription<ConnectivityResult> subscription;
   ConnectivityResult _connectivity;
+  bool _visible = true;
 
   @override
   void initState() {
@@ -117,7 +116,8 @@ class GitPendingChangesBadge extends StatelessWidget {
     var theme = Theme.of(context);
     var darkMode = theme.brightness == Brightness.dark;
     var style = theme.textTheme.caption.copyWith(
-      fontSize: 6.0,
+      fontSize: 8.0,
+      fontFamily: 'IBMPlexMono-Light',
       color: darkMode ? Colors.black : Colors.white,
     );
 
@@ -125,6 +125,9 @@ class GitPendingChangesBadge extends StatelessWidget {
 
     return Badge(
       badgeContent: Text(appState.numChanges.toString(), style: style),
+      toAnimate: true,
+      animationDuration: Duration(milliseconds: 1000),
+      animationType: BadgeAnimationType.fade,
       showBadge: appState.numChanges != 0,
       badgeColor: theme.iconTheme.color,
       position: BadgePosition.topRight(top: 10.0, right: 4.0),
