@@ -14,7 +14,7 @@ class Settings extends ChangeNotifier {
   static Settings get instance => _singleton;
 
   // Properties
-  String gitAuthor = "notium";
+  String gitAuthor = "Notium";
   String gitAuthorEmail = "notium.app@gmail.com";
   NoteFileNameFormat noteFileNameFormat = NoteFileNameFormat.Default;
 
