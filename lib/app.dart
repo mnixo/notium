@@ -249,18 +249,19 @@ class _JournalAppState extends State<JournalApp> {
     var initialRoute = '/';
     if (!appSettings.onBoardingCompleted) {
       initialRoute = '/onBoarding';
-    }
-    if (settings.homeScreen == SettingsHomeScreen.AllFolders) {
-      initialRoute = '/folders';
-    }
-    if (settings.homeScreen == SettingsHomeScreen.NewNote) {
-      initialRoute = '/newNote/' + settings.defaultEditor.toInternalString();
+    } else {
+      if (settings.homeScreen == SettingsHomeScreen.AllFolders) {
+        initialRoute = '/folders';
+      }
+      if (settings.homeScreen == SettingsHomeScreen.NewNote) {
+        initialRoute = '/newNote/' + settings.defaultEditor.toInternalString();
+      }
     }
 
     return MaterialApp(
       key: const ValueKey("App"),
       navigatorKey: _navigatorKey,
-      title: 'notium',
+      title: 'Notium',
 
       localizationsDelegates: EasyLocalization.of(context).delegates,
       supportedLocales: EasyLocalization.of(context).supportedLocales,
