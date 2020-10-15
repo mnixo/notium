@@ -1,6 +1,6 @@
 name: notium
 description: Let your ideas flow. A note editor built for focus, simplicity and privacy.
-version: 0.0.1
+version: 1.0.0-RC1
 
 dependencies:
   flutter:
