@@ -92,6 +92,15 @@ void main() {
     expect(tags.isEmpty, true);
   });
 
+  test('Should ignore anchors in urls at the root of a folder', () {
+    var body = "https://notium.org/folder/#something";
+
+    var p = InlineTagsProcessor(tagPrefixes: {'#'});
+    var tags = p.extractTags(body);
+
+    expect(tags.isEmpty, true);
+  });
+
   test('Markdown Example', () {
     var body = """# Markdown Example
 Markdown allows you to easily include formatted text, images, and even formatted Dart code in your app.
