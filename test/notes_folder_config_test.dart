@@ -27,7 +27,7 @@ void main() {
       var folder = NotesFolderFS(null, tempDir.path);
       var config = NotesFolderConfig(
         defaultEditor: EditorType.Checklist,
-        defaultView: FolderViewType.Standard,
+        defaultView: FolderViewType.Grid,
         showNoteSummary: true,
         sortingMode:
             SortingMode(SortingField.Modified, SortingOrder.Descending),
