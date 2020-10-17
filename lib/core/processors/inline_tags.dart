@@ -1,5 +1,4 @@
 import 'package:meta/meta.dart';
-import 'package:notium/utils/logger.dart';
 
 class InlineTagsProcessor {
   final Set<String> tagPrefixes;
