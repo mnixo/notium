@@ -5,9 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:function_types/function_types.dart';
-import 'package:git_bindings/git_bindings.dart';
-import 'package:path/path.dart' as p;
-import 'package:provider/provider.dart';
+import 'package:git_bindings/git_bindings.dart' as git_bindings;
 import 'package:notium/apis/githost_factory.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/error_reporting.dart';
@@ -19,8 +17,11 @@ import 'package:notium/setup/clone_url.dart';
 import 'package:notium/setup/loading_error.dart';
 import 'package:notium/setup/repo_selector.dart';
 import 'package:notium/setup/sshkey.dart';
+import 'package:notium/ssh/keygen.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:path/path.dart' as p;
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GitHostSetupScreen extends StatefulWidget {
@@ -201,7 +202,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
         } else if (_keyGenerationChoice == KeyGenerationChoice.UserProvided) {
           return GitHostUserProvidedKeys(
             doneFunction: (String publicKey, String privateKey) async {
-              await setSshKeys(publicKey: publicKey, privateKey: privateKey);
+              await git_bindings.setSshKeys(publicKey: publicKey, privateKey: privateKey);
               setState(() {
                 this.publicKey = publicKey;
                 _pageCount = pos + 2;
@@ -282,7 +283,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
         } else if (_keyGenerationChoice == KeyGenerationChoice.UserProvided) {
           return GitHostUserProvidedKeys(
             doneFunction: (String publicKey, String privateKey) async {
-              await setSshKeys(publicKey: publicKey, privateKey: privateKey);
+              await git_bindings.setSshKeys(publicKey: publicKey, privateKey: privateKey);
               setState(() {
                 this.publicKey = publicKey;
                 _pageCount = pos + 2;
@@ -476,8 +477,8 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
     String error;
     try {
       Log.d("Cloning " + _gitCloneUrl);
-      await GitRepo.clone(repoPath, _gitCloneUrl);
-    } on GitException catch (e) {
+      await git_bindings.GitRepo.clone(repoPath, _gitCloneUrl);
+    } on git_bindings.GitException catch (e) {
       Log.e(e.toString());
       error = e.cause;
     }
@@ -505,7 +506,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       var ignoreFile = File(p.join(repoPath, ".gitignore"));
       ignoreFile.createSync();
 
-      var repo = GitRepo(
+      var repo = git_bindings.GitRepo(
         folderPath: repoPath,
       );
       await repo.add('.gitignore');
