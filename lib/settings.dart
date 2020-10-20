@@ -51,7 +51,7 @@ class Settings extends ChangeNotifier {
   bool swipeToDelete = true;
   bool emojiParser = true;
 
-  Set<String> inlineTagPrefixes = {'#'};
+  Set<String> inlineTagPrefixes = {'#', '@'};
 
   // From AppState
   String localGitRepoFolderName = "";
