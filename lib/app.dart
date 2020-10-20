@@ -151,11 +151,6 @@ class _JournalAppState extends State<JournalApp> {
         localizedTitle: tr('actions.newChecklist'),
         icon: "ic_tasks",
       ),
-      ShortcutItem(
-        type: 'Journal',
-        localizedTitle: tr('actions.newJournal'),
-        icon: "ic_book",
-      ),
     ]);
 
     _initShareSubscriptions();
