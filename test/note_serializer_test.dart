@@ -38,20 +38,20 @@ void main() {
       var doc = MdYamlDoc("# Why not :coffee:?\n\nI :heart: you", props);
 
       var serializer = NoteSerializer.raw();
-      serializer.settings.saveTitleAsH1 = true;
+      serializer.settings.saveTitleAsH1 = false;
 
       var note = Note(parent, "file-path-not-important");
       serializer.decode(doc, note);
 
-      expect(note.body, "I ❤️ you");
-      expect(note.title, "Why not ☕?");
+      expect(note.body, "# Why not ☕?\n\nI ❤️ you");
+      expect(note.title, "");
 
       note.body = "Why not ☕?";
       note.title = "I ❤️ you";
 
       serializer.encode(note, doc);
-      expect(doc.body, "# I :heart: you\n\nWhy not :coffee:?");
-      expect(doc.props.length, 0);
+      expect(doc.body, "Why not :coffee:?");
+      expect(doc.props.length, 1);
     });
 
     test('Test Title Reading with blank lines', () {
@@ -63,8 +63,8 @@ void main() {
       var note = Note(parent, "file-path-not-important");
       serializer.decode(doc, note);
 
-      expect(note.body, "I ❤️ you");
-      expect(note.title, "Why not ☕?");
+      expect(note.body, "\n# Why not ☕?\n\nI ❤️ you");
+      expect(note.title, "");
     });
 
     test('Test Title Reading with blank lines and no body', () {
@@ -76,8 +76,8 @@ void main() {
       var note = Note(parent, "file-path-not-important");
       serializer.decode(doc, note);
 
-      expect(note.body.length, 0);
-      expect(note.title, "Why not ☕?");
+      expect(note.title.length, 0);
+      expect(note.body, "\n# Why not ☕?");
     });
 
     test('Test Old Title Serialization', () {

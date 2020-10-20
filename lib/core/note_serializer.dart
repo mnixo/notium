@@ -1,11 +1,10 @@
-import 'dart:convert';
 
 import 'package:flutter_emoji/flutter_emoji.dart';
-import 'package:yaml/yaml.dart';
-
 import 'package:notium/core/notes_folder.dart';
 import 'package:notium/utils/datetime.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:yaml/yaml.dart';
+
 import 'md_yaml_doc.dart';
 import 'note.dart';
 
@@ -155,9 +154,6 @@ class NoteSerializer implements NoteSerializerInterface {
     switch (type) {
       case "Checklist":
         note.type = NoteType.Checklist;
-        break;
-      case "Journal":
-        note.type = NoteType.Journal;
         break;
       default:
         note.type = NoteType.Unknown;
