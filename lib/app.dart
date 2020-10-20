@@ -6,11 +6,6 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart' as p;
-import 'package:path_provider/path_provider.dart';
-import 'package:provider/provider.dart';
-import 'package:quick_actions/quick_actions.dart';
-import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/appstate.dart';
 import 'package:notium/core/md_yaml_doc_codec.dart';
@@ -25,6 +20,10 @@ import 'package:notium/state_container.dart';
 import 'package:notium/themes.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screens.dart';
@@ -125,34 +124,6 @@ class _JournalAppState extends State<JournalApp> {
   @override
   void initState() {
     super.initState();
-    final QuickActions quickActions = QuickActions();
-    quickActions.initialize((String shortcutType) {
-      Log.i("Quick Action Open: $shortcutType");
-      if (_navigatorKey.currentState == null) {
-        Log.i("Quick Action delegating for after build");
-        WidgetsBinding.instance
-            .addPostFrameCallback((_) => _afterBuild(context));
-        setState(() {
-          _pendingShortcut = shortcutType;
-        });
-        return;
-      }
-      _navigatorKey.currentState.pushNamed("/newNote/$shortcutType");
-    });
-
-    quickActions.setShortcutItems(<ShortcutItem>[
-      ShortcutItem(
-        type: 'Markdown',
-        localizedTitle: tr('actions.newNote'),
-        icon: "ic_markdown",
-      ),
-      ShortcutItem(
-        type: 'Checklist',
-        localizedTitle: tr('actions.newChecklist'),
-        icon: "ic_tasks",
-      ),
-    ]);
-
     _initShareSubscriptions();
   }
 
