@@ -55,7 +55,6 @@ class MarkdownEditorState extends State<MarkdownEditor>
     implements EditorState {
   Note note;
   TextEditingController _textController = TextEditingController();
-  TextEditingController _titleTextController = TextEditingController();
 
   String _oldText;
 
@@ -63,7 +62,6 @@ class MarkdownEditorState extends State<MarkdownEditor>
 
   MarkdownEditorState(this.note) {
     _textController = TextEditingController(text: note.body);
-    _titleTextController = TextEditingController(text: note.title);
     _oldText = note.body;
   }
 
@@ -76,7 +74,6 @@ class MarkdownEditorState extends State<MarkdownEditor>
   @override
   void dispose() {
     _textController.dispose();
-    _titleTextController.dispose();
 
     super.disposeListenables();
     super.dispose();
@@ -134,7 +131,6 @@ class MarkdownEditorState extends State<MarkdownEditor>
   }
 
   void _updateNote() {
-    note.title = _titleTextController.text.trim();
     note.body = _textController.text.trim();
     note.type = NoteType.Unknown;
   }
