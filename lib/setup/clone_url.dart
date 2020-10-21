@@ -28,7 +28,6 @@ class GitCloneUrlPageState extends State<GitCloneUrlPage> {
       GlobalKey<FormFieldState<String>>();
 
   final _formKey = GlobalKey<FormState>();
-  final inputFormFocus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -38,50 +37,50 @@ class GitCloneUrlPageState extends State<GitCloneUrlPage> {
 
         var url = sshUrlKey.currentState.value;
         widget.doneFunction(url.trim());
-        inputFormFocus.unfocus();
       }
     };
 
     var inputForm = Form(
       key: _formKey,
+
       child: TextFormField(
         key: sshUrlKey,
-        textAlign: TextAlign.center,
-        autofocus: true,
-        style: Theme.of(context).textTheme.subtitle1,
+        textAlign: TextAlign.left,
+        autofocus: false,
+        style: Theme.of(context).textTheme.bodyText1,
         decoration: const InputDecoration(
-          hintText: 'git@github.com:notium/notium.git',
+          hintText: 'git@service.com:username/repo_name.git',
         ),
         validator: _isCloneUrlValid,
-        focusNode: inputFormFocus,
         textInputAction: TextInputAction.done,
         onFieldSubmitted: (String _) => formSubmitted(),
         initialValue: widget.initialValue,
       ),
     );
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            tr("setup.cloneUrl.enter"),
-            style: Theme.of(context).textTheme.headline5,
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              tr("setup.cloneUrl.enter"),
+              style: Theme.of(context).textTheme.headline5,
+            ),
           ),
-        ),
-        const SizedBox(height: 16.0),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: inputForm,
-        ),
-        const SizedBox(height: 8.0),
-        GitHostSetupButton(
-          text: "Next",
-          onPressed: formSubmitted,
-        ),
-      ],
+          const SizedBox(height: 16.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: inputForm,
+          ),
+          const SizedBox(height: 16.0),
+          GitHostSetupButton(
+            text: "Next",
+            onPressed: formSubmitted,
+          ),
+        ],
+      )
     );
   }
 }
@@ -111,7 +110,6 @@ class GitCloneUrlKnownProviderPageState
       GlobalKey<FormFieldState<String>>();
 
   final _formKey = GlobalKey<FormState>();
-  final inputFormFocus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +119,6 @@ class GitCloneUrlKnownProviderPageState
 
         var url = sshUrlKey.currentState.value;
         widget.doneFunction(url.trim());
-        inputFormFocus.unfocus();
       }
     };
 
@@ -129,55 +126,57 @@ class GitCloneUrlKnownProviderPageState
       key: _formKey,
       child: TextFormField(
         key: sshUrlKey,
-        textAlign: TextAlign.center,
-        autofocus: true,
-        style: Theme.of(context).textTheme.subtitle1,
+        textAlign: TextAlign.left,
+        autofocus: false,
+        style: Theme.of(context).textTheme.bodyText1,
         decoration: const InputDecoration(
-          hintText: 'git@github.com:notium/notium.git',
+          hintText: 'git@service.com:username/repo_name.git',
         ),
         validator: _isCloneUrlValid,
-        focusNode: inputFormFocus,
         textInputAction: TextInputAction.done,
         onFieldSubmitted: (String _) => formSubmitted(),
         initialValue: widget.initialValue,
       ),
     );
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          tr("setup.cloneUrl.manual.title"),
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const SizedBox(height: 32.0),
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      child: Column(
+        children: <Widget>[
+          Text(
+            tr("setup.cloneUrl.manual.title"),
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          Text(
+            tr("setup.cloneUrl.manual.description"),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const SizedBox(height: 32.0),
+          Text(
+            tr("setup.cloneUrl.manual.createRepo"),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const SizedBox(height: 16.0),
+          GitHostSetupButton(
+            text: tr("setup.cloneUrl.manual.button"),
+            onPressed: widget.launchCreateUrlPage,
+          ),
+          const SizedBox(height: 16.0),
 
-        // Step 1
-        Text(
-          tr("setup.cloneUrl.manual.step1"),
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        const SizedBox(height: 8.0),
-        GitHostSetupButton(
-          text: tr("setup.cloneUrl.manual.button"),
-          onPressed: widget.launchCreateUrlPage,
-        ),
-        const SizedBox(height: 16.0),
-
-        // Step 2
-        Text(
-          tr("setup.cloneUrl.manual.step1"),
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        const SizedBox(height: 8.0),
-        inputForm,
-        const SizedBox(height: 16.0),
-        GitHostSetupButton(
-          text: tr("setup.next"),
-          onPressed: formSubmitted,
-        ),
-      ],
+          // Step 2
+          Text(
+            tr("setup.cloneUrl.manual.step2"),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const SizedBox(height: 16.0),
+          inputForm,
+          const SizedBox(height: 16.0),
+          GitHostSetupButton(
+            text: tr("setup.next"),
+            onPressed: formSubmitted,
+          ),
+        ],
+      )
     );
   }
 }

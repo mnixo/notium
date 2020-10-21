@@ -170,7 +170,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: RaisedButton(
+      child: FlatButton(
         child: Text(
           text,
           textAlign: TextAlign.center,
@@ -193,7 +193,7 @@ class RedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: RaisedButton(
+      child: FlatButton(
         child: Text(
           text,
           textAlign: TextAlign.center,

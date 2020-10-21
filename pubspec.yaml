@@ -77,8 +77,10 @@ flutter:
   assets:
     - "assets/icon/icon.png"
     - "assets/icon/icon_black.png"
+    - "assets/icon/done-icon.png"
     - "assets/icon/github-icon.png"
     - "assets/icon/gitlab-icon.png"
+    - "assets/icon/help-icon.png"
     - "assets/less.png"
     - "assets/git-hosting.png"
     - "assets/langs/en.yaml"

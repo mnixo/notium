@@ -43,13 +43,13 @@ class _SortingModeSelectorState extends State<SortingModeSelector> {
         crossAxisAlignment: CrossAxisAlignment.start,
       ),
       actions: [
-        OutlineButton(
+        OutlinedButton(
           child: Text(tr('settings.cancel')),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
-        OutlineButton(
+        OutlinedButton(
           child: Text(tr('settings.ok')),
           onPressed: () {
             Navigator.of(context).pop(SortingMode(field, order));

@@ -29,64 +29,61 @@ class GitHostSetupSshKeyKnownProvider extends StatelessWidget {
       return GitHostSetupLoadingPage(tr("setup.sshKey.generate"));
     }
 
-    var columns = Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          tr("setup.sshKey.title"),
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const SizedBox(height: 32.0),
+    var columns = SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      child: Column(
+        children: <Widget>[
+          Text(
+            tr("setup.sshKey.title"),
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          const SizedBox(height: 32.0),
 
-        // Step 1
-        Text(
-          tr("setup.sshKey.step1"),
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        const SizedBox(height: 8.0),
-        PublicKeyWidget(publicKey),
-        const SizedBox(height: 8.0),
+          // Step 1
+          Text(
+            tr("setup.sshKey.step1"),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const SizedBox(height: 8.0),
+          PublicKeyWidget(publicKey),
+          const SizedBox(height: 8.0),
 
-        GitHostSetupButton(
-          text: tr("setup.sshKey.copy"),
-          onPressed: () => copyKeyFunction(context),
-        ),
-        GitHostSetupButton(
-          text: tr("setup.sshKey.regenerate"),
-          onPressed: regenerateFunction,
-        ),
-        const SizedBox(height: 16.0),
+          GitHostSetupButton(
+            text: tr("setup.sshKey.copy"),
+            onPressed: () => copyKeyFunction(context),
+          ),
+          const SizedBox(height: 16.0),
 
-        // Step 2
-        Text(
-          tr("setup.sshKey.step2a"),
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        const SizedBox(height: 8.0),
-        GitHostSetupButton(
-          text: tr("setup.sshKey.openDeploy"),
-          onPressed: openDeployKeyPage,
-        ),
-        const SizedBox(height: 16.0),
+          // Step 2
+          Text(
+            tr("setup.sshKey.step2a"),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const SizedBox(height: 8.0),
+          GitHostSetupButton(
+            text: tr("setup.sshKey.openDeploy"),
+            onPressed: openDeployKeyPage,
+          ),
+          const SizedBox(height: 16.0),
 
-        // Step 3
-        Text(
-          tr("setup.sshKey.step3"),
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        const SizedBox(height: 8.0),
-        GitHostSetupButton(
-          text: tr("setup.sshKey.clone"),
-          onPressed: doneFunction,
-        ),
-      ],
+          // Step 3
+          Text(
+            tr("setup.sshKey.step3"),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const SizedBox(height: 8.0),
+          GitHostSetupButton(
+            text: tr("setup.sshKey.clone"),
+            iconUrl: 'assets/icon/done-icon.png',
+            onPressed: doneFunction,
+          ),
+        ],
+      )
     );
 
-    return Center(
-      child: SingleChildScrollView(
-        child: columns,
-      ),
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      child: columns,
     );
   }
 }
@@ -111,19 +108,17 @@ class GitHostSetupSshKeyUnknownProvider extends StatelessWidget {
     }
 
     var columns = Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
           tr("setup.sshKey.title"),
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: 32.0),
 
         // Step 1
         Text(
           tr("setup.sshKey.step1"),
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         const SizedBox(height: 8.0),
         PublicKeyWidget(publicKey),
@@ -142,14 +137,14 @@ class GitHostSetupSshKeyUnknownProvider extends StatelessWidget {
         // Step 2
         Text(
           tr("setup.sshKey.step2b"),
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         const SizedBox(height: 16.0),
 
         // Step 3
         Text(
           tr("setup.sshKey.step3"),
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         const SizedBox(height: 8.0),
         GitHostSetupButton(
@@ -159,10 +154,9 @@ class GitHostSetupSshKeyUnknownProvider extends StatelessWidget {
       ],
     );
 
-    return Center(
-      child: SingleChildScrollView(
-        child: columns,
-      ),
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      child: columns,
     );
   }
 }
@@ -178,27 +172,32 @@ class GitHostSetupKeyChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Text(
-            tr("setup.sshKeyChoice.title"),
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          const SizedBox(height: 16.0),
-          GitHostSetupButton(
-            text: tr("setup.sshKeyChoice.generate"),
-            onPressed: onGenerateKeys,
-          ),
-          const SizedBox(height: 8.0),
-          GitHostSetupButton(
-            text: tr("setup.sshKeyChoice.custom"),
-            onPressed: onUserProvidedKeys,
-          ),
-        ],
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-      ),
+    return SingleChildScrollView(
+    padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            Text(
+              tr("setup.sshKeyChoice.title"),
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            Text(
+              tr("setup.sshKeyChoice.description"),
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            const SizedBox(height: 16.0),
+            GitHostSetupButton(
+              text: tr("setup.sshKeyChoice.generate"),
+              onPressed: onGenerateKeys,
+            ),
+            const SizedBox(height: 16.0),
+            GitHostSetupButton(
+              text: tr("setup.sshKeyChoice.custom"),
+              onPressed: onUserProvidedKeys,
+            ),
+          ],
+        ),
+      )
     );
   }
 }
@@ -282,8 +281,6 @@ class _GitHostUserProvidedKeysState extends State<GitHostUserProvidedKeys> {
             },
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
       ),
     );
   }
@@ -297,10 +294,11 @@ class PublicKeyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 160.0,
+      height: 100.0,
       child: Container(
         color: Theme.of(context).buttonColor,
         child: SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
           child: Container(
             padding: const EdgeInsets.all(8.0),
             child: Text(

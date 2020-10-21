@@ -58,7 +58,7 @@ class JournalApp extends StatefulWidget {
 
     if (settings.localGitRepoConfigured == false) {
       // FIXME: What about exceptions!
-      settings.localGitRepoFolderName = "journal_local";
+      settings.localGitRepoFolderName = "notium_repo";
       var repoPath = p.join(
         appSettings.gitBaseDirectory,
         settings.localGitRepoFolderName,

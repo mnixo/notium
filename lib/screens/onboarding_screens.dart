@@ -83,7 +83,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
       bottomBar = SizedBox(
         width: double.infinity,
         height: _bottomBarHeight,
-        child: RaisedButton(
+        child: FlatButton(
           key: const ValueKey("GetStarted"),
           child: Text(
             tr("OnBoarding.getStarted"),

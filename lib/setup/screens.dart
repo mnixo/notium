@@ -11,15 +11,14 @@ import 'package:notium/app_settings.dart';
 import 'package:notium/error_reporting.dart';
 import 'package:notium/event_logger.dart';
 import 'package:notium/settings.dart';
-import 'package:notium/setup/autoconfigure.dart';
 import 'package:notium/setup/button.dart';
 import 'package:notium/setup/clone_url.dart';
 import 'package:notium/setup/loading_error.dart';
-import 'package:notium/setup/repo_selector.dart';
 import 'package:notium/setup/sshkey.dart';
 import 'package:notium/ssh/keygen.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:notium/utils/notium_urls.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -65,8 +64,8 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
     assert(_pageCount >= 1);
 
     if (pos == 0) {
-      return GitHostIntroPage(
-        onHaveAccount: () {
+      return GitSetupIntroPage(
+        onConfirm: () {
           setState(() {
             _pageCount = pos + 2;
             _nextPage();
@@ -388,9 +387,9 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
 
     try {
       if (_gitHostType == GitHostType.GitHub) {
-        await launch("https://github.com/new");
+        await launch(NotiumUrls.notiumURLs['newGithubRepo']);
       } else if (_gitHostType == GitHostType.GitLab) {
-        await launch("https://gitlab.com/projects/new");
+        await launch(NotiumUrls.notiumURLs['newGitlabRepo']);
       }
     } catch (err, stack) {
       // FIXME: Error handling?
@@ -540,53 +539,35 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
   }
 }
 
-class GitHostIntroPage extends StatelessWidget {
-  final Func0<void> onHaveAccount;
+class GitSetupIntroPage extends StatelessWidget {
+  final Func0<void> onConfirm;
 
-  GitHostIntroPage({
-    @required this.onHaveAccount,
+  GitSetupIntroPage({
+    @required this.onConfirm,
   });
-
-  void _launchProviderInfoPage() async {
-    var providerInfoUrl = "https://notium.org/providerinfo";
-    try {
-      Log.i("Launching provider info page");
-      await launch(providerInfoUrl);
-    } catch (err, stack) {
-      Log.d('_launchProviderInfoPage: ' + err.toString());
-      Log.d(stack.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
       child: Column(
         children: <Widget>[
           Text(
-            tr('setup.hostIntro.title'),
+            tr('setup.gitSetupIntro.title'),
             style: Theme.of(context).textTheme.headline5,
           ),
           Text(
-            tr('setup.hostIntro.description'),
+            tr('setup.gitSetupIntro.description'),
             style: Theme.of(context).textTheme.bodyText1,
           ),
           const SizedBox(height: 16.0),
           GitHostSetupButton(
-            text: tr('setup.hostIntro.haveAccount'),
+            text: tr('setup.gitSetupIntro.confirm'),
             onPressed: () {
-              onHaveAccount();
+              onConfirm();
             },
           ),
-          GitHostSetupButton(
-            text: tr('setup.hostIntro.needAccount'),
-            onPressed: () {
-              _launchProviderInfoPage();
-            }
-          ),
         ],
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
       ),
     );
   }
@@ -601,9 +582,21 @@ class GitHostChoicePage extends StatelessWidget {
     @required this.onCustomGitHost,
   });
 
+  void _launchProviderInfoPage() async {
+    var providerInfoUrl = NotiumUrls.notiumURLs['gitHostingProvidersInfo'];
+    try {
+      Log.i("Launching Git hosting providers info page");
+      await launch(providerInfoUrl);
+    } catch (err, stack) {
+      Log.d('_launchProviderInfoPage: ' + err.toString());
+      Log.d(stack.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
       child: Column(
         children: <Widget>[
           Text(
@@ -611,6 +604,10 @@ class GitHostChoicePage extends StatelessWidget {
             style: Theme.of(context).textTheme.headline5,
           ),
           const SizedBox(height: 16.0),
+          Text(
+            tr('setup.host.description'),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
           GitHostSetupButton(
             text: "GitHub",
             iconUrl: 'assets/icon/github-icon.png',
@@ -633,9 +630,15 @@ class GitHostChoicePage extends StatelessWidget {
               onCustomGitHost();
             },
           ),
+          const SizedBox(height: 16.0),
+          GitHostSetupButton(
+              text: tr('setup.host.helpMeChoose'),
+              iconUrl: 'assets/icon/help-icon.png',
+              onPressed: () {
+                _launchProviderInfoPage();
+              }
+          ),
         ],
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
       ),
     );
   }

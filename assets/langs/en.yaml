@@ -193,12 +193,15 @@ setup:
     validator:
       empty: Please enter some text
       invalid: Invalid Input
-      onlySsh: Only SSH urls are currently accepted
+      onlySsh: Wrong URL - Should be a SSH URL (starts with git@something...)
     manual:
-      title: Please create a new git repository
-      step1: 1. Go to the website, create a repo and copy its git clone URL
-      step2: 2. Enter the Git clone URL
-      button: Open Create New Repo Webpage
+      title: 2/4 Setup Storage Space
+      description: "
+
+Now, let's create a space to store your notes. In Git language, it is called a repository."
+      createRepo: 1. Create a new repository, then come back here. Be sure to keep it private.
+      step2: 2. Copy the SSH URL (should start with git@something) and paste it here.
+      button: Create a New Repository
   next: Next
   fail: Failed
   keyEditors:
@@ -206,34 +209,46 @@ setup:
     private: Invalid Private Key
   sshKey:
     generate: Generating SSH Key
-    title: In order to access this repository, this public key must be copied as a deploy key
+    title: 4/4 Authorize Notium to Use the Key
     step1: 1. Copy the key
-    step2a: 2. Open webpage, and paste the deploy key. Make sure it is given Write Access.
-    step2b: 2. Give this SSH Key access to the git repo. (You need to figure it out yourself)
-    step3: 3. Try Cloning ..
+    step2a: 2. Open this page, and paste the key. Make sure to give write access.
+    step2b: 2. Give this SSH Key access to the git repo. (we can't guide you further)
+    step3: 3. Start the Sync!
     copy: Copy Key
     copied: Public Key copied to Clipboard
     regenerate: Regenerate Key
     openDeploy: Open Deploy Key Webpage
-    clone: Clone Repo
+    clone: Let's go!
     addDeploy: Adding as a Deploy Key
   sshKeyChoice:
-    title: We need SSH keys to authenticate -
-    generate: Generate new keys
+    title: 3/4 - Give the App a Key
+    description: "
+
+Almost there! We have to generate a key that the app will use to access your notes. Unless you know what you are doing, just let Notium generate a new key.
+
+"
+    generate: Generate a New Key
     custom: Provide Custom SSH Keys
   sshKeyUserProvided:
     public: Public Key
     private: Private Key
   cloning: Cloning ...
-  hostIntro:
-    title: Select Your Backup and Sync Provider
-    description: Notium uses Git to store and sync your data. You will need to open an account with a Git hosting provider to continue (e.g. Github, Gitlab). Notium is not affiliated to any of them.
-    haveAccount: I Have an Account
-    needAccount: Help me Choose
+  gitSetupIntro:
+    title: Setup Backup and Sync
+    description: "
+
+Notium gives you freedom and control on where your data is stored.
+
+
+That means you will need to follow a few instructions to configure everything.
+
+
+This should take you ~5 minutes. Ready?"
+    confirm: Let's Do It!
   host:
-    title: Who Should Store Your Data?
-    custom: Other or Custom
-  autoConfigure:
-    title: How do you want to do this?
-    automatic: Setup Automatically
-    manual: Let me do it manually
+    title: 1/4 - Who Should Store Your Data?
+    description: "You will need to open an account with a Git hosting provider to continue. Notium is not affiliated to any of them.
+
+"
+    custom: Other Provider
+    helpMeChoose: Help me Choose

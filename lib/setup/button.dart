@@ -18,27 +18,27 @@ class GitHostSetupButton extends StatelessWidget {
     if (iconUrl == null) {
       return SizedBox(
         width: double.infinity,
-        child: RaisedButton(
+        child: FlatButton(
           child: Text(
             text,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.button,
           ),
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).buttonColor,
           onPressed: _onPressedWithLog,
         ),
       );
     } else {
       return SizedBox(
         width: double.infinity,
-        child: RaisedButton.icon(
+        child: FlatButton.icon(
           label: Text(
             text,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.button,
           ),
           icon: Image.asset(iconUrl, width: 32, height: 32),
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).buttonColor,
           onPressed: _onPressedWithLog,
         ),
       );
