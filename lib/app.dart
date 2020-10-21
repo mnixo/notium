@@ -285,7 +285,7 @@ class _JournalAppState extends State<JournalApp> {
         return SettingsScreen();
       case '/setupRemoteGit':
         return GitHostSetupScreen(
-          "journal",
+          "notium_repo",
           stateContainer.completeGitHostSetup,
         );
       case '/onBoarding':

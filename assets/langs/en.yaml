@@ -169,7 +169,7 @@ ignoredFiles:
   dot: Starts with a .
   ext: Doesn't end with .md or .txt
 drawer:
-  setup: Setup Git Sync
+  setup: Setup Backup and Sync
   all: All Notes
   folders: Folders
   tags: Tags
@@ -195,7 +195,7 @@ setup:
       invalid: Invalid Input
       onlySsh: Only SSH urls are currently accepted
     manual:
-      title: Please create a new git repository -
+      title: Please create a new git repository
       step1: 1. Go to the website, create a repo and copy its git clone URL
       step2: 2. Enter the Git clone URL
       button: Open Create New Repo Webpage
@@ -222,12 +222,17 @@ setup:
     generate: Generate new keys
     custom: Provide Custom SSH Keys
   sshKeyUserProvided:
-    public: Public Key -
-    private: Private Key -
+    public: Public Key
+    private: Private Key
   cloning: Cloning ...
+  hostIntro:
+    title: Select Your Backup and Sync Provider
+    description: Notium uses Git to store and sync your data. You will need to open an account with a Git hosting provider to continue (e.g. Github, Gitlab). Notium is not affiliated to any of them.
+    haveAccount: I Have an Account
+    needAccount: Help me Choose
   host:
-    title: Select a Git Hosting Provider -
-    custom: Custom
+    title: Who Should Store Your Data?
+    custom: Other or Custom
   autoConfigure:
     title: How do you want to do this?
     automatic: Setup Automatically
