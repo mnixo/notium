@@ -175,6 +175,8 @@ drawer:
   tags: Tags
   bug: Bug Report
 setup:
+  gitErrors:
+    invalidCredentials: "You probably forgot to save the key at the previous step. Please go back and try again before starting sync!"
   autoconfigure:
     title: We need permission to perform the following steps
     step1: 1. List your existing repos or create a new repo
@@ -195,7 +197,7 @@ setup:
       invalid: Invalid Input
       onlySsh: Wrong URL - Should be a SSH URL (starts with git@something...)
     manual:
-      title: 2/4 Setup Storage Space
+      title: 2/3 Setup Storage Space
       description: "
 
 Now, let's create a space to store your notes. In Git language, it is called a repository."
@@ -203,13 +205,20 @@ Now, let's create a space to store your notes. In Git language, it is called a r
       step2: 2. Copy the SSH URL (should start with git@something) and paste it here.
       button: Create a New Repository
   next: Next
-  fail: Failed
+  fail: "Oops, sync failed!
+
+:-(
+
+Here is the error:"
   keyEditors:
     public: Invalid Public Key - Doesn't start with ssh-rsa
     private: Invalid Private Key
   sshKey:
     generate: Generating SSH Key
-    title: 4/4 Authorize Notium to Use the Key
+    title: 3/3 - Give the App a Key
+    description: "
+
+Almost there! We have to give access to the app by providing a key."
     step1: 1. Copy the key
     step2a: 2. Open this page, and paste the key. Make sure to give write access.
     step2b: 2. Give this SSH Key access to the git repo. (we can't guide you further)
@@ -220,33 +229,24 @@ Now, let's create a space to store your notes. In Git language, it is called a r
     openDeploy: Open Deploy Key Webpage
     clone: Let's go!
     addDeploy: Adding as a Deploy Key
-  sshKeyChoice:
-    title: 3/4 - Give the App a Key
-    description: "
-
-Almost there! We have to generate a key that the app will use to access your notes. Unless you know what you are doing, just let Notium generate a new key.
-
-"
-    generate: Generate a New Key
-    custom: Provide Custom SSH Keys
   sshKeyUserProvided:
     public: Public Key
     private: Private Key
-  cloning: Cloning ...
+  cloning: Starting Sync!
   gitSetupIntro:
     title: Setup Backup and Sync
     description: "
 
-Notium gives you freedom and control on where your data is stored.
+Your notes are not backed up yet! If they are important to you, you should keep a copy somewhere.
 
 
-That means you will need to follow a few instructions to configure everything.
+You will choose where to store them and ensure their safety in the next steps. We will guide you through that process.
 
 
-This should take you ~5 minutes. Ready?"
+This is a one time configuration that should take you ~5 minutes, and anyone can do it. Ready?"
     confirm: Let's Do It!
   host:
-    title: 1/4 - Who Should Store Your Data?
+    title: 1/3 - Who Should Store Your Data?
     description: "You will need to open an account with a Git hosting provider to continue. Notium is not affiliated to any of them.
 
 "

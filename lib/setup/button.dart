@@ -21,7 +21,7 @@ class GitHostSetupButton extends StatelessWidget {
         child: FlatButton(
           child: Text(
             text,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.left,
             style: Theme.of(context).textTheme.button,
           ),
           color: Theme.of(context).buttonColor,
@@ -34,7 +34,7 @@ class GitHostSetupButton extends StatelessWidget {
         child: FlatButton.icon(
           label: Text(
             text,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.left,
             style: Theme.of(context).textTheme.button,
           ),
           icon: Image.asset(iconUrl, width: 32, height: 32),

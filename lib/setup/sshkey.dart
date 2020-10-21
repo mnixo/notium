@@ -30,23 +30,30 @@ class GitHostSetupSshKeyKnownProvider extends StatelessWidget {
     }
 
     var columns = SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
       child: Column(
         children: <Widget>[
           Text(
             tr("setup.sshKey.title"),
             style: Theme.of(context).textTheme.headline5,
           ),
+          Text(
+            tr("setup.sshKey.description"),
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
           const SizedBox(height: 32.0),
 
           // Step 1
-          Text(
-            tr("setup.sshKey.step1"),
-            style: Theme.of(context).textTheme.bodyText1,
+          Container (
+            alignment: Alignment.topLeft,
+            child: Text(
+              tr("setup.sshKey.step1"),
+              style: Theme.of(context).textTheme.bodyText1,
+              textAlign: TextAlign.left,
+            ),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
           PublicKeyWidget(publicKey),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
 
           GitHostSetupButton(
             text: tr("setup.sshKey.copy"),
@@ -55,11 +62,14 @@ class GitHostSetupSshKeyKnownProvider extends StatelessWidget {
           const SizedBox(height: 16.0),
 
           // Step 2
-          Text(
-            tr("setup.sshKey.step2a"),
-            style: Theme.of(context).textTheme.bodyText1,
+          Container (
+            alignment: Alignment.topLeft,
+            child: Text(
+              tr("setup.sshKey.step2a"),
+              style: Theme.of(context).textTheme.bodyText1,
+            )
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
           GitHostSetupButton(
             text: tr("setup.sshKey.openDeploy"),
             onPressed: openDeployKeyPage,
@@ -67,11 +77,14 @@ class GitHostSetupSshKeyKnownProvider extends StatelessWidget {
           const SizedBox(height: 16.0),
 
           // Step 3
-          Text(
-            tr("setup.sshKey.step3"),
-            style: Theme.of(context).textTheme.bodyText1,
+          Container (
+            alignment: Alignment.topLeft,
+            child: Text(
+              tr("setup.sshKey.step3"),
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
           GitHostSetupButton(
             text: tr("setup.sshKey.clone"),
             iconUrl: 'assets/icon/done-icon.png',
@@ -163,11 +176,9 @@ class GitHostSetupSshKeyUnknownProvider extends StatelessWidget {
 
 class GitHostSetupKeyChoice extends StatelessWidget {
   final Func0<void> onGenerateKeys;
-  final Func0<void> onUserProvidedKeys;
 
   GitHostSetupKeyChoice({
     @required this.onGenerateKeys,
-    @required this.onUserProvidedKeys,
   });
 
   @override
@@ -191,10 +202,6 @@ class GitHostSetupKeyChoice extends StatelessWidget {
               onPressed: onGenerateKeys,
             ),
             const SizedBox(height: 16.0),
-            GitHostSetupButton(
-              text: tr("setup.sshKeyChoice.custom"),
-              onPressed: onUserProvidedKeys,
-            ),
           ],
         ),
       )
@@ -298,7 +305,6 @@ class PublicKeyWidget extends StatelessWidget {
       child: Container(
         color: Theme.of(context).buttonColor,
         child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
           child: Container(
             padding: const EdgeInsets.all(8.0),
             child: Text(

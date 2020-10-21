@@ -15,7 +15,7 @@ class GitHostSetupErrorPage extends StatelessWidget {
         child: Text(
           tr("setup.fail"),
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headline5,
         ),
       ),
       Padding(
@@ -23,9 +23,18 @@ class GitHostSetupErrorPage extends StatelessWidget {
         child: Text(
           errorMessage,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
       ),
+      if(errorMessage == "Invalid Credentials")
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 32, 0, 0),
+          child: Text(
+            tr("setup.gitErrors.invalidCredentials"),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+        ),
     ];
 
     return Column(
