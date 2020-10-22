@@ -58,7 +58,7 @@ class JournalApp extends StatefulWidget {
 
     if (settings.localGitRepoConfigured == false) {
       // FIXME: What about exceptions!
-      settings.localGitRepoFolderName = "notium_repo";
+      settings.localGitRepoFolderName = "journal_local";
       var repoPath = p.join(
         appSettings.gitBaseDirectory,
         settings.localGitRepoFolderName,
@@ -285,7 +285,7 @@ class _JournalAppState extends State<JournalApp> {
         return SettingsScreen();
       case '/setupRemoteGit':
         return GitHostSetupScreen(
-          "notium_repo",
+          "journal",
           stateContainer.completeGitHostSetup,
         );
       case '/onBoarding':
