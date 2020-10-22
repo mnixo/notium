@@ -137,7 +137,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
     var gitDir = appSettings.gitBaseDirectory;
 
     // Figure out the next available folder
-    String repoFolderName = "journal_";
+    String repoFolderName = "notium_";
     var num = 0;
     while (true) {
       var repoFolderPath = p.join(gitDir, "$repoFolderName$num");

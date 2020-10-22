@@ -32,7 +32,7 @@ Future<void> populateWithData(SharedPreferences pref) async {
 
   var settings = Settings.instance;
   settings.localGitRepoConfigured = true;
-  settings.localGitRepoFolderName = "journal_local";
+  settings.localGitRepoFolderName = "notium_repo";
   settings.save();
 
   var repoPath = p.join(dir.path, settings.localGitRepoFolderName);
