@@ -1,18 +1,16 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/core/notes_folder_fs.dart';
 import 'package:notium/screens/debug_screen.dart';
-import 'package:notium/screens/settings_experimental.dart';
 import 'package:notium/screens/settings_git_remote.dart';
-import 'package:notium/screens/settings_images.dart';
 import 'package:notium/screens/settings_tags.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/folder_selection_dialog.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -206,17 +204,6 @@ class SettingsListState extends State<SettingsList> {
           Navigator.of(context).push(route);
         },
       ),
-      ListTile(
-        title: Text(tr('settings.images.title')),
-        subtitle: Text(tr('settings.images.subtitle')),
-        onTap: () {
-          var route = MaterialPageRoute(
-            builder: (context) => SettingsImagesScreen(),
-            settings: const RouteSettings(name: '/settings/images'),
-          );
-          Navigator.of(context).push(route);
-        },
-      ),
       const SizedBox(height: 16.0),
       SwitchListTile(
         title: Text(tr('settings.crashReports')),
@@ -235,17 +222,6 @@ class SettingsListState extends State<SettingsList> {
           var route = MaterialPageRoute(
             builder: (context) => DebugScreen(),
             settings: const RouteSettings(name: '/settings/debug'),
-          );
-          Navigator.of(context).push(route);
-        },
-      ),
-      ListTile(
-        title: Text(tr('settings.experimental.title')),
-        subtitle: Text(tr('settings.experimental.subtitle')),
-        onTap: () {
-          var route = MaterialPageRoute(
-            builder: (context) => ExperimentalSettingsScreen(),
-            settings: const RouteSettings(name: '/settings/experimental'),
           );
           Navigator.of(context).push(route);
         },

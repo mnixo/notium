@@ -16,7 +16,7 @@ settings:
     title: Display Settings
     darkTheme: Dark Theme
     homeScreen: Home Screen
-  gitAuthor: Git Author Settings
+  gitAuthor: Notes Author
   versionInfo: Version Info
   crashReports: Collect Anonymous Crash Reports
   debug:
@@ -41,15 +41,8 @@ settings:
       subtitle: Notes which have not been synced will be lost
       ok: Ok
       cancel: Cancel
-    title: Git Remote Settings
+    title: Backup and Sync Settings
     subtitle: Configure where your notes are synced
-  experimental:
-    title: Experimental Features
-    subtitle: Try out features in Development
-    backlinks: Show Backlinks in Markdown Preview
-    fs: Show File System
-    markdownToolbar: Show Markdown Toolbar in Editor
-    graphView: Graph View
   remoteSync:
     auto: Automatic
     manual: Manual
