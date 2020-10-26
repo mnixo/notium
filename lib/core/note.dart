@@ -1,8 +1,5 @@
 import 'dart:io';
 
-import 'package:path/path.dart' as p;
-import 'package:uuid/uuid.dart';
-
 import 'package:notium/core/links_loader.dart';
 import 'package:notium/core/md_yaml_doc_loader.dart';
 import 'package:notium/core/note_notifier.dart';
@@ -14,6 +11,9 @@ import 'package:notium/settings.dart';
 import 'package:notium/utils/datetime.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:notium/utils/markdown.dart';
+import 'package:path/path.dart' as p;
+import 'package:uuid/uuid.dart';
+
 import 'link.dart';
 import 'md_yaml_doc.dart';
 import 'md_yaml_doc_codec.dart';
@@ -442,12 +442,13 @@ class Note with NotesNotifier {
   String _buildImagePath(File file) {
     String baseFolder;
 
-    var imageSpec = Settings.instance.imageLocationSpec;
-    if (imageSpec == '.') {
-      baseFolder = parent.folderPath;
-    } else {
-      baseFolder = parent.rootFolder.getFolderWithSpec(imageSpec).folderPath;
-      baseFolder ??= parent.folderPath;
+    var now = new DateTime.now();
+    var year = now.year;
+    var month = now.month;
+    baseFolder = parent.rootFolder.folderPath + "/img/" + year.toString() + "/" + month.toString() + "";
+
+    if(!Directory(baseFolder).existsSync()) {
+      Directory(baseFolder).createSync(recursive: true);
     }
 
     var imageFileName = p.basename(file.path);
@@ -460,10 +461,10 @@ class Note with NotesNotifier {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Note &&
-          runtimeType == other.runtimeType &&
-          _filePath == other._filePath &&
-          _data == other._data;
+          other is Note &&
+              runtimeType == other.runtimeType &&
+              _filePath == other._filePath &&
+              _data == other._data;
 
   @override
   String toString() {
