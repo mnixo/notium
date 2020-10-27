@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart' as p;
 import 'package:notium/apis/git_migration.dart';
 import 'package:notium/appstate.dart';
 import 'package:notium/core/git_repo.dart';
@@ -14,7 +13,10 @@ import 'package:notium/error_reporting.dart';
 import 'package:notium/event_logger.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:path/path.dart' as p;
 import 'package:synchronized/synchronized.dart';
+
+import 'core/processors/image_extractor.dart';
 
 class StateContainer with ChangeNotifier {
   final AppState appState;
@@ -282,7 +284,7 @@ class StateContainer with ChangeNotifier {
         notifyListeners();
         // FIXME: Is there a way of figuring this amount dynamically?
         // The '4 seconds' is taken from snack_bar.dart -> _kSnackBarDisplayDuration
-        // We wait an aritfical amount of time, so that the user has a change to undo
+        // We wait an artificial amount of time, so that the user has a change to undo
         // their delete operation, and that commit is not synced with the server, till then.
         await Future.delayed(const Duration(seconds: 4));
         _syncNotes();

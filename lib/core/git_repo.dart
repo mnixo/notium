@@ -7,6 +7,7 @@ import 'package:git_bindings/git_bindings.dart';
 import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_folder.dart';
 import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/core/processors/image_extractor.dart';
 import 'package:notium/error_reporting.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/utils/logger.dart';
@@ -32,7 +33,7 @@ class GitNoteRepository {
   }) : _gitRepo = GitRepo(folderPath: gitDirPath);
 
   Future<NoteRepoResult> addNote(Note note) async {
-    return _addNote(note, "Added Note");
+    return _addNote(note, "Add note " + note.pathSpec());
   }
 
   Future<NoteRepoResult> _addNote(Note note, String commitMessage) async {
@@ -49,7 +50,7 @@ class GitNoteRepository {
   Future<NoteRepoResult> addFolder(NotesFolderFS folder) async {
     await _gitRepo.add(".");
     await _gitRepo.commit(
-      message: "Created New Folder",
+      message: "Create new folder " + folder.folderPath,
       authorEmail: settings.gitAuthorEmail,
       authorName: settings.gitAuthor,
     );
@@ -78,7 +79,7 @@ class GitNoteRepository {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
     await _gitRepo.commit(
-      message: "Renamed Folder",
+      message: "Rename folder " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
       authorName: settings.gitAuthor,
     );
@@ -93,7 +94,7 @@ class GitNoteRepository {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
     await _gitRepo.commit(
-      message: "Renamed Note",
+      message: "Rename note " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
       authorName: settings.gitAuthor,
     );
@@ -108,7 +109,7 @@ class GitNoteRepository {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
     await _gitRepo.commit(
-      message: "Renamed File",
+      message: "Rename file " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
       authorName: settings.gitAuthor,
     );
@@ -123,7 +124,7 @@ class GitNoteRepository {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
     await _gitRepo.commit(
-      message: "Note Moved",
+      message: "Move note " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
       authorName: settings.gitAuthor,
     );
@@ -131,15 +132,43 @@ class GitNoteRepository {
     return NoteRepoResult(noteFilePath: newFullPath, error: false);
   }
 
+  Future<NoteRepoResult> removeNoteImages(Note note) async {
+    String imageUrls = "";
+    Set<NoteImage> noteImages = note.images;
+    for(NoteImage image in noteImages) {
+      var imageUrl = image.url;
+      // We need to remove the ./ in the image path for rm to work
+      // From ./img/2099/12/... to img/2099/12...
+      imageUrl = imageUrl.substring(imageUrl.indexOf("/")+1);
+      Log.d("Doing the git rm on " + imageUrl);
+      imageUrls += "\n" + imageUrl;
+      await _gitRepo.rm(imageUrl);
+    }
+
+    await _gitRepo.add(".");
+    await _gitRepo.commit(
+      message: "Remove note and associated images " + note.pathSpec() + imageUrls,
+      authorEmail: settings.gitAuthorEmail,
+      authorName: settings.gitAuthor,
+    );
+
+    return NoteRepoResult(error: false);
+  }
+
   Future<NoteRepoResult> removeNote(Note note) async {
     // We are not calling note.remove() as gitRm will also remove the file
     var spec = note.pathSpec();
     await _gitRepo.rm(spec);
-    await _gitRepo.commit(
-      message: "Removed Note " + spec,
-      authorEmail: settings.gitAuthorEmail,
-      authorName: settings.gitAuthor,
-    );
+
+    if(note.images.isNotEmpty) {
+      await removeNoteImages(note);
+    } else {
+      await _gitRepo.commit(
+        message: "Remove note " + spec,
+        authorEmail: settings.gitAuthorEmail,
+        authorName: settings.gitAuthor,
+      );
+    }
 
     return NoteRepoResult(noteFilePath: note.filePath, error: false);
   }
@@ -148,7 +177,7 @@ class GitNoteRepository {
     var spec = folder.pathSpec();
     await _gitRepo.rm(spec);
     await _gitRepo.commit(
-      message: "Removed Folder " + spec,
+      message: "Remove folder " + spec,
       authorEmail: settings.gitAuthorEmail,
       authorName: settings.gitAuthor,
     );
