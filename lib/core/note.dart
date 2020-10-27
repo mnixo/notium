@@ -445,7 +445,7 @@ class Note with NotesNotifier {
     var now = new DateTime.now();
     var year = now.year;
     var month = now.month;
-    baseFolder = parent.rootFolder.folderPath + "/notium_img/" + year.toString() + "/" + month.toString() + "";
+    baseFolder = parent.rootFolder.folderPath + "/.notium_img/" + year.toString() + "/" + month.toString() + "";
 
     if(!Directory(baseFolder).existsSync()) {
       Directory(baseFolder).createSync(recursive: true);
