@@ -16,8 +16,6 @@ import 'package:notium/utils/logger.dart';
 import 'package:path/path.dart' as p;
 import 'package:synchronized/synchronized.dart';
 
-import 'core/processors/image_extractor.dart';
-
 class StateContainer with ChangeNotifier {
   final AppState appState;
   final Settings settings;
