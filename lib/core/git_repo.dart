@@ -193,7 +193,7 @@ class GitNoteRepository {
   }
 
   Future<NoteRepoResult> updateNote(Note note) async {
-    return _addNote(note, "Edited Note");
+    return _addNote(note, "Edit note " + note.pathSpec());
   }
 
   Future<void> fetch() async {
