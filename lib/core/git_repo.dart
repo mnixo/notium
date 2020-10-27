@@ -137,9 +137,6 @@ class GitNoteRepository {
     Set<NoteImage> noteImages = note.images;
     for(NoteImage image in noteImages) {
       var imageUrl = image.url;
-      // We need to remove the ./ in the image path for rm to work
-      // From ./notium_img/2099/12/... to notium_img/2099/12...
-      imageUrl = imageUrl.substring(imageUrl.indexOf("/")+1);
       Log.d("Doing the git rm on " + imageUrl);
       imageUrls += "\n" + imageUrl;
       await _gitRepo.rm(imageUrl);
