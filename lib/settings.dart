@@ -43,7 +43,7 @@ class Settings extends ChangeNotifier {
   SettingsMarkdownDefaultView markdownLastUsedView =
       SettingsMarkdownDefaultView.Edit;
 
-  String imageLocationSpec = "."; // . means the same folder
+  String imageLocationSpec = ".notium_img";
 
   bool zenMode = true;
   bool saveTitleInH1 = false;
