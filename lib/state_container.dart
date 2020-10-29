@@ -20,6 +20,7 @@ class StateContainer with ChangeNotifier {
   final AppState appState;
   final Settings settings;
   final String gitBaseDirectory;
+  final String cacheDirectory;
 
   final _opLock = Lock();
   final _loadLock = Lock();
@@ -34,6 +35,7 @@ class StateContainer with ChangeNotifier {
     @required this.appState,
     @required this.settings,
     @required this.gitBaseDirectory,
+    @required this.cacheDirectory,
   }) {
     assert(settings.localGitRepoConfigured);
 
@@ -42,7 +44,7 @@ class StateContainer with ChangeNotifier {
     _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
     appState.notesFolder = NotesFolderFS(null, _gitRepo.gitDirPath);
 
-    var cachePath = p.join(gitBaseDirectory, "cache.json");
+    var cachePath = p.join(cacheDirectory, "cache.json");
     _notesCache = NotesCache(
       filePath: cachePath,
       notesBasePath: _gitRepo.gitDirPath,
