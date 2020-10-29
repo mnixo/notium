@@ -356,4 +356,10 @@ class StateContainer with ChangeNotifier {
   Future _persistConfig() async {
     await settings.save();
   }
+
+  Future<void> discardChanges(Note note) async {
+    var repo = await GitRepository.load(repoPath);
+    await repo.checkout(note.filePath);
+    return note.load();
+  }
 }
