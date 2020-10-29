@@ -310,6 +310,7 @@ class StateContainer with ChangeNotifier {
 
       var branches = await repo.branches();
       if (branches.isEmpty) {
+        Log.i("Completing - no local branch");
         assert(remoteBranch.isHash);
         await repo.checkoutBranch(remoteBranchName, remoteBranch.hash);
         await repo.setUpstreamTo(remote, remoteBranchName);
@@ -320,6 +321,7 @@ class StateContainer with ChangeNotifier {
           await repo.setUpstreamTo(remote, remoteBranchName);
           await _gitRepo.merge();
         } else {
+          Log.i("Completing - localBranch diff remote: $branch $remoteBranchName");
           var headRef = await repo.resolveReference(await repo.head());
           await repo.checkoutBranch(remoteBranchName, headRef.hash);
           await repo.deleteBranch(branch);
