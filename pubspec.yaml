@@ -34,7 +34,7 @@ dependencies:
   git_bindings: #^0.0.18
     git:
       url: https://github.com/notium/git_bindings.git
-      ref: e7e957acdaff208744b5b1fff9a611cbfbd1de34
+      ref: 2598c4cf21c4e23639b7eb5f3e1dd66cfd8eccd9
   git_url_parse2: ^0.0.1
   http: ^0.12.0+1
   image_picker: ^0.6.7
