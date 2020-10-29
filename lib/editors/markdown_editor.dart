@@ -102,24 +102,6 @@ class MarkdownEditorState extends State<MarkdownEditor>
       ),
     );
 
-    /*
-
-    var settings = Provider.of<Settings>(context);
-    if (settings.experimentalMarkdownToolbar && editingMode) {
-      body = Container(
-        child: Column(
-          children: <Widget>[
-            Expanded(child: editor),
-            MarkdownToolBar(
-              textController: _textController,
-            ),
-          ],
-          mainAxisSize: MainAxisSize.min,
-        ),
-      );
-    }
-    */
-
     return EditorScaffold(
       editor: widget,
       editorState: this,
