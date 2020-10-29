@@ -14,7 +14,7 @@ dependencies:
   dart_git:
     git:
       url: https://github.com/notium/dart_git.git
-      ref: 156ac4e589cf8a67c126e5c7c18f6ca76c6c232e
+      ref: 071cb643a4924a45986920f44c0e2433ee9159ed
   device_info: ">=0.4.2+4 <2.0.0"
   dots_indicator: ^0.0.3
   dynamic_theme: ^1.0.0
@@ -31,7 +31,10 @@ dependencies:
   flutter_webview_plugin: ^0.3.11
   font_awesome_flutter: ^8.7.0
   function_types: ^0.0.2
-  git_bindings: ^0.0.18
+  git_bindings: #^0.0.18
+    git:
+      url: https://github.com/notium/git_bindings.git
+      ref: e7e957acdaff208744b5b1fff9a611cbfbd1de34
   git_url_parse2: ^0.0.1
   http: ^0.12.0+1
   image_picker: ^0.6.7
