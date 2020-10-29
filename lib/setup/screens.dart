@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:function_types/function_types.dart';
 import 'package:git_bindings/git_bindings.dart' as git_bindings;
 import 'package:notium/apis/githost_factory.dart';
-import 'package:notium/app_settings.dart';
 import 'package:notium/error_reporting.dart';
 import 'package:notium/event_logger.dart';
 import 'package:notium/settings.dart';
@@ -17,13 +16,13 @@ import 'package:notium/setup/clone_url.dart';
 import 'package:notium/setup/loading_error.dart';
 import 'package:notium/setup/sshkey.dart';
 import 'package:notium/ssh/keygen.dart';
+import 'package:notium/state_container.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:notium/utils/notium_urls.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:notium/state_container.dart';
 
 class GitHostSetupScreen extends StatefulWidget {
   final String repoFolderName;
@@ -245,11 +244,16 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
         "-" +
         DateTime.now().toIso8601String().substring(0, 10); // only the date
 
-    generateSSHKeys(comment: comment).then((String publicKey) {
+    generateSSHKeys(comment: comment).then((SshKey sshKey) {
+      var settings = Provider.of<Settings>(context, listen: false);
+      settings.sshPublicKey = sshKey.publicKey;
+      settings.sshPrivateKey = sshKey.privateKey;
+      settings.sshPassword = sshKey.password;
+      settings.save();
+
       setState(() {
-        this.publicKey = publicKey;
+        this.publicKey = sshKey.publicKey;
         Log.d("PublicKey: " + publicKey);
-        _copyKeyToClipboard(context);
       });
     });
   }
@@ -313,7 +317,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       gitCloneErrorMessage = "";
     });
 
-    var stateContainer = Provider.of<StateContainer>(context);
+    var stateContainer = Provider.of<StateContainer>(context, listen: false);
     var basePath = stateContainer.appState.gitBaseDirectory;
 
     var settings = Provider.of<Settings>(context, listen: false);
@@ -327,7 +331,12 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       await repo.addRemote(widget.remoteName, _gitCloneUrl);
 
       var repoN = git_bindings.GitRepo(folderPath: repoPath);
-      await repoN.fetch(widget.remoteName);
+      await repoN.fetch(
+        remote: widget.remoteName,
+        publicKey: settings.sshPublicKey,
+        privateKey: settings.sshPrivateKey,
+        password: settings.sshPassword,
+      );
     } on Exception catch (e) {
       Log.e(e.toString());
       error = e.toString();
@@ -383,7 +392,16 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       setState(() {
         _autoConfigureMessage = tr('setup.sshKey.generate');
       });
-      var publicKey = await generateSSHKeys(comment: "notium");
+      var sshKey = await generateSSHKeys(comment: "notium");
+      var settings = Provider.of<Settings>(context, listen: false);
+      settings.sshPublicKey = sshKey.publicKey;
+      settings.sshPrivateKey = sshKey.privateKey;
+      settings.sshPassword = sshKey.password;
+      settings.save();
+
+      setState(() {
+        publicKey = sshKey.publicKey;
+      });
 
       Log.i("Adding as a deploy key");
       _autoConfigureMessage = tr('setup.sshKey.addDeploy');

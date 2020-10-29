@@ -55,6 +55,10 @@ class Settings extends ChangeNotifier {
 
   String folderName = "notium_notes";
 
+  String sshPublicKey = "";
+  String sshPrivateKey = "";
+  String sshPassword = "";
+
   void load(SharedPreferences pref) {
     gitAuthor = pref.getString("gitAuthor") ?? gitAuthor;
     gitAuthorEmail = pref.getString("gitAuthorEmail") ?? gitAuthorEmail;
@@ -108,6 +112,10 @@ class Settings extends ChangeNotifier {
 
     // From AppState
     folderName = pref.getString("remoteGitRepoPath") ?? folderName;
+
+    sshPublicKey = pref.getString("sshPublicKey") ?? sshPublicKey;
+    sshPrivateKey = pref.getString("sshPrivateKey") ?? sshPrivateKey;
+    sshPassword = pref.getString("sshPassword") ?? sshPassword;
   }
 
   Future<void> save() async {
@@ -170,6 +178,10 @@ class Settings extends ChangeNotifier {
     _setBool(pref, "swipeToDelete", swipeToDelete, defaultSet.swipeToDelete);
     _setStringSet(pref, "inlineTagPrefixes", inlineTagPrefixes,
         defaultSet.inlineTagPrefixes);
+
+    _setString(pref, "sshPublicKey", sshPublicKey, defaultSet.sshPublicKey);
+    _setString(pref, "sshPrivateKey", sshPrivateKey, defaultSet.sshPrivateKey);
+    _setString(pref, "sshPassword", sshPassword, defaultSet.sshPassword);
 
     pref.setInt("settingsVersion", version);
 
@@ -248,6 +260,7 @@ class Settings extends ChangeNotifier {
       'inlineTagPrefixes': inlineTagPrefixes.join(' '),
       'emojiParser': emojiParser.toString(),
       'remoteGitRepoPath': folderName.toString(),
+      'sshPublicKey': sshPublicKey,
     };
   }
 

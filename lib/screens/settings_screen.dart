@@ -8,10 +8,10 @@ import 'package:notium/screens/settings_git_remote.dart';
 import 'package:notium/screens/settings_tags.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
+import 'package:notium/state_container.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/folder_selection_dialog.dart';
 import 'package:provider/provider.dart';
-import 'package:notium/state_container.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -187,7 +187,8 @@ class SettingsListState extends State<SettingsList> {
         subtitle: Text(tr("settings.gitRemote.subtitle")),
         onTap: () {
           var route = MaterialPageRoute(
-            builder: (context) => GitRemoteSettingsScreen(),
+            builder: (context) =>
+                GitRemoteSettingsScreen(settings.sshPublicKey),
             settings: const RouteSettings(name: '/settings/gitRemote'),
           );
           Navigator.of(context).push(route);

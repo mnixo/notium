@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:git_bindings/git_bindings.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/setup/screens.dart';
 import 'package:notium/setup/sshkey.dart';
+import 'package:notium/ssh/keygen.dart';
 import 'package:notium/state_container.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
@@ -15,25 +15,15 @@ import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 
 class GitRemoteSettingsScreen extends StatefulWidget {
+  final String sshPublicKey;
+  GitRemoteSettingsScreen(this.sshPublicKey);
+
   @override
   _GitRemoteSettingsScreenState createState() =>
       _GitRemoteSettingsScreenState();
 }
 
 class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
-  String publicKey = "";
-
-  @override
-  void initState() {
-    super.initState();
-    getSSHPublicKey().then((String val) {
-      if (!mounted) return;
-      setState(() {
-        publicKey = val;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
@@ -47,7 +37,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
           textAlign: TextAlign.left,
         ),
         const SizedBox(height: 16.0),
-        PublicKeyWidget(publicKey),
+        PublicKeyWidget(widget.sshPublicKey),
         const SizedBox(height: 16.0),
         const Divider(),
         Builder(
@@ -101,7 +91,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
   }
 
   void _copyKeyToClipboard(BuildContext context) {
-    Clipboard.setData(ClipboardData(text: publicKey));
+    Clipboard.setData(ClipboardData(text: widget.sshPublicKey));
     showSnackbar(context, tr('setup.sshKey.copied'));
   }
 
@@ -111,12 +101,15 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
         "-" +
         DateTime.now().toIso8601String().substring(0, 10); // only the date
 
-    generateSSHKeys(comment: comment).then((String publicKey) {
-      setState(() {
-        this.publicKey = publicKey;
-        Log.d("PublicKey: " + publicKey);
-        _copyKeyToClipboard(context);
-      });
+    generateSSHKeys(comment: comment).then((SshKey sshKey) {
+      var settings = Provider.of<Settings>(context, listen: false);
+      settings.sshPublicKey = sshKey.publicKey;
+      settings.sshPrivateKey = sshKey.publicKey;
+      settings.sshPassword = sshKey.password;
+      settings.save();
+
+      Log.d("PublicKey: " + sshKey.publicKey);
+      _copyKeyToClipboard(context);
     });
   }
 
