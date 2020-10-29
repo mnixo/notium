@@ -29,8 +29,10 @@ class StateContainer with ChangeNotifier {
   GitNoteRepository _gitRepo;
   NotesCache _notesCache;
 
+  String repoPath;
+
   StateContainer({@required this.appState, @required this.settings}) {
-    String repoPath = p.join(appState.gitBaseDirectory, settings.folderName);
+    repoPath = p.join(appState.gitBaseDirectory, settings.folderName);
 
     _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
     appState.notesFolder = NotesFolderFS(null, _gitRepo.gitDirPath);
@@ -296,7 +298,12 @@ class StateContainer with ChangeNotifier {
 
   void completeGitHostSetup(String repoFolderName, String remoteName) {
     () async {
-      var repo = await GitRepository.load(_gitRepo.gitDirPath);
+      var repoPath = p.join(appState.gitBaseDirectory, repoFolderName);
+      Log.i("completeGitHostSetup repoPath: $repoPath");
+
+      _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
+
+      var repo = await GitRepository.load(repoPath);
       var remote = repo.config.remote(remoteName);
       var remoteBranch = await repo.guessRemoteHead(remoteName);
       var remoteBranchName = remoteBranch.name.branchName();
@@ -326,6 +333,14 @@ class StateContainer with ChangeNotifier {
         //       if not, then just create a new branch with the remoteBranchName
         //       and merge ..
       }
+
+      this.repoPath = repoPath;
+      _notesCache.clear();
+      appState.remoteGitRepoConfigured = true;
+      appState.notesFolder.reset(repoPath);
+
+      settings.folderName = repoFolderName;
+      settings.save();
 
       await _persistConfig();
       _loadNotes();
