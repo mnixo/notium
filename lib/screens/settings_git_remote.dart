@@ -1,13 +1,9 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:git_bindings/git_bindings.dart';
-import 'package:path/path.dart' as p;
-import 'package:provider/provider.dart';
-
 import 'package:notium/app_settings.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
@@ -16,6 +12,8 @@ import 'package:notium/setup/sshkey.dart';
 import 'package:notium/state_container.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:path/path.dart' as p;
+import 'package:provider/provider.dart';
 
 class GitRemoteSettingsScreen extends StatefulWidget {
   @override
@@ -150,8 +148,9 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
 
     var route = MaterialPageRoute(
       builder: (context) => GitHostSetupScreen(
-        repoFolderName,
-        stateContainer.completeGitHostSetup,
+        repoFolderName: repoFolderName,
+        remoteName: 'origin',
+        onCompletedFunction: stateContainer.completeGitHostSetup,
       ),
       settings: const RouteSettings(name: '/setupRemoteGit'),
     );

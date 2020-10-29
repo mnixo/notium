@@ -12,7 +12,9 @@ dependencies:
   cached_network_image: ^2.2.0+1
   connectivity: ^0.4.6+1
   dart_git:
-    git: https://github.com/notium/dart_git.git
+    git:
+      url: https://github.com/notium/dart_git.git
+      ref: 071cb643a4924a45986920f44c0e2433ee9159ed
   device_info: ">=0.4.2+4 <2.0.0"
   dots_indicator: ^0.0.3
   dynamic_theme: ^1.0.0

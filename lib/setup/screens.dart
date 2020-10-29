@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dart_git/git.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 class GitHostSetupScreen extends StatefulWidget {
   final String repoFolderName;
-  final Func1<String, void> onCompletedFunction;
+  final String remoteName;
+  final Func2<String, String, void> onCompletedFunction;
 
-  GitHostSetupScreen(this.repoFolderName, this.onCompletedFunction);
+  GitHostSetupScreen({
+    @required this.repoFolderName,
+    @required this.remoteName,
+    @required this.onCompletedFunction,
+  });
 
   @override
   GitHostSetupScreenState createState() {
@@ -309,17 +315,21 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
     final appSettings = Provider.of<AppSettings>(context, listen: false);
     var basePath = appSettings.gitBaseDirectory;
 
-    // Just in case it was half cloned because of an error
-    String repoPath = p.join(basePath, widget.repoFolderName);
-    await _removeExistingClone(repoPath);
+    var settings = Provider.of<Settings>(context, listen: false);
+    var repoName = settings.internalRepoFolderName;
+    var repoPath = p.join(basePath, repoName);
+    Log.i("RepoPath: $repoPath");
 
     String error;
     try {
-      Log.d("Cloning " + _gitCloneUrl);
-      await git_bindings.GitRepo.clone(repoPath, _gitCloneUrl);
-    } on git_bindings.GitException catch (e) {
+      var repo = await GitRepository.load(repoPath);
+      await repo.addRemote(widget.remoteName, _gitCloneUrl);
+
+      var repoN = git_bindings.GitRepo(folderPath: repoPath);
+      await repoN.fetch(widget.remoteName);
+    } on Exception catch (e) {
       Log.e(e.toString());
-      error = e.cause;
+      error = e.toString();
     }
 
     if (error != null && error.isNotEmpty) {
@@ -345,9 +355,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       var ignoreFile = File(p.join(repoPath, ".gitignore"));
       ignoreFile.createSync();
 
-      var repo = git_bindings.GitRepo(
-        folderPath: repoPath,
-      );
+      var repo = git_bindings.GitRepo(folderPath: repoPath);
       await repo.add('.gitignore');
 
       var settings = Provider.of<Settings>(context, listen: false);
@@ -363,7 +371,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       parameters: _buildOnboardingLogInfo(),
     );
     Navigator.pop(context);
-    widget.onCompletedFunction(widget.repoFolderName);
+    widget.onCompletedFunction(widget.repoFolderName, widget.remoteName);
   }
 
   Future<void> _completeAutoConfigure() async {
@@ -428,17 +436,6 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
         .replaceFirst("KeyGenerationChoice.", "");
 
     return map;
-  }
-
-  Future _removeExistingClone(String baseDirPath) async {
-    var baseDir = Directory(baseDirPath);
-    var dotGitDir = Directory(p.join(baseDir.path, ".git"));
-    bool exists = dotGitDir.existsSync();
-    if (exists) {
-      Log.d("Removing " + baseDir.path);
-      await baseDir.delete(recursive: true);
-      await baseDir.create();
-    }
   }
 }
 

@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:notium/core/sorting_mode.dart';
 import 'package:notium/folder_views/common.dart';
 import 'package:notium/screens/note_editor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends ChangeNotifier {
   // singleton
@@ -54,10 +54,9 @@ class Settings extends ChangeNotifier {
   Set<String> inlineTagPrefixes = {'#', '@'};
 
   // From AppState
-  String localGitRepoFolderName = "";
+  String internalRepoFolderName = "";
   bool localGitRepoConfigured = false;
 
-  String remoteGitRepoFolderName = "";
   bool remoteGitRepoConfigured = false;
 
   void load(SharedPreferences pref) {
@@ -114,8 +113,7 @@ class Settings extends ChangeNotifier {
     // From AppState
     localGitRepoConfigured = pref.getBool("localGitRepoConfigured") ?? false;
     remoteGitRepoConfigured = pref.getBool("remoteGitRepoConfigured") ?? false;
-    localGitRepoFolderName = pref.getString("localGitRepoPath") ?? "";
-    remoteGitRepoFolderName = pref.getString("remoteGitRepoPath") ?? "";
+    internalRepoFolderName = pref.getString("localGitRepoPath") ?? "";
   }
 
   Future<void> save() async {
@@ -183,8 +181,7 @@ class Settings extends ChangeNotifier {
 
     pref.setBool("localGitRepoConfigured", localGitRepoConfigured);
     pref.setBool("remoteGitRepoConfigured", remoteGitRepoConfigured);
-    pref.setString("localGitRepoPath", localGitRepoFolderName);
-    pref.setString("remoteGitRepoPath", remoteGitRepoFolderName);
+    pref.setString("localGitRepoPath", internalRepoFolderName);
 
     notifyListeners();
   }
@@ -260,8 +257,7 @@ class Settings extends ChangeNotifier {
       'emojiParser': emojiParser.toString(),
       'localGitRepoConfigured': localGitRepoConfigured.toString(),
       'remoteGitRepoConfigured': remoteGitRepoConfigured.toString(),
-      'localGitRepoFolderName': localGitRepoFolderName.toString(),
-      'remoteGitRepoFolderName': remoteGitRepoFolderName.toString(),
+      'remoteGitRepoPath': internalRepoFolderName.toString(),
     };
   }
 

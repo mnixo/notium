@@ -56,12 +56,13 @@ class JournalApp extends StatefulWidget {
       Log.i("New Documents Directory Path ${dir.path}");
     }
 
+    // FIXME: This can be replaced with a fs stat
     if (settings.localGitRepoConfigured == false) {
       // FIXME: What about exceptions!
-      settings.localGitRepoFolderName = "notium_repo";
+      settings.internalRepoFolderName = "notium_notes";
       var repoPath = p.join(
         appSettings.gitBaseDirectory,
-        settings.localGitRepoFolderName,
+        settings.internalRepoFolderName,
       );
       await GitRepository.init(repoPath);
 
@@ -285,8 +286,9 @@ class _JournalAppState extends State<JournalApp> {
         return SettingsScreen();
       case '/setupRemoteGit':
         return GitHostSetupScreen(
-          "notium",
-          stateContainer.completeGitHostSetup,
+          repoFolderName: settings.internalRepoFolderName,
+          remoteName: "origin",
+          onCompletedFunction: stateContainer.completeGitHostSetup,
         );
       case '/onBoarding':
         return OnBoardingScreen();

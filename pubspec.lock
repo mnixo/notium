@@ -173,8 +173,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "8e7e782f32f6cb1f39e39036d795f06ddecc56aa"
+      ref: "071cb643a4924a45986920f44c0e2433ee9159ed"
+      resolved-ref: "071cb643a4924a45986920f44c0e2433ee9159ed"
       url: "https://github.com/notium/dart_git.git"
     source: git
     version: "0.0.1"
@@ -219,7 +219,7 @@ packages:
       name: equatable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.5"
   fake_async:
     dependency: transitive
     description:
