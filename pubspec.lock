@@ -359,8 +359,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: e7e957acdaff208744b5b1fff9a611cbfbd1de34
-      resolved-ref: e7e957acdaff208744b5b1fff9a611cbfbd1de34
+      ref: "2598c4cf21c4e23639b7eb5f3e1dd66cfd8eccd9"
+      resolved-ref: "2598c4cf21c4e23639b7eb5f3e1dd66cfd8eccd9"
       url: "https://github.com/notium/git_bindings.git"
     source: git
     version: "0.0.18"
