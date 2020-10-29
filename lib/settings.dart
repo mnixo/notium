@@ -260,7 +260,7 @@ class Settings extends ChangeNotifier {
       'inlineTagPrefixes': inlineTagPrefixes.join(' '),
       'emojiParser': emojiParser.toString(),
       'remoteGitRepoPath': folderName.toString(),
-      'sshPublicKey': sshPublicKey,
+      'sshPublicKey': sshPublicKey.isNotEmpty.toString(),
     };
   }
 
