@@ -37,7 +37,7 @@ class StateContainer with ChangeNotifier {
     @required this.gitBaseDirectory,
     @required this.cacheDirectory,
   }) {
-    var repoPath = p.join(gitBaseDirectory, settings.internalRepoFolderName);
+    var repoPath = p.join(gitBaseDirectory, settings.folderName);
 
     _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
     appState.notesFolder = NotesFolderFS(null, _gitRepo.gitDirPath);

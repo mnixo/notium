@@ -27,12 +27,7 @@ void main() async {
 Future<void> populateWithData(SharedPreferences pref) async {
   var dir = await getApplicationDocumentsDirectory();
 
-  var settings = Settings.instance;
-  settings.localGitRepoConfigured = true;
-  settings.internalRepoFolderName = "notium_repo";
-  settings.save();
-
-  var repoPath = p.join(dir.path, settings.internalRepoFolderName);
+  var repoPath = p.join(dir.path, "notium_repo");
   await GitRepository.init(repoPath);
 
   print("Filling fake data in $repoPath");

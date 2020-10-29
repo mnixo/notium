@@ -45,14 +45,14 @@ class JournalApp extends StatefulWidget {
     var dir = await getApplicationDocumentsDirectory();
     appState.gitBaseDirectory = dir.path;
 
-    var gitRepoDir = p.join(appState.gitBaseDirectory, settings.internalRepoFolderName);
+    var gitRepoDir = p.join(appState.gitBaseDirectory, settings.folderName);
 
     var repoDirStat = File(gitRepoDir).statSync();
     if (repoDirStat.type != FileSystemEntityType.directory) {
-      settings.internalRepoFolderName = "notium_notes";
+      settings.folderName = "notium_notes";
       var repoPath = p.join(
         appState.gitBaseDirectory,
-        settings.internalRepoFolderName,
+        settings.folderName,
       );
       Log.i("Calling GitInit at: $repoPath");
       await GitRepository.init(repoPath);
@@ -282,7 +282,7 @@ class _JournalAppState extends State<JournalApp> {
         return SettingsScreen();
       case '/setupRemoteGit':
         return GitHostSetupScreen(
-          repoFolderName: settings.internalRepoFolderName,
+          repoFolderName: settings.folderName,
           remoteName: "origin",
           onCompletedFunction: stateContainer.completeGitHostSetup,
         );

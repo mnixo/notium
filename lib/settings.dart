@@ -53,7 +53,7 @@ class Settings extends ChangeNotifier {
 
   Set<String> inlineTagPrefixes = {'#', '@'};
 
-  String internalRepoFolderName = "notium_notes";
+  String folderName = "notium_notes";
 
   void load(SharedPreferences pref) {
     gitAuthor = pref.getString("gitAuthor") ?? gitAuthor;
@@ -107,7 +107,7 @@ class Settings extends ChangeNotifier {
         pref.getStringList("inlineTagPrefixes")?.toSet() ?? inlineTagPrefixes;
 
     // From AppState
-    internalRepoFolderName = pref.getString("remoteGitRepoPath") ?? internalRepoFolderName;
+    folderName = pref.getString("remoteGitRepoPath") ?? folderName;
   }
 
   Future<void> save() async {
@@ -173,7 +173,7 @@ class Settings extends ChangeNotifier {
 
     pref.setInt("settingsVersion", version);
 
-    pref.setString("localGitRepoPath", internalRepoFolderName);
+    pref.setString("localGitRepoPath", folderName);
 
     notifyListeners();
   }
@@ -247,7 +247,7 @@ class Settings extends ChangeNotifier {
       'swipeToDelete': swipeToDelete.toString(),
       'inlineTagPrefixes': inlineTagPrefixes.join(' '),
       'emojiParser': emojiParser.toString(),
-      'remoteGitRepoPath': internalRepoFolderName.toString(),
+      'remoteGitRepoPath': folderName.toString(),
     };
   }
 
