@@ -1,12 +1,8 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:collection/collection.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:provider/provider.dart';
-
 import 'package:notium/core/md_yaml_doc.dart';
 import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_folder.dart';
@@ -20,6 +16,7 @@ import 'package:notium/utils/logger.dart';
 import 'package:notium/widgets/folder_selection_dialog.dart';
 import 'package:notium/widgets/note_delete_dialog.dart';
 import 'package:notium/widgets/rename_dialog.dart';
+import 'package:provider/provider.dart';
 
 class ShowUndoSnackbar {}
 
@@ -72,7 +69,7 @@ class NoteEditor extends StatefulWidget {
 
 enum EditorType { Markdown, Checklist }
 
-class NoteEditorState extends State<NoteEditor> {
+class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
   Note note;
   EditorType editorType = EditorType.Markdown;
   MdYamlDoc originalNoteData = MdYamlDoc();
@@ -114,6 +111,8 @@ class NoteEditorState extends State<NoteEditor> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+
     if (widget.defaultEditorType != null) {
       editorType = widget.defaultEditorType;
     } else {
@@ -131,6 +130,24 @@ class NoteEditorState extends State<NoteEditor> {
     if (note.fileFormat == NoteFileFormat.Txt &&
         editorType == EditorType.Markdown) {
       editorType = EditorType.Markdown;
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    Log.i("Note Edit State: $state");
+    if (state != AppLifecycleState.resumed) {
+      var note = _getNoteFromEditor();
+      if (!_noteModified(note)) return;
+
+      Log.d("App Lost Focus - saving note");
+      note.save();
     }
   }
 
