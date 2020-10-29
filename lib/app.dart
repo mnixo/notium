@@ -63,18 +63,13 @@ class JournalApp extends StatefulWidget {
       var remotes = gitRepo.config.remotes;
       appState.remoteGitRepoConfigured = remotes.isNotEmpty;
     }
-    final cacheDir = await getApplicationSupportDirectory();
+    appState.cacheDir = (await getApplicationSupportDirectory()).path;
 
     Widget app = ChangeNotifierProvider.value(
       value: settings,
       child: ChangeNotifierProvider(
         create: (_) {
-          return StateContainer(
-            appState: appState,
-            settings: settings,
-            gitBaseDirectory: appState.gitBaseDirectory,
-            cacheDirectory: cacheDir.path,
-          );
+          return StateContainer(appState: appState, settings: settings);
         },
         child: ChangeNotifierProvider(
           child: JournalApp(appState),

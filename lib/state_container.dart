@@ -19,8 +19,6 @@ import 'package:synchronized/synchronized.dart';
 class StateContainer with ChangeNotifier {
   final AppState appState;
   final Settings settings;
-  final String gitBaseDirectory;
-  final String cacheDirectory;
 
   final _opLock = Lock();
   final _loadLock = Lock();
@@ -31,18 +29,13 @@ class StateContainer with ChangeNotifier {
   GitNoteRepository _gitRepo;
   NotesCache _notesCache;
 
-  StateContainer({
-    @required this.appState,
-    @required this.settings,
-    @required this.gitBaseDirectory,
-    @required this.cacheDirectory,
-  }) {
-    var repoPath = p.join(gitBaseDirectory, settings.folderName);
+  StateContainer({@required this.appState, @required this.settings}) {
+    String repoPath = p.join(appState.gitBaseDirectory, settings.folderName);
 
     _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
     appState.notesFolder = NotesFolderFS(null, _gitRepo.gitDirPath);
 
-    var cachePath = p.join(cacheDirectory, "cache.json");
+    var cachePath = p.join(appState.cacheDir, "cache.json");
     _notesCache = NotesCache(
       filePath: cachePath,
       notesBasePath: _gitRepo.gitDirPath,

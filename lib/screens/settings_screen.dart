@@ -47,7 +47,8 @@ class SettingsListState extends State<SettingsList> {
   Widget build(BuildContext context) {
     var settings = Provider.of<Settings>(context);
     var appSettings = Provider.of<AppSettings>(context);
-    final appState = Provider.of<StateContainer>(context).appState;
+    final stateContainer = Provider.of<StateContainer>(context);
+    final appState = stateContainer.appState;
 
     var saveGitAuthor = (String gitAuthor) {
       settings.gitAuthor = gitAuthor;
