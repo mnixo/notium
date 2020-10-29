@@ -6,29 +6,18 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
+import 'package:notium/app_router.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/appstate.dart';
-import 'package:notium/core/md_yaml_doc_codec.dart';
 import 'package:notium/event_logger.dart';
-import 'package:notium/screens/filesystem_screen.dart';
-import 'package:notium/screens/folder_listing.dart';
-import 'package:notium/screens/graph_view.dart';
-import 'package:notium/screens/note_editor.dart';
-import 'package:notium/screens/tag_listing.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/state_container.dart';
 import 'package:notium/themes.dart';
-import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-
-import 'screens/home_screen.dart';
-import 'screens/onboarding_screens.dart';
-import 'screens/settings_screen.dart';
-import 'setup/screens.dart';
 
 class JournalApp extends StatefulWidget {
   final AppState appState;
@@ -203,18 +192,7 @@ class _JournalAppState extends State<JournalApp> {
     var stateContainer = Provider.of<StateContainer>(context);
     var settings = Provider.of<Settings>(context);
     var appSettings = Provider.of<AppSettings>(context);
-
-    var initialRoute = '/';
-    if (!appSettings.onBoardingCompleted) {
-      initialRoute = '/onBoarding';
-    } else {
-      if (settings.homeScreen == SettingsHomeScreen.AllFolders) {
-        initialRoute = '/folders';
-      }
-      if (settings.homeScreen == SettingsHomeScreen.NewNote) {
-        initialRoute = '/newNote/' + settings.defaultEditor.toInternalString();
-      }
-    }
+    var router = AppRouter(settings: settings, appSettings: appSettings);
 
     return MaterialApp(
       key: const ValueKey("App"),
@@ -229,98 +207,10 @@ class _JournalAppState extends State<JournalApp> {
       navigatorObservers: <NavigatorObserver>[
         EventLogRouteObserver(),
       ],
-      initialRoute: initialRoute,
+      initialRoute: router.initialRoute(),
       debugShowCheckedModeBanner: false,
       //debugShowMaterialGrid: true,
-      onGenerateRoute: (routeSettings) {
-        var route = routeSettings.name;
-        if (route == '/folders' || route == '/tags' || route == '/filesystem') {
-          return PageRouteBuilder(
-            settings: routeSettings,
-            pageBuilder: (_, __, ___) =>
-                _screenForRoute(route, stateContainer, settings),
-            transitionsBuilder: (_, anim, __, child) {
-              return FadeTransition(opacity: anim, child: child);
-            },
-          );
-        }
-
-        return MaterialPageRoute(
-          settings: routeSettings,
-          builder: (context) => _screenForRoute(
-            route,
-            stateContainer,
-            settings,
-          ),
-        );
-      },
+      onGenerateRoute: (rs) => router.generateRoute(rs, stateContainer, _sharedText, _sharedImages),
     );
-  }
-
-  Widget _screenForRoute(
-    String route,
-    StateContainer stateContainer,
-    Settings settings,
-  ) {
-    switch (route) {
-      case '/':
-        return HomeScreen();
-      case '/folders':
-        return FolderListingScreen();
-      case '/filesystem':
-        return FileSystemScreen();
-      case '/tags':
-        return TagListingScreen();
-      case '/graph':
-        return GraphViewScreen();
-      case '/settings':
-        return SettingsScreen();
-      case '/setupRemoteGit':
-        return GitHostSetupScreen(
-          repoFolderName: settings.folderName,
-          remoteName: "origin",
-          onCompletedFunction: stateContainer.completeGitHostSetup,
-        );
-      case '/onBoarding':
-        return OnBoardingScreen();
-    }
-
-    if (route.startsWith('/newNote/')) {
-      var type = route.substring('/newNote/'.length);
-      var et = SettingsEditorType.fromInternalString(type).toEditorType();
-
-      Log.i("New Note - $route");
-      Log.i("EditorType: $et");
-
-      var rootFolder = widget.appState.notesFolder;
-      var sharedImages = _sharedImages;
-      var sharedText = _sharedText;
-
-      _sharedText = null;
-      _sharedImages = null;
-
-      Log.d("sharedText: $sharedText");
-      Log.d("sharedImages: $sharedImages");
-
-      var extraProps = <String, dynamic>{};
-      if (settings.customMetaData.isNotEmpty) {
-        var map = MarkdownYAMLCodec.parseYamlText(settings.customMetaData);
-        map.forEach((key, val) {
-          extraProps[key] = val;
-        });
-      }
-
-      var folder = getFolderForEditor(settings, rootFolder, et);
-      return NoteEditor.newNote(
-        folder,
-        folder,
-        et,
-        existingText: sharedText,
-        existingImages: sharedImages,
-        newNoteExtraProps: extraProps,
-      );
-    }
-
-    return HomeScreen();
   }
 }
