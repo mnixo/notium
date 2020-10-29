@@ -173,8 +173,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "071cb643a4924a45986920f44c0e2433ee9159ed"
-      resolved-ref: "071cb643a4924a45986920f44c0e2433ee9159ed"
+      ref: "09bc129de57f8c179305a99ca1b9a885a4807c3f"
+      resolved-ref: "09bc129de57f8c179305a99ca1b9a885a4807c3f"
       url: "https://github.com/notium/dart_git.git"
     source: git
     version: "0.0.1"

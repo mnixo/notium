@@ -14,7 +14,7 @@ dependencies:
   dart_git:
     git:
       url: https://github.com/notium/dart_git.git
-      ref: 071cb643a4924a45986920f44c0e2433ee9159ed
+      ref: 09bc129de57f8c179305a99ca1b9a885a4807c3f
   device_info: ">=0.4.2+4 <2.0.0"
   dots_indicator: ^0.0.3
   dynamic_theme: ^1.0.0
