@@ -23,6 +23,7 @@ import 'package:notium/utils/notium_urls.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:notium/state_container.dart';
 
 class GitHostSetupScreen extends StatefulWidget {
   final String repoFolderName;
@@ -312,8 +313,8 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       gitCloneErrorMessage = "";
     });
 
-    final appSettings = Provider.of<AppSettings>(context, listen: false);
-    var basePath = appSettings.gitBaseDirectory;
+    var stateContainer = Provider.of<StateContainer>(context);
+    var basePath = stateContainer.appState.gitBaseDirectory;
 
     var settings = Provider.of<Settings>(context, listen: false);
     var repoName = settings.internalRepoFolderName;

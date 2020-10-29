@@ -53,11 +53,7 @@ class Settings extends ChangeNotifier {
 
   Set<String> inlineTagPrefixes = {'#', '@'};
 
-  // From AppState
-  String internalRepoFolderName = "";
-  bool localGitRepoConfigured = false;
-
-  bool remoteGitRepoConfigured = false;
+  String internalRepoFolderName = "notium_notes";
 
   void load(SharedPreferences pref) {
     gitAuthor = pref.getString("gitAuthor") ?? gitAuthor;
@@ -111,9 +107,7 @@ class Settings extends ChangeNotifier {
         pref.getStringList("inlineTagPrefixes")?.toSet() ?? inlineTagPrefixes;
 
     // From AppState
-    localGitRepoConfigured = pref.getBool("localGitRepoConfigured") ?? false;
-    remoteGitRepoConfigured = pref.getBool("remoteGitRepoConfigured") ?? false;
-    internalRepoFolderName = pref.getString("localGitRepoPath") ?? "";
+    internalRepoFolderName = pref.getString("remoteGitRepoPath") ?? internalRepoFolderName;
   }
 
   Future<void> save() async {
@@ -179,8 +173,6 @@ class Settings extends ChangeNotifier {
 
     pref.setInt("settingsVersion", version);
 
-    pref.setBool("localGitRepoConfigured", localGitRepoConfigured);
-    pref.setBool("remoteGitRepoConfigured", remoteGitRepoConfigured);
     pref.setString("localGitRepoPath", internalRepoFolderName);
 
     notifyListeners();
@@ -255,8 +247,6 @@ class Settings extends ChangeNotifier {
       'swipeToDelete': swipeToDelete.toString(),
       'inlineTagPrefixes': inlineTagPrefixes.join(' '),
       'emojiParser': emojiParser.toString(),
-      'localGitRepoConfigured': localGitRepoConfigured.toString(),
-      'remoteGitRepoConfigured': remoteGitRepoConfigured.toString(),
       'remoteGitRepoPath': internalRepoFolderName.toString(),
     };
   }

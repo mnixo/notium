@@ -4,7 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:git_bindings/git_bindings.dart';
-import 'package:notium/app_settings.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/setup/screens.dart';
@@ -131,8 +130,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
     }
 
     var stateContainer = Provider.of<StateContainer>(context, listen: false);
-    var appSettings = Provider.of<AppSettings>(context, listen: false);
-    var gitDir = appSettings.gitBaseDirectory;
+    var gitDir = stateContainer.appState.gitBaseDirectory;
 
     // Figure out the next available folder
     String repoFolderName = "notium_";

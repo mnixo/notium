@@ -11,6 +11,7 @@ import 'package:notium/settings.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/folder_selection_dialog.dart';
 import 'package:provider/provider.dart';
+import 'package:notium/state_container.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -46,7 +47,7 @@ class SettingsListState extends State<SettingsList> {
   Widget build(BuildContext context) {
     var settings = Provider.of<Settings>(context);
     var appSettings = Provider.of<AppSettings>(context);
-    var remoteGitConfigured = settings.remoteGitRepoConfigured;
+    final appState = Provider.of<StateContainer>(context).appState;
 
     var saveGitAuthor = (String gitAuthor) {
       settings.gitAuthor = gitAuthor;
@@ -190,7 +191,7 @@ class SettingsListState extends State<SettingsList> {
           );
           Navigator.of(context).push(route);
         },
-        enabled: remoteGitConfigured,
+        enabled: appState.remoteGitRepoConfigured,
       ),
       const SizedBox(height: 16.0),
       ListTile(

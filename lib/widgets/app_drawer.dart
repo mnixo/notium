@@ -9,20 +9,20 @@ import 'package:provider/provider.dart';
 
 import 'package:notium/event_logger.dart';
 import 'package:notium/app_settings.dart';
-import 'package:notium/settings.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:notium/state_container.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget setupGitButton;
-    var settings = Provider.of<Settings>(context);
+    var appState = Provider.of<StateContainer>(context).appState;
     var appSettings = Provider.of<AppSettings>(context);
     var textStyle = Theme.of(context).textTheme.bodyText1;
     var currentRoute = ModalRoute.of(context).settings.name;
 
-    if (!settings.remoteGitRepoConfigured) {
+    if (!appState.remoteGitRepoConfigured) {
       setupGitButton = ListTile(
         leading: Icon(Icons.sync, color: textStyle.color),
         title: Text(tr('drawer.setup'), style: textStyle),

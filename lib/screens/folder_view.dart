@@ -272,10 +272,10 @@ class _FolderViewState extends State<FolderView> {
   }
 
   List<Widget> _buildNoteActions() {
-    final settings = Provider.of<Settings>(context);
+    final appState = Provider.of<StateContainer>(context).appState;
 
     return <Widget>[
-      if (settings.remoteGitRepoConfigured)
+      if (appState.remoteGitRepoConfigured)
         AnimatedOpacity(
           opacity: Provider.of<StateContainer>(context).appState.syncStatus == SyncStatus.Done ? 0.1 : 1.0,
           duration: Duration(milliseconds: 1000),

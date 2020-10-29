@@ -107,14 +107,6 @@ class NoteViewer extends StatelessWidget {
               extensionSet: markdownExtensions(),
             ),
           ),
-          const SizedBox(height: 16.0),
-          if (appSettings.experimentalBacklinks)
-            NoteBacklinkRenderer(
-              note: note,
-              rootFolder: rootFolder,
-              parentFolder: parentFolder,
-            ),
-          // _buildFooter(context),
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
       ),

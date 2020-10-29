@@ -22,13 +22,6 @@ class AppSettings extends ChangeNotifier {
 
   var debugLogLevel = 'v';
 
-  var experimentalBacklinks = true;
-  var experimentalFs = false;
-  var experimentalMarkdownToolbar = false;
-  var experimentalGraphView = false;
-
-  var gitBaseDirectory = "";
-
   void load(SharedPreferences pref) {
     onBoardingCompleted = pref.getBool("onBoardingCompleted") ?? false;
 
@@ -44,15 +37,6 @@ class AppSettings extends ChangeNotifier {
     }
 
     debugLogLevel = pref.getString("debugLogLevel") ?? debugLogLevel;
-    experimentalBacklinks =
-        pref.getBool("experimentalBacklinks") ?? experimentalBacklinks;
-    experimentalFs = pref.getBool("experimentalFs") ?? experimentalFs;
-    experimentalMarkdownToolbar = pref.getBool("experimentalMarkdownToolbar") ??
-        experimentalMarkdownToolbar;
-    experimentalGraphView =
-        pref.getBool("experimentalGraphView") ?? experimentalGraphView;
-
-    gitBaseDirectory = pref.getString("gitBaseDirectory") ?? "";
   }
 
   Future<void> save() async {
@@ -65,16 +49,8 @@ class AppSettings extends ChangeNotifier {
         defaultSet.collectCrashReports);
 
     _setString(pref, "debugLogLevel", debugLogLevel, defaultSet.debugLogLevel);
-    _setBool(pref, "experimentalBacklinks", experimentalBacklinks,
-        defaultSet.experimentalBacklinks);
-    _setBool(pref, "experimentalFs", experimentalFs, defaultSet.experimentalFs);
-    _setBool(pref, "experimentalMarkdownToolbar", experimentalMarkdownToolbar,
-        defaultSet.experimentalMarkdownToolbar);
-    _setBool(pref, "experimentalGraphView", experimentalGraphView,
-        defaultSet.experimentalGraphView);
 
     pref.setInt("appSettingsVersion", version);
-    pref.setString("gitBaseDirectory", gitBaseDirectory);
 
     notifyListeners();
   }
@@ -86,11 +62,6 @@ class AppSettings extends ChangeNotifier {
       "version": version.toString(),
       'pseudoId': pseudoId,
       'debugLogLevel': debugLogLevel,
-      'experimentalBacklinks': experimentalBacklinks.toString(),
-      'experimentalFs': experimentalFs.toString(),
-      'experimentalMarkdownToolbar': experimentalMarkdownToolbar.toString(),
-      'experimentalGraphView': experimentalGraphView.toString(),
-      'gitBaseDirectory': gitBaseDirectory.toString(),
     };
   }
 

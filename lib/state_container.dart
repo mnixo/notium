@@ -37,8 +37,6 @@ class StateContainer with ChangeNotifier {
     @required this.gitBaseDirectory,
     @required this.cacheDirectory,
   }) {
-    assert(settings.localGitRepoConfigured);
-
     var repoPath = p.join(gitBaseDirectory, settings.internalRepoFolderName);
 
     _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
@@ -74,7 +72,7 @@ class StateContainer with ChangeNotifier {
   }
 
   Future<void> syncNotes({bool doNotThrow = false}) async {
-    if (!settings.remoteGitRepoConfigured) {
+    if (!appState.remoteGitRepoConfigured) {
       Log.d("Not syncing because RemoteRepo not configured");
       return true;
     }
@@ -312,7 +310,6 @@ class StateContainer with ChangeNotifier {
       await repo.setUpstreamTo(remote, remoteBranchName);
 
       await _gitRepo.merge();
-      settings.remoteGitRepoConfigured = true;
 
       await _persistConfig();
       _loadNotes();

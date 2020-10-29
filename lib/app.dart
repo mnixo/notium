@@ -42,32 +42,26 @@ class JournalApp extends StatefulWidget {
     Log.i("AppSetting ${appSettings.toMap()}");
     Log.i("Setting ${settings.toLoggableMap()}");
 
-    if (appSettings.gitBaseDirectory.isEmpty) {
-      var dir = await getApplicationDocumentsDirectory();
-      appSettings.gitBaseDirectory = dir.path;
-      appSettings.save();
-    }
+    var dir = await getApplicationDocumentsDirectory();
+    appState.gitBaseDirectory = dir.path;
 
-    if (!Directory(appSettings.gitBaseDirectory).existsSync()) {
-      Log.w("Applications Documents Directory no longer exists");
-      var dir = await getApplicationDocumentsDirectory();
-      appSettings.gitBaseDirectory = dir.path;
-      appSettings.save();
-      Log.i("New Documents Directory Path ${dir.path}");
-    }
+    var gitRepoDir = p.join(appState.gitBaseDirectory, settings.internalRepoFolderName);
 
-    // FIXME: This can be replaced with a fs stat
-    if (settings.localGitRepoConfigured == false) {
-      // FIXME: What about exceptions!
+    var repoDirStat = File(gitRepoDir).statSync();
+    if (repoDirStat.type != FileSystemEntityType.directory) {
       settings.internalRepoFolderName = "notium_notes";
       var repoPath = p.join(
-        appSettings.gitBaseDirectory,
+        appState.gitBaseDirectory,
         settings.internalRepoFolderName,
       );
+      Log.i("Calling GitInit at: $repoPath");
       await GitRepository.init(repoPath);
 
-      settings.localGitRepoConfigured = true;
       settings.save();
+    } else {
+      var gitRepo = await GitRepository.load(gitRepoDir);
+      var remotes = gitRepo.config.remotes;
+      appState.remoteGitRepoConfigured = remotes.isNotEmpty;
     }
     final cacheDir = await getApplicationSupportDirectory();
 
@@ -78,7 +72,7 @@ class JournalApp extends StatefulWidget {
           return StateContainer(
             appState: appState,
             settings: settings,
-            gitBaseDirectory: appSettings.gitBaseDirectory,
+            gitBaseDirectory: appState.gitBaseDirectory,
             cacheDirectory: cacheDir.path,
           );
         },
