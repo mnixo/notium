@@ -38,6 +38,7 @@ class GitNoteRepository {
 
   Future<NoteRepoResult> _addNote(Note note, String commitMessage) async {
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: commitMessage,
       authorEmail: settings.gitAuthorEmail,
@@ -49,6 +50,7 @@ class GitNoteRepository {
 
   Future<NoteRepoResult> addFolder(NotesFolderFS folder) async {
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: "Create new folder " + folder.folderPath,
       authorEmail: settings.gitAuthorEmail,
@@ -63,6 +65,7 @@ class GitNoteRepository {
     pathSpec = pathSpec.isNotEmpty ? pathSpec : '/';
 
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: "Update folder config for $pathSpec",
       authorEmail: settings.gitAuthorEmail,
@@ -78,6 +81,7 @@ class GitNoteRepository {
   ) async {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: "Rename folder " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
@@ -93,6 +97,7 @@ class GitNoteRepository {
   ) async {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: "Rename note " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
@@ -108,6 +113,7 @@ class GitNoteRepository {
   ) async {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: "Rename file " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
@@ -123,6 +129,7 @@ class GitNoteRepository {
   ) async {
     // FIXME: This is a hacky way of adding the changes, ideally we should be calling rm + add or something
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: "Move note " + oldFullPath + " to " + newFullPath,
       authorEmail: settings.gitAuthorEmail,
@@ -137,12 +144,21 @@ class GitNoteRepository {
     Set<NoteImage> noteImages = note.images;
     for(NoteImage image in noteImages) {
       var imageUrl = image.url;
+      // Path of the image to remove should be absolute, not relative
+      // => remove anything before the image storage folder name
+      if(image.url.indexOf(settings.imageLocationSpec) > -1) {
+        imageUrl = imageUrl.substring(imageUrl.indexOf(settings.imageLocationSpec), imageUrl.length);
+      } else {
+        Log.d("!! Image to remove not located in the dedicated folder");
+        Log.d("It is probably not going to be removed. Please check manually.");
+      }
       Log.d("Doing the git rm on " + imageUrl);
       imageUrls += "\n" + imageUrl;
       await _gitRepo.rm(imageUrl);
     }
 
     await _gitRepo.add(".");
+    await _gitRepo.add(settings.imageLocationSpec);
     await _gitRepo.commit(
       message: "Remove note and associated images " + note.pathSpec() + imageUrls,
       authorEmail: settings.gitAuthorEmail,
