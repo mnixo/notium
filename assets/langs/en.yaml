@@ -37,7 +37,7 @@ settings:
     customFolder: Custom Folder
   gitRemote:
     changeHost:
-      title: Reconfigure Git Host?
+      title: Reconfigure Backup and Sync?
       subtitle: Notes which have not been synced will be lost
       ok: Ok
       cancel: Cancel
