@@ -31,7 +31,7 @@ class JournalApp extends StatefulWidget {
       gitBaseDir: gitBaseDirectory,
       cacheDir: cacheDir,
       settings: settings,
-      name: "notium_notes",
+      name: settings.folderName,
     );
 
     Widget app = ChangeNotifierProvider.value(
