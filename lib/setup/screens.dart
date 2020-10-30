@@ -10,13 +10,13 @@ import 'package:git_bindings/git_bindings.dart' as git_bindings;
 import 'package:notium/apis/githost_factory.dart';
 import 'package:notium/error_reporting.dart';
 import 'package:notium/event_logger.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/setup/button.dart';
 import 'package:notium/setup/clone_url.dart';
 import 'package:notium/setup/loading_error.dart';
 import 'package:notium/setup/sshkey.dart';
 import 'package:notium/ssh/keygen.dart';
-import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:notium/utils/notium_urls.dart';
@@ -317,8 +317,8 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       gitCloneErrorMessage = "";
     });
 
-    var stateContainer = Provider.of<Repository>(context, listen: false);
-    var basePath = stateContainer.appState.gitBaseDirectory;
+    var repo = Provider.of<Repository>(context, listen: false);
+    var basePath = repo.gitBaseDirectory;
 
     var settings = Provider.of<Settings>(context, listen: false);
     var repoPath = p.join(basePath, widget.repoFolderName);

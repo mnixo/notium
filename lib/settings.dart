@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:notium/core/sorting_mode.dart';
 import 'package:notium/folder_views/common.dart';
 import 'package:notium/screens/note_editor.dart';
+import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends ChangeNotifier {
@@ -109,9 +110,6 @@ class Settings extends ChangeNotifier {
 
     inlineTagPrefixes =
         pref.getStringList("inlineTagPrefixes")?.toSet() ?? inlineTagPrefixes;
-
-    // From AppState
-    folderName = pref.getString("remoteGitRepoPath") ?? folderName;
 
     sshPublicKey = pref.getString("sshPublicKey") ?? sshPublicKey;
     sshPrivateKey = pref.getString("sshPrivateKey") ?? sshPrivateKey;
@@ -259,7 +257,7 @@ class Settings extends ChangeNotifier {
       'swipeToDelete': swipeToDelete.toString(),
       'inlineTagPrefixes': inlineTagPrefixes.join(' '),
       'emojiParser': emojiParser.toString(),
-      'remoteGitRepoPath': folderName.toString(),
+      'folderName': folderName.toString(),
       'sshPublicKey': sshPublicKey.isNotEmpty.toString(),
     };
   }
@@ -270,6 +268,10 @@ class Settings extends ChangeNotifier {
     m.remove("gitAuthorEmail");
     m.remove("defaultNewNoteFolderSpec");
     return m;
+  }
+
+  String buildRepoPath(String gitBaseDir) {
+    return p.join(gitBaseDir, folderName);
   }
 }
 

@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:git_bindings/git_bindings.dart';
-import 'package:notium/appstate.dart';
-import 'package:provider/provider.dart';
 import 'package:notium/core/md_yaml_doc_codec.dart';
 import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_folder.dart';
@@ -11,10 +9,10 @@ import 'package:notium/core/sorted_notes_folder.dart';
 import 'package:notium/core/sorting_mode.dart';
 import 'package:notium/folder_views/common.dart';
 import 'package:notium/folder_views/standard_view.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/screens/note_editor.dart';
 import 'package:notium/screens/settings_screen.dart';
 import 'package:notium/settings.dart';
-import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/app_bar_menu_button.dart';
 import 'package:notium/widgets/app_drawer.dart';
@@ -22,6 +20,7 @@ import 'package:notium/widgets/new_note_nav_bar.dart';
 import 'package:notium/widgets/note_delete_dialog.dart';
 import 'package:notium/widgets/note_search_delegate.dart';
 import 'package:notium/widgets/sync_button.dart';
+import 'package:provider/provider.dart';
 
 class FolderView extends StatefulWidget {
   final NotesFolder notesFolder;
@@ -272,12 +271,12 @@ class _FolderViewState extends State<FolderView> {
   }
 
   List<Widget> _buildNoteActions() {
-    final appState = Provider.of<Repository>(context).appState;
+    final repo = Provider.of<Repository>(context);
 
     return <Widget>[
-      if (appState.remoteGitRepoConfigured)
+      if (repo.remoteGitRepoConfigured)
         AnimatedOpacity(
-          opacity: Provider.of<Repository>(context).appState.syncStatus == SyncStatus.Done ? 0.1 : 1.0,
+          opacity: Provider.of<Repository>(context).syncStatus == SyncStatus.Done ? 0.1 : 1.0,
           duration: Duration(milliseconds: 1000),
           child: SyncButton()
         ),

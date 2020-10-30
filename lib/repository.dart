@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:dart_git/dart_git.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:notium/appstate.dart';
 import 'package:notium/core/git_repo.dart';
 import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_cache.dart';
@@ -16,8 +15,15 @@ import 'package:notium/utils/logger.dart';
 import 'package:path/path.dart' as p;
 import 'package:synchronized/synchronized.dart';
 
+enum SyncStatus {
+  Unknown,
+  Done,
+  Pulling,
+  Pushing,
+  Error,
+}
+
 class Repository with ChangeNotifier {
-  final AppState appState;
   final Settings settings;
 
   final _opLock = Lock();
@@ -31,13 +37,61 @@ class Repository with ChangeNotifier {
 
   String repoPath;
 
-  Repository({@required this.appState, @required this.settings}) {
-    repoPath = p.join(appState.gitBaseDirectory, settings.folderName);
+  SyncStatus syncStatus = SyncStatus.Unknown;
+  int numChanges = 0;
 
+  bool get hasJournalEntries {
+    return notesFolder.hasNotes;
+  }
+
+  NotesFolderFS notesFolder;
+
+  final String gitBaseDirectory;
+  final String cacheDir;
+
+  bool remoteGitRepoConfigured = false;
+
+  static Future<Repository> load(
+      String gitBaseDir, String cacheDir, Settings settings) async {
+    var repoPath = settings.buildRepoPath(gitBaseDir);
+
+    var repoDirStat = File(repoPath).statSync();
+
+    var remoteConfigured = false;
+
+    if (repoDirStat.type != FileSystemEntityType.directory) {
+      settings.folderName = "notium_notes";
+
+      Log.i("Calling GitInit at: $repoPath");
+      await GitRepository.init(repoPath);
+
+      settings.save();
+    } else {
+      var gitRepo = await GitRepository.load(repoPath);
+      var remotes = gitRepo.config.remotes;
+      remoteConfigured = remotes.isNotEmpty;
+    }
+
+    return Repository._internal(
+      repoPath: repoPath,
+      gitBaseDirectory: gitBaseDir,
+      cacheDir: cacheDir,
+      remoteGitRepoConfigured: remoteConfigured,
+      settings: settings,
+    );
+  }
+
+  Repository._internal({
+    @required this.repoPath,
+    @required this.gitBaseDirectory,
+    @required this.cacheDir,
+    @required this.settings,
+    @required this.remoteGitRepoConfigured,
+  }) {
     _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
-    appState.notesFolder = NotesFolderFS(null, _gitRepo.gitDirPath);
+    notesFolder = NotesFolderFS(null, _gitRepo.gitDirPath);
 
-    var cachePath = p.join(appState.cacheDir, "cache.json");
+    var cachePath = p.join(cacheDir, "cache.json");
     _notesCache = NotesCache(
       filePath: cachePath,
       notesBasePath: _gitRepo.gitDirPath,
@@ -48,7 +102,7 @@ class Repository with ChangeNotifier {
   }
 
   void _loadFromCache() async {
-    await _notesCache.load(appState.notesFolder);
+    await _notesCache.load(notesFolder);
     Log.i("Finished loading the notes cache");
 
     await _loadNotes();
@@ -58,22 +112,22 @@ class Repository with ChangeNotifier {
   Future<void> _loadNotes() async {
     // FIXME: We should report the notes that failed to load
     return _loadLock.synchronized(() async {
-      await appState.notesFolder.loadRecursively();
-      await _notesCache.buildCache(appState.notesFolder);
+      await notesFolder.loadRecursively();
+      await _notesCache.buildCache(notesFolder);
 
-      appState.numChanges = await _gitRepo.numChanges();
+      numChanges = await _gitRepo.numChanges();
       notifyListeners();
     });
   }
 
   Future<void> syncNotes({bool doNotThrow = false}) async {
-    if (!appState.remoteGitRepoConfigured) {
+    if (!remoteGitRepoConfigured) {
       Log.d("Not syncing because RemoteRepo not configured");
       return true;
     }
 
     logEvent(Event.RepoSynced);
-    appState.syncStatus = SyncStatus.Pulling;
+    syncStatus = SyncStatus.Pulling;
     notifyListeners();
 
     Future noteLoadingFuture;
@@ -81,7 +135,7 @@ class Repository with ChangeNotifier {
       await _gitRepo.fetch();
       await _gitRepo.merge();
 
-      appState.syncStatus = SyncStatus.Pushing;
+      syncStatus = SyncStatus.Pushing;
       notifyListeners();
 
       noteLoadingFuture = _loadNotes();
@@ -89,12 +143,12 @@ class Repository with ChangeNotifier {
       await _gitRepo.push();
 
       Log.d("Synced!");
-      appState.syncStatus = SyncStatus.Done;
-      appState.numChanges = 0;
+      syncStatus = SyncStatus.Done;
+      numChanges = 0;
       notifyListeners();
     } catch (e, stacktrace) {
       Log.e("Failed to Sync", ex: e, stacktrace: stacktrace);
-      appState.syncStatus = SyncStatus.Error;
+      syncStatus = SyncStatus.Error;
       notifyListeners();
       if (shouldLogGitException(e)) {
         await logException(e, stacktrace);
@@ -127,7 +181,7 @@ class Repository with ChangeNotifier {
 
       _gitRepo.addFolder(newFolder).then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -143,7 +197,7 @@ class Repository with ChangeNotifier {
       folder.parentFS.removeFolder(folder);
       _gitRepo.removeFolder(folder).then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -163,7 +217,7 @@ class Repository with ChangeNotifier {
           .renameFolder(oldFolderPath, folder.folderPath)
           .then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -180,7 +234,7 @@ class Repository with ChangeNotifier {
 
       _gitRepo.renameNote(oldNotePath, note.filePath).then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -198,7 +252,7 @@ class Repository with ChangeNotifier {
 
       _gitRepo.renameFile(oldPath, newPath).then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -218,7 +272,7 @@ class Repository with ChangeNotifier {
 
       _gitRepo.moveNote(oldNotePath, note.filePath).then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -237,7 +291,7 @@ class Repository with ChangeNotifier {
 
       _gitRepo.addNote(note).then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -252,7 +306,7 @@ class Repository with ChangeNotifier {
       // FIXME: What if the Note hasn't yet been saved?
       note.parent.remove(note);
       _gitRepo.removeNote(note).then((NoteRepoResult _) async {
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
         // FIXME: Is there a way of figuring this amount dynamically?
         // The '4 seconds' is taken from snack_bar.dart -> _kSnackBarDisplayDuration
@@ -273,7 +327,7 @@ class Repository with ChangeNotifier {
       note.parent.add(note);
       _gitRepo.resetLastCommit().then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges -= 1;
+        numChanges -= 1;
         notifyListeners();
       });
     });
@@ -290,7 +344,7 @@ class Repository with ChangeNotifier {
 
       _gitRepo.updateNote(note).then((NoteRepoResult _) {
         _syncNotes();
-        appState.numChanges += 1;
+        numChanges += 1;
         notifyListeners();
       });
     });
@@ -298,7 +352,7 @@ class Repository with ChangeNotifier {
 
   void completeGitHostSetup(String repoFolderName, String remoteName) {
     () async {
-      var repoPath = p.join(appState.gitBaseDirectory, repoFolderName);
+      var repoPath = p.join(gitBaseDirectory, repoFolderName);
       Log.i("completeGitHostSetup repoPath: $repoPath");
 
       _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);
@@ -339,8 +393,8 @@ class Repository with ChangeNotifier {
 
       this.repoPath = repoPath;
       _notesCache.clear();
-      appState.remoteGitRepoConfigured = true;
-      appState.notesFolder.reset(repoPath);
+      remoteGitRepoConfigured = true;
+      notesFolder.reset(repoPath);
 
       settings.folderName = repoFolderName;
       settings.save();

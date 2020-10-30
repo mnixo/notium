@@ -4,12 +4,12 @@ import 'package:dart_git/dart_git.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/setup/screens.dart';
 import 'package:notium/setup/sshkey.dart';
 import 'package:notium/ssh/keygen.dart';
-import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:path/path.dart' as p;
@@ -123,8 +123,8 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
       return;
     }
 
-    var stateContainer = Provider.of<Repository>(context, listen: false);
-    var gitDir = stateContainer.appState.gitBaseDirectory;
+    var repo = Provider.of<Repository>(context, listen: false);
+    var gitDir = repo.gitBaseDirectory;
 
     // Figure out the next available folder
     String repoFolderName = "notium_";
@@ -143,7 +143,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
       builder: (context) => GitHostSetupScreen(
         repoFolderName: repoFolderName,
         remoteName: 'origin',
-        onCompletedFunction: stateContainer.completeGitHostSetup,
+        onCompletedFunction: repo.completeGitHostSetup,
       ),
       settings: const RouteSettings(name: '/setupRemoteGit'),
     );

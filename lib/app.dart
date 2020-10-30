@@ -1,71 +1,41 @@
 import 'dart:async';
-import 'dart:io';
 
-import 'package:dart_git/git.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:notium/app_router.dart';
 import 'package:notium/app_settings.dart';
-import 'package:notium/appstate.dart';
 import 'package:notium/event_logger.dart';
-import 'package:notium/settings.dart';
 import 'package:notium/repository.dart';
+import 'package:notium/settings.dart';
 import 'package:notium/themes.dart';
 import 'package:notium/utils/logger.dart';
-import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 class JournalApp extends StatefulWidget {
-  final AppState appState;
-
   static Future main() async {
     await Log.init();
 
-    var appState = AppState();
     var settings = Settings.instance;
     var appSettings = AppSettings.instance;
     Log.i("AppSetting ${appSettings.toMap()}");
     Log.i("Setting ${settings.toLoggableMap()}");
 
-    var dir = await getApplicationDocumentsDirectory();
-    appState.gitBaseDirectory = dir.path;
+    final gitBaseDirectory = (await getApplicationDocumentsDirectory()).path;
+    final cacheDir = (await getApplicationSupportDirectory()).path;
 
-    var gitRepoDir = p.join(appState.gitBaseDirectory, settings.folderName);
-
-    var repoDirStat = File(gitRepoDir).statSync();
-    if (repoDirStat.type != FileSystemEntityType.directory) {
-      settings.folderName = "notium_notes";
-      var repoPath = p.join(
-        appState.gitBaseDirectory,
-        settings.folderName,
-      );
-      Log.i("Calling GitInit at: $repoPath");
-      await GitRepository.init(repoPath);
-
-      settings.save();
-    } else {
-      var gitRepo = await GitRepository.load(gitRepoDir);
-      var remotes = gitRepo.config.remotes;
-      appState.remoteGitRepoConfigured = remotes.isNotEmpty;
-    }
-    appState.cacheDir = (await getApplicationSupportDirectory()).path;
+    var repo = await Repository.load(gitBaseDirectory, cacheDir, settings);
 
     Widget app = ChangeNotifierProvider.value(
       value: settings,
-      child: ChangeNotifierProvider(
-        create: (_) {
-          return Repository(appState: appState, settings: settings);
-        },
-        child: ChangeNotifierProvider(
-          child: JournalApp(appState),
-          create: (_) {
-            assert(appState.notesFolder != null);
-            return appState.notesFolder;
-          },
+      child: ChangeNotifierProvider.value(
+        value: repo,
+        child: ChangeNotifierProvider.value(
+          child: JournalApp(),
+          value: repo.notesFolder,
         ),
       ),
     );
@@ -88,7 +58,7 @@ class JournalApp extends StatefulWidget {
 
   static bool isInDebugMode = false;
 
-  JournalApp(this.appState);
+  JournalApp();
 
   @override
   _JournalAppState createState() => _JournalAppState();

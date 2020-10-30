@@ -3,12 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/screens/debug_screen.dart';
 import 'package:notium/screens/settings_git_remote.dart';
 import 'package:notium/screens/settings_tags.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
-import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/folder_selection_dialog.dart';
 import 'package:provider/provider.dart';
@@ -47,8 +47,7 @@ class SettingsListState extends State<SettingsList> {
   Widget build(BuildContext context) {
     var settings = Provider.of<Settings>(context);
     var appSettings = Provider.of<AppSettings>(context);
-    final stateContainer = Provider.of<Repository>(context);
-    final appState = stateContainer.appState;
+    final repo = Provider.of<Repository>(context);
 
     var saveGitAuthor = (String gitAuthor) {
       settings.gitAuthor = gitAuthor;
@@ -193,7 +192,7 @@ class SettingsListState extends State<SettingsList> {
           );
           Navigator.of(context).push(route);
         },
-        enabled: appState.remoteGitRepoConfigured,
+        enabled: repo.remoteGitRepoConfigured,
       ),
       const SizedBox(height: 16.0),
       ListTile(

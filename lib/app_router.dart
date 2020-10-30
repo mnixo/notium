@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/core/md_yaml_doc_codec.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/screens/filesystem_screen.dart';
 import 'package:notium/screens/folder_listing.dart';
 import 'package:notium/screens/home_screen.dart';
@@ -11,7 +12,6 @@ import 'package:notium/screens/settings_screen.dart';
 import 'package:notium/screens/tag_listing.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/setup/screens.dart';
-import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 
@@ -38,7 +38,7 @@ class AppRouter {
 
   Route<dynamic> generateRoute(
       RouteSettings routeSettings,
-      Repository stateContainer,
+      Repository repository,
       String sharedText,
       List<String> sharedImages,
       ) {
@@ -48,7 +48,7 @@ class AppRouter {
         settings: routeSettings,
         pageBuilder: (_, __, ___) => _screenForRoute(
           route,
-          stateContainer,
+          repository,
           settings,
           sharedText,
           sharedImages,
@@ -63,7 +63,7 @@ class AppRouter {
       settings: routeSettings,
       builder: (context) => _screenForRoute(
         route,
-        stateContainer,
+        repository,
         settings,
         sharedText,
         sharedImages,
@@ -73,7 +73,7 @@ class AppRouter {
 
   Widget _screenForRoute(
       String route,
-      Repository stateContainer,
+      Repository repo,
       Settings settings,
       String sharedText,
       List<String> sharedImages,
@@ -93,7 +93,7 @@ class AppRouter {
         return GitHostSetupScreen(
           repoFolderName: settings.folderName,
           remoteName: "origin",
-          onCompletedFunction: stateContainer.completeGitHostSetup,
+          onCompletedFunction: repo.completeGitHostSetup,
         );
       case '/onBoarding':
         return OnBoardingScreen();
@@ -106,7 +106,7 @@ class AppRouter {
       Log.i("New Note - $route");
       Log.i("EditorType: $et");
 
-      var rootFolder = stateContainer.appState.notesFolder;
+      var rootFolder = repo.notesFolder;
 
       sharedText = null;
       sharedImages = null;
