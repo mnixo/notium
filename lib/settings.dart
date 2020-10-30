@@ -183,8 +183,6 @@ class Settings extends ChangeNotifier {
 
     pref.setInt("settingsVersion", version);
 
-    pref.setString("localGitRepoPath", folderName);
-
     notifyListeners();
   }
 
