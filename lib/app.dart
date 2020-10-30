@@ -27,7 +27,12 @@ class JournalApp extends StatefulWidget {
     final gitBaseDirectory = (await getApplicationDocumentsDirectory()).path;
     final cacheDir = (await getApplicationSupportDirectory()).path;
 
-    var repo = await Repository.load(gitBaseDirectory, cacheDir, settings);
+    var repo = await Repository.load(
+      gitBaseDir: gitBaseDirectory,
+      cacheDir: cacheDir,
+      settings: settings,
+      name: "notium_notes",
+    );
 
     Widget app = ChangeNotifierProvider.value(
       value: settings,
