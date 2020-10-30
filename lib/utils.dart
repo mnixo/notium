@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:notium/core/notes_folder_fs.dart';
+import 'package:notium/screens/note_editor.dart';
+import 'package:notium/settings.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
-import 'package:notium/core/notes_folder_fs.dart';
-import 'package:notium/screens/note_editor.dart';
-import 'package:notium/settings.dart';
 import 'app.dart';
 import 'core/note.dart';
 import 'repository.dart';
@@ -28,14 +27,14 @@ Future<String> getVersionString() async {
 }
 
 SnackBar buildUndoDeleteSnackbar(
-    Repository stateContainer, Note deletedNote) {
+    Repository repo, Note deletedNote) {
   return SnackBar(
     content: Text(tr('widgets.FolderView.noteDeleted')),
     action: SnackBarAction(
       label: tr('widgets.FolderView.undo'),
       onPressed: () {
         Log.d("Undoing delete");
-        stateContainer.undoRemoveNote(deletedNote);
+        repo.undoRemoveNote(deletedNote);
       },
     ),
   );

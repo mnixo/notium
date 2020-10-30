@@ -319,8 +319,8 @@ class _FolderViewState extends State<FolderView> {
       builder: (context) => NoteDeleteDialog(),
     );
     if (shouldDelete == true) {
-      var stateContainer = Provider.of<Repository>(context, listen: false);
-      stateContainer.removeNote(note);
+      var repo = Provider.of<Repository>(context, listen: false);
+      repo.removeNote(note);
     }
 
     _resetSelection();

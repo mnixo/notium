@@ -164,7 +164,7 @@ class _JournalAppState extends State<JournalApp> {
   }
 
   MaterialApp buildApp(BuildContext context, ThemeData themeData) {
-    var stateContainer = Provider.of<Repository>(context);
+    var repo = Provider.of<Repository>(context);
     var settings = Provider.of<Settings>(context);
     var appSettings = Provider.of<AppSettings>(context);
     var router = AppRouter(settings: settings, appSettings: appSettings);
@@ -185,7 +185,7 @@ class _JournalAppState extends State<JournalApp> {
       initialRoute: router.initialRoute(),
       debugShowCheckedModeBanner: false,
       //debugShowMaterialGrid: true,
-      onGenerateRoute: (rs) => router.generateRoute(rs, stateContainer, _sharedText, _sharedImages),
+      onGenerateRoute: (rs) => router.generateRoute(rs, repo, _sharedText, _sharedImages),
     );
   }
 }

@@ -248,8 +248,8 @@ class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
       return;
     }
 
-    var stateContainer = Provider.of<Repository>(context, listen: false);
-    stateContainer.removeNote(note);
+    var repo = Provider.of<Repository>(context, listen: false);
+    repo.removeNote(note);
   }
 
   bool _noteModified(Note note) {
@@ -283,10 +283,10 @@ class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
 
     Log.d("Note modified - saving");
     try {
-      var stateContainer = Provider.of<Repository>(context, listen: false);
+      var repo = Provider.of<Repository>(context, listen: false);
       _isNewNote
-          ? await stateContainer.addNote(note)
-          : await stateContainer.updateNote(note);
+          ? await repo.addNote(note)
+          : await repo.updateNote(note);
     } catch (e, stackTrace) {
       logException(e, stackTrace);
       Clipboard.setData(ClipboardData(text: note.serialize()));

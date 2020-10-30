@@ -31,7 +31,7 @@ class Repository with ChangeNotifier {
 
   // FIXME: The gitRepo should never be changed once it has been setup
   //        We should always just be modifying the 'git remotes'
-  //        With that, the StateContainer can be a StatelessWidget
+  //        With that, the Repository can be a StatelessWidget
   GitNoteRepository _gitRepo;
   NotesCache _notesCache;
 

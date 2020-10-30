@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
-
 import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_folder.dart';
 import 'package:notium/folder_views/grid_view.dart';
-import 'package:notium/screens/note_editor.dart';
 import 'package:notium/repository.dart';
+import 'package:notium/screens/note_editor.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:provider/provider.dart';
+
 import 'standard_view.dart';
 
 enum FolderViewType {
@@ -50,8 +49,8 @@ void openNoteEditor(
   if (showUndoSnackBar != null) {
     Log.d("Showing an undo snackbar");
 
-    var stateContainer = Provider.of<Repository>(context, listen: false);
-    var snackBar = buildUndoDeleteSnackbar(stateContainer, note);
+    var repo = Provider.of<Repository>(context, listen: false);
+    var snackBar = buildUndoDeleteSnackbar(repo, note);
     Scaffold.of(context)
       ..removeCurrentSnackBar()
       ..showSnackBar(snackBar);
