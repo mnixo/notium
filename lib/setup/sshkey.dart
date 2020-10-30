@@ -33,10 +33,6 @@ class GitHostSetupSshKeyKnownProvider extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            tr("setup.sshKey.title"),
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          Text(
             tr("setup.sshKey.description"),
             style: Theme.of(context).textTheme.bodyText1,
           ),
@@ -95,7 +91,7 @@ class GitHostSetupSshKeyKnownProvider extends StatelessWidget {
     );
 
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
       child: columns,
     );
   }

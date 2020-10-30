@@ -140,13 +140,9 @@ class GitCloneUrlKnownProviderPageState
     );
 
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(0, 32, 0, 32),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
       child: Column(
         children: <Widget>[
-          Text(
-            tr("setup.cloneUrl.manual.title"),
-            style: Theme.of(context).textTheme.headline5,
-          ),
           Text(
             tr("setup.cloneUrl.manual.description"),
             style: Theme.of(context).textTheme.bodyText1,

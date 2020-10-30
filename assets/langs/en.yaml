@@ -57,7 +57,7 @@ settings:
     allFolders: All Folders
   ssh:
     syncFreq: Sync Frequency
-    reset: Reset Git Host
+    reset: Reset Backup Settings
   note:
     title: Note Settings
     defaultFolder: Default Folder for new notes
