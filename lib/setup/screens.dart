@@ -154,6 +154,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
     }
 
     if (pos == 4) {
+      _pageTitle = tr('setup.cloning');
       return GitHostSetupLoadingErrorPage(
         loadingMessage: tr('setup.cloning'),
         errorMessage: gitCloneErrorMessage,
