@@ -10,7 +10,7 @@ import 'package:notium/core/notes_folder_fs.dart';
 import 'package:notium/editors/checklist_editor.dart';
 import 'package:notium/editors/markdown_editor.dart';
 import 'package:notium/error_reporting.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:notium/widgets/folder_selection_dialog.dart';
@@ -217,7 +217,7 @@ class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
         });
         return;
       }
-      var container = Provider.of<StateContainer>(context, listen: false);
+      var container = Provider.of<Repository>(context, listen: false);
       container.renameNote(note, fileName);
     }
   }
@@ -248,7 +248,7 @@ class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
       return;
     }
 
-    var stateContainer = Provider.of<StateContainer>(context, listen: false);
+    var stateContainer = Provider.of<Repository>(context, listen: false);
     stateContainer.removeNote(note);
   }
 
@@ -283,7 +283,7 @@ class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
 
     Log.d("Note modified - saving");
     try {
-      var stateContainer = Provider.of<StateContainer>(context, listen: false);
+      var stateContainer = Provider.of<Repository>(context, listen: false);
       _isNewNote
           ? await stateContainer.addNote(note)
           : await stateContainer.updateNote(note);
@@ -323,14 +323,14 @@ class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
         setState(() {});
       } else {
         var stateContainer =
-            Provider.of<StateContainer>(context, listen: false);
+            Provider.of<Repository>(context, listen: false);
         stateContainer.moveNote(note, destFolder);
       }
     }
   }
 
   void _discardChangesSelected(Note note) async {
-    var stateContainer = Provider.of<StateContainer>(context, listen: false);
+    var stateContainer = Provider.of<Repository>(context, listen: false);
     stateContainer.discardChanges(note);
 
     Navigator.pop(context);

@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 
 import 'package:notium/core/notes_folder_fs.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/widgets/app_bar_menu_button.dart';
 import 'package:notium/widgets/app_drawer.dart';
 import 'package:notium/widgets/folder_tree_view.dart';
@@ -87,7 +87,7 @@ class _FolderListingScreenState extends State<FolderListingScreen> {
             );
             if (folderName is String) {
               var container =
-                  Provider.of<StateContainer>(context, listen: false);
+                  Provider.of<Repository>(context, listen: false);
               container.renameFolder(selectedFolder, folderName);
             }
           } else if (value == "Create") {
@@ -97,7 +97,7 @@ class _FolderListingScreenState extends State<FolderListingScreen> {
             );
             if (folderName is String) {
               var container =
-                  Provider.of<StateContainer>(context, listen: false);
+                  Provider.of<Repository>(context, listen: false);
               container.createFolder(selectedFolder, folderName);
             }
           } else if (value == "Delete") {
@@ -108,7 +108,7 @@ class _FolderListingScreenState extends State<FolderListingScreen> {
               );
             } else {
               var container =
-                  Provider.of<StateContainer>(context, listen: false);
+                  Provider.of<Repository>(context, listen: false);
               container.removeFolder(selectedFolder);
             }
           }
@@ -156,7 +156,7 @@ class CreateFolderButton extends StatelessWidget {
           builder: (_) => CreateFolderAlertDialog(),
         );
         if (folderName is String) {
-          var container = Provider.of<StateContainer>(context, listen: false);
+          var container = Provider.of<Repository>(context, listen: false);
           final notesFolder =
               Provider.of<NotesFolderFS>(context, listen: false);
 

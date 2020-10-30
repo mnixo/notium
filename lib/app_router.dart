@@ -11,7 +11,7 @@ import 'package:notium/screens/settings_screen.dart';
 import 'package:notium/screens/tag_listing.dart';
 import 'package:notium/settings.dart';
 import 'package:notium/setup/screens.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 
@@ -38,7 +38,7 @@ class AppRouter {
 
   Route<dynamic> generateRoute(
       RouteSettings routeSettings,
-      StateContainer stateContainer,
+      Repository stateContainer,
       String sharedText,
       List<String> sharedImages,
       ) {
@@ -73,7 +73,7 @@ class AppRouter {
 
   Widget _screenForRoute(
       String route,
-      StateContainer stateContainer,
+      Repository stateContainer,
       Settings settings,
       String sharedText,
       List<String> sharedImages,

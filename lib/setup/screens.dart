@@ -16,7 +16,7 @@ import 'package:notium/setup/clone_url.dart';
 import 'package:notium/setup/loading_error.dart';
 import 'package:notium/setup/sshkey.dart';
 import 'package:notium/ssh/keygen.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:notium/utils/notium_urls.dart';
@@ -317,7 +317,7 @@ class GitHostSetupScreenState extends State<GitHostSetupScreen> {
       gitCloneErrorMessage = "";
     });
 
-    var stateContainer = Provider.of<StateContainer>(context, listen: false);
+    var stateContainer = Provider.of<Repository>(context, listen: false);
     var basePath = stateContainer.appState.gitBaseDirectory;
 
     var settings = Provider.of<Settings>(context, listen: false);

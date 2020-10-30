@@ -8,7 +8,7 @@ import 'package:notium/screens/settings_git_remote.dart';
 import 'package:notium/screens/settings_tags.dart';
 import 'package:notium/screens/settings_widgets.dart';
 import 'package:notium/settings.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/folder_selection_dialog.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +47,7 @@ class SettingsListState extends State<SettingsList> {
   Widget build(BuildContext context) {
     var settings = Provider.of<Settings>(context);
     var appSettings = Provider.of<AppSettings>(context);
-    final stateContainer = Provider.of<StateContainer>(context);
+    final stateContainer = Provider.of<Repository>(context);
     final appState = stateContainer.appState;
 
     var saveGitAuthor = (String gitAuthor) {

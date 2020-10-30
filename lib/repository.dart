@@ -16,7 +16,7 @@ import 'package:notium/utils/logger.dart';
 import 'package:path/path.dart' as p;
 import 'package:synchronized/synchronized.dart';
 
-class StateContainer with ChangeNotifier {
+class Repository with ChangeNotifier {
   final AppState appState;
   final Settings settings;
 
@@ -31,7 +31,7 @@ class StateContainer with ChangeNotifier {
 
   String repoPath;
 
-  StateContainer({@required this.appState, @required this.settings}) {
+  Repository({@required this.appState, @required this.settings}) {
     repoPath = p.join(appState.gitBaseDirectory, settings.folderName);
 
     _gitRepo = GitNoteRepository(gitDirPath: repoPath, settings: settings);

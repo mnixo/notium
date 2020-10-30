@@ -6,7 +6,7 @@ import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_folder.dart';
 import 'package:notium/folder_views/grid_view.dart';
 import 'package:notium/screens/note_editor.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'standard_view.dart';
@@ -50,7 +50,7 @@ void openNoteEditor(
   if (showUndoSnackBar != null) {
     Log.d("Showing an undo snackbar");
 
-    var stateContainer = Provider.of<StateContainer>(context, listen: false);
+    var stateContainer = Provider.of<Repository>(context, listen: false);
     var snackBar = buildUndoDeleteSnackbar(stateContainer, note);
     Scaffold.of(context)
       ..removeCurrentSnackBar()

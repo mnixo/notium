@@ -9,7 +9,7 @@ import 'package:notium/settings.dart';
 import 'package:notium/setup/screens.dart';
 import 'package:notium/setup/sshkey.dart';
 import 'package:notium/ssh/keygen.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:path/path.dart' as p;
@@ -123,7 +123,7 @@ class _GitRemoteSettingsScreenState extends State<GitRemoteSettingsScreen> {
       return;
     }
 
-    var stateContainer = Provider.of<StateContainer>(context, listen: false);
+    var stateContainer = Provider.of<Repository>(context, listen: false);
     var gitDir = stateContainer.appState.gitBaseDirectory;
 
     // Figure out the next available folder

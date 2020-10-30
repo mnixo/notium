@@ -6,7 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:git_bindings/git_bindings.dart';
 import 'package:notium/appstate.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +40,7 @@ class _SyncButtonState extends State<SyncButton> {
 
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<StateContainer>(context).appState;
+    final appState = Provider.of<Repository>(context).appState;
 
     if (_connectivity == ConnectivityResult.none) {
       return GitPendingChangesBadge(
@@ -82,7 +82,7 @@ class _SyncButtonState extends State<SyncButton> {
 
   void _syncRepo() async {
     try {
-      final container = Provider.of<StateContainer>(context, listen: false);
+      final container = Provider.of<Repository>(context, listen: false);
       await container.syncNotes();
     } on GitException catch (e) {
       showSnackbar(context, tr('widgets.SyncButton.error', args: [e.cause]));
@@ -92,7 +92,7 @@ class _SyncButtonState extends State<SyncButton> {
   }
 
   IconData _syncStatusIcon() {
-    final container = Provider.of<StateContainer>(context);
+    final container = Provider.of<Repository>(context);
     final appState = container.appState;
     switch (appState.syncStatus) {
       case SyncStatus.Error:
@@ -121,7 +121,7 @@ class GitPendingChangesBadge extends StatelessWidget {
       color: darkMode ? Colors.black : Colors.white,
     );
 
-    final appState = Provider.of<StateContainer>(context).appState;
+    final appState = Provider.of<Repository>(context).appState;
 
     return Badge(
       badgeContent: Text(appState.numChanges.toString(), style: style),

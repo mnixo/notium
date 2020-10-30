@@ -11,13 +11,13 @@ import 'package:notium/event_logger.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/logger.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget setupGitButton;
-    var appState = Provider.of<StateContainer>(context).appState;
+    var appState = Provider.of<Repository>(context).appState;
     var appSettings = Provider.of<AppSettings>(context);
     var textStyle = Theme.of(context).textTheme.bodyText1;
     var currentRoute = ModalRoute.of(context).settings.name;

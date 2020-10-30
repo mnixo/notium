@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_folder.dart';
 import 'package:notium/settings.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/icon_dismissable.dart';
 
@@ -155,7 +155,7 @@ class _FolderListViewState extends State<FolderListView> {
           deletedViaDismissed.add(note.filePath);
 
           var stateContainer =
-              Provider.of<StateContainer>(context, listen: false);
+              Provider.of<Repository>(context, listen: false);
           stateContainer.removeNote(note);
 
           var snackBar = buildUndoDeleteSnackbar(stateContainer, note);

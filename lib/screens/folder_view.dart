@@ -14,7 +14,7 @@ import 'package:notium/folder_views/standard_view.dart';
 import 'package:notium/screens/note_editor.dart';
 import 'package:notium/screens/settings_screen.dart';
 import 'package:notium/settings.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/widgets/app_bar_menu_button.dart';
 import 'package:notium/widgets/app_drawer.dart';
@@ -139,7 +139,7 @@ class _FolderViewState extends State<FolderView> {
 
   void _syncRepo(BuildContext context) async {
     try {
-      var container = Provider.of<StateContainer>(context, listen: false);
+      var container = Provider.of<Repository>(context, listen: false);
       await container.syncNotes();
     } on GitException catch (e) {
       showSnackbar(
@@ -272,12 +272,12 @@ class _FolderViewState extends State<FolderView> {
   }
 
   List<Widget> _buildNoteActions() {
-    final appState = Provider.of<StateContainer>(context).appState;
+    final appState = Provider.of<Repository>(context).appState;
 
     return <Widget>[
       if (appState.remoteGitRepoConfigured)
         AnimatedOpacity(
-          opacity: Provider.of<StateContainer>(context).appState.syncStatus == SyncStatus.Done ? 0.1 : 1.0,
+          opacity: Provider.of<Repository>(context).appState.syncStatus == SyncStatus.Done ? 0.1 : 1.0,
           duration: Duration(milliseconds: 1000),
           child: SyncButton()
         ),
@@ -320,7 +320,7 @@ class _FolderViewState extends State<FolderView> {
       builder: (context) => NoteDeleteDialog(),
     );
     if (shouldDelete == true) {
-      var stateContainer = Provider.of<StateContainer>(context, listen: false);
+      var stateContainer = Provider.of<Repository>(context, listen: false);
       stateContainer.removeNote(note);
     }
 

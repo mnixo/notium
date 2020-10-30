@@ -11,7 +11,7 @@ import 'package:notium/app_settings.dart';
 import 'package:notium/appstate.dart';
 import 'package:notium/event_logger.dart';
 import 'package:notium/settings.dart';
-import 'package:notium/state_container.dart';
+import 'package:notium/repository.dart';
 import 'package:notium/themes.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:path/path.dart' as p;
@@ -58,7 +58,7 @@ class JournalApp extends StatefulWidget {
       value: settings,
       child: ChangeNotifierProvider(
         create: (_) {
-          return StateContainer(appState: appState, settings: settings);
+          return Repository(appState: appState, settings: settings);
         },
         child: ChangeNotifierProvider(
           child: JournalApp(appState),
@@ -189,7 +189,7 @@ class _JournalAppState extends State<JournalApp> {
   }
 
   MaterialApp buildApp(BuildContext context, ThemeData themeData) {
-    var stateContainer = Provider.of<StateContainer>(context);
+    var stateContainer = Provider.of<Repository>(context);
     var settings = Provider.of<Settings>(context);
     var appSettings = Provider.of<AppSettings>(context);
     var router = AppRouter(settings: settings, appSettings: appSettings);
