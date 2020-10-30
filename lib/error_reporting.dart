@@ -40,17 +40,6 @@ Future<Event> get _environmentEvent async {
       manufacturer: androidInfo.manufacturer,
       modelId: androidInfo.product,
     );
-  } else if (Platform.isIOS) {
-    final iosInfo = await deviceInfoPlugin.iosInfo;
-    os = OperatingSystem(
-      name: iosInfo.systemName,
-      version: iosInfo.systemVersion,
-    );
-    device = Device(
-      model: iosInfo.utsname.machine,
-      family: iosInfo.model,
-      manufacturer: 'Apple',
-    );
   }
   final environment = Event(
     release: '${packageInfo.version} (${packageInfo.buildNumber})',
