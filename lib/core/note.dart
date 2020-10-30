@@ -527,6 +527,22 @@ class Note with NotesNotifier {
   NoteFileFormat get fileFormat {
     return _fileFormat;
   }
+
+  Future<void> updateNoteImagesPath(NotesFolderFS destFolder) async {
+    var settings = Settings.instance;
+    for(NoteImage image in _images) {
+      String imageUrl = image.url;
+      String newImageUrl = "";
+
+      if(imageUrl.contains(settings.imageLocationSpec)) {
+        int indexOfImgLocationSpec = imageUrl.indexOf(settings.imageLocationSpec) + settings.imageLocationSpec.length;
+        String newBasePath = p.relative(settings.imageLocationSpec, from: destFolder.pathSpec());
+        newImageUrl = newBasePath + imageUrl.substring(indexOfImgLocationSpec, imageUrl.length);
+
+        _body = _body.replaceAll(imageUrl, newImageUrl);
+      }
+    }
+  }
 }
 
 String buildTitleFileName(String parentDir, String title) {

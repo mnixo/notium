@@ -146,7 +146,7 @@ class GitNoteRepository {
       var imageUrl = image.url;
       // Path of the image to remove should be absolute, not relative
       // => remove anything before the image storage folder name
-      if(image.url.indexOf(settings.imageLocationSpec) > -1) {
+      if(image.url.contains(settings.imageLocationSpec)) {
         imageUrl = imageUrl.substring(imageUrl.indexOf(settings.imageLocationSpec), imageUrl.length);
       } else {
         Log.d("!! Image to remove not located in the dedicated folder");
