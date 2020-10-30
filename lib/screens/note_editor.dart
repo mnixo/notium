@@ -322,16 +322,16 @@ class NoteEditorState extends State<NoteEditor> with WidgetsBindingObserver {
         note.parent = destFolder;
         setState(() {});
       } else {
-        var stateContainer =
+        var repo =
             Provider.of<Repository>(context, listen: false);
-        stateContainer.moveNote(note, destFolder);
+        repo.moveNote(note, destFolder);
       }
     }
   }
 
   void _discardChangesSelected(Note note) async {
-    var stateContainer = Provider.of<Repository>(context, listen: false);
-    stateContainer.discardChanges(note);
+    var repo = Provider.of<Repository>(context, listen: false);
+    repo.discardChanges(note);
 
     Navigator.pop(context);
   }
