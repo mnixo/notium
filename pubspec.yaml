@@ -79,6 +79,8 @@ dependency_overrides:
 flutter:
   uses-material-design: true
   assets:
+    # Images
+    - "assets/git-hosting.png"
     - "assets/icon/icon.png"
     - "assets/icon/icon_black.png"
     - "assets/icon/done-icon.png"
@@ -86,17 +88,20 @@ flutter:
     - "assets/icon/gitlab-icon.png"
     - "assets/icon/help-icon.png"
     - "assets/less.png"
-    - "assets/git-hosting.png"
+    # Language files
     - "assets/langs/en.yaml"
+    - "assets/langs/fr.yaml"
   fonts:
-    - family: IBMPlexSans-Extralight
-      fonts:
-        - asset: fonts/IBMPlexSans-ExtraLight.ttf
-        - asset: fonts/IBMPlexSans-ExtraLightItalic.ttf
+    # For debug and changes count
     - family: IBMPlexMono-Light
       fonts:
         - asset: fonts/IBMPlexMono-Light.ttf
         - asset: fonts/IBMPlexMono-LightItalic.ttf
+    # Main font
+    - family: IBMPlexSans-Extralight
+      fonts:
+        - asset: fonts/IBMPlexSans-ExtraLight.ttf
+        - asset: fonts/IBMPlexSans-ExtraLightItalic.ttf
 
 flutter_icons:
   android: "launcher_icon"

@@ -25,19 +25,13 @@ settings:
     levels:
       title: Select Level
       error: Error
-      warning: warning
+      warning: Warning
       info: Info
       debug: Debug
       verbose: Verbose
-  images:
-    title: Image Settings
-    subtitle: Configure how Images are stored
-    imageLocation: Image Location
-    currentFolder: Same Folder as Note
-    customFolder: Custom Folder
   gitRemote:
     changeHost:
-      title: Reconfigure Backup and Sync?
+      title: Reconfigure Backup?
       subtitle: Notes which have not been synced will be lost
       ok: Ok
       cancel: Cancel
@@ -49,7 +43,6 @@ settings:
   tags:
     title: Tags Settings
     subtitle: Configure how inline tags are parsed
-    enable: Parse Inline Tags
     prefixes: Inline Tags Prefixes
   HomeScreen:
     newNote: New Note
@@ -61,7 +54,6 @@ settings:
   note:
     title: Note Settings
     defaultFolder: Default Folder for new notes
-    fileName: Filename
 
 editors:
   checklist:
@@ -88,7 +80,7 @@ screens:
     dialog:
       title: Create new Folder
       create: Create
-      discard: Discard
+      discard: Cancel
     errorDialog:
       title: Error
       deleteContent: Cannot delete a Folder which contains notes
@@ -120,7 +112,7 @@ OnBoarding:
   getStarted: Get Started
   subtitle: 'Focus. Simplicity. Privacy.'
   page2: 'A simple, distraction-free experience to let your ideas flow.'
-  page3: 'Your notes are stored as text. Sync them with any Git hosting provider.'
+  page3: 'Your notes are stored as text. Sync them with any code hosting provider.'
 
 widgets:
   rename:
@@ -130,14 +122,6 @@ widgets:
       empty: Please enter a name
       exists: Already Exists
       contains: Cannot contain /
-  backlinks:
-    title:
-      zero: ""
-      one: "{} Note links to this Note"
-      many: "{} Notes link to this Note"
-      two: "{} Notes link to this Note"
-      few: "{} Notes link to this Note"
-      other: "{} Notes link to this Note"
   FolderView:
     noteDeleted: Note Deleted
     undo: Undo
@@ -184,18 +168,16 @@ setup:
     hint: Type to Search or Create a Repo
     create: Create Repo {}
   cloneUrl:
-    enter: Enter the Git Clone URL
+    enter: Enter the Git SSH Clone URL
     validator:
       empty: Please enter some text
       invalid: Invalid Input
       onlySsh: Wrong URL - Should be a SSH URL (starts with git@something...)
     manual:
       title: 2/3 Setup Storage Space
-      description: "
-
-Now, let's create a space to store your notes. In Git language, it is called a repository."
+      description: Now, let's create a space to store your notes. In Git language, it is called a repository.
       createRepo: 1. Create a new repository, then come back here. Be sure to keep it private.
-      step2: 2. Copy the SSH URL (should start with git@something) and paste it here.
+      step2: 2. In the clone section, copy the SSH URL (should start with git@something) and paste it here.
       button: Create a New Repository
   next: Next
   fail: "Oops, sync failed!
@@ -207,24 +189,19 @@ Here is the error:"
     public: Invalid Public Key - Doesn't start with ssh-rsa
     private: Invalid Private Key
   sshKey:
-    generate: Generating SSH Key
-    title: 3/3 - Give the App a Key
-    description: "
-
-Almost there! We have to give access to the app by providing a key."
+    generate: Generating Authentication Key
+    title: 3/3 Give the App a Key
+    description: Almost there! We have to give access to the app by providing a key.
     step1: 1. Copy the key
-    step2a: 2. Open this page, and paste the key. Make sure to give write access.
+    step2a: 2. Open this page, and paste the key. Make sure to check the box to give write access.
     step2b: 2. Give this SSH Key access to the git repo. (we can't guide you further)
     step3: 3. Start the Sync!
     copy: Copy Key
-    copied: Public Key copied to Clipboard
+    copied: Key copied
     regenerate: Regenerate Key
     openDeploy: Open Deploy Key Webpage
     clone: Let's go!
     addDeploy: Adding as a Deploy Key
-  sshKeyUserProvided:
-    public: Public Key
-    private: Private Key
   cloning: Starting Sync!
   gitSetupIntro:
     title: Setup Backup and Sync
@@ -239,8 +216,8 @@ You will choose where to store them and ensure their safety in the next steps. W
 This is a one time configuration that should take you ~5 minutes, and anyone can do it. Ready?"
     confirm: Let's Do It!
   host:
-    title: 1/3 - Who Should Store Your Data?
-    description: "You will need to open an account with a Git hosting provider to continue. Notium is not affiliated to any of them.
+    title: 1/3 Who Should Store Your Data?
+    description: "You will need to open a free account with a code hosting provider to continue. Notium is not affiliated to any of them.
 
 "
     custom: Other Provider

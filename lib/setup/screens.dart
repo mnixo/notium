@@ -525,11 +525,11 @@ class GitHostChoicePage extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(0, 0, 0, 32),
       child: Column(
         children: <Widget>[
-          const SizedBox(height: 16.0),
           Text(
             tr('setup.host.description'),
             style: Theme.of(context).textTheme.bodyText1,
           ),
+          const SizedBox(height: 16.0),
           GitHostSetupButton(
             text: "GitHub",
             iconUrl: 'assets/icon/github-icon.png',

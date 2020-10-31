@@ -1,0 +1,207 @@
+settings:
+  ok: Ok
+  cancel: Annuler
+  title: Paramètres
+  author:
+    label: Nom
+    hint: Indiquez l'auteur de vos notes
+    validator: Renseignez un nom
+  email:
+    label: Email
+    hint: Adresse email
+    validator:
+      empty: Renseignez un email
+      invalid: Doit être quelquechose@domaine.extension
+  display:
+    title: Affichage
+    darkTheme: Mode sombre
+    homeScreen: Ecran de démarrage
+  gitAuthor: Auteur des notes
+  versionInfo: Infos de version
+  crashReports: Envoyer un rapport anonyme en cas de plantage
+  debug:
+    title: Infos de debug
+    subtitle: Pour regarder sous le capot
+    levels:
+      title: Niveau de debug
+      error: Erreur
+      warning: Avertissement
+      info: Info
+      debug: Debug
+      verbose: Détail
+  gitRemote:
+    changeHost:
+      title: Reconfigurer la sauvegarde ?
+      subtitle: Les notes non synchronisées seront perdues
+      ok: Ok
+      cancel: Annuler
+    title: Sauvegarde et synchronisation
+    subtitle: Configurez où stocker vos notes
+  remoteSync:
+    auto: Automatique
+    manual: Manuel
+  tags:
+    title: Tags
+    subtitle: Configurez la détection des tags
+    prefixes: Préfixes utilisés pour les tags
+  HomeScreen:
+    newNote: Nouvelle note
+    allNotes: Notes
+    allFolders: Dossiers
+  ssh:
+    syncFreq: Fréquence de synchronisation
+    reset: Effacer la configuration
+  note:
+    title: Notes
+    defaultFolder: Dossier par défaut
+
+editors:
+  checklist:
+    add: Ajouter
+  common:
+    defaultBodyHint: "Ecrivez ici. Tapez deux fois: magie !"
+    defaultTitleHint: Titre
+    discard: Effacer les changements
+    share: Partager
+    takePhoto: Prendre une photo
+    addImage: Ajouter depuis la galerie
+    saveNoteFailed:
+      title: Impossible de sauvegarder la note
+      message: Désolé, nous n'avons pas réussi à sauvegarder la note. Elle a été copiée dans le presse-papiers pour éviter d'être perdue.
+actions:
+  newNote: Nouvelle note
+  newChecklist: Nouvelle liste
+screens:
+  home:
+    allNotes: Notes
+  folders:
+    title: Dossier
+    selected: Dossier sélectionné
+    dialog:
+      title: Créer un dossier
+      create: Créer
+      discard: Annuler
+    errorDialog:
+      title: Erreur
+      deleteContent: Impossible de supprimer un dossier qui contient des notes
+      renameContent: Le dossier racine ne peut pas être renommé
+      ok: Ok
+    actions:
+      rename: Renommer
+      subFolder: Créer un sous-dossier
+      delete: Supprimer
+      decoration: Nom du dossier
+      empty: Indiquez un nom
+  tags:
+    title: Tags
+    empty: Aucun tag trouvé
+  filesystem:
+    ignoredFile:
+      title: Fichier ignoré
+      ok: Ok
+      rename: Renommer
+    rename:
+      decoration: Nom de fichier
+      title: Renommer
+  folder_view:
+    empty: Ecrivez votre première note !
+
+OnBoarding:
+  Skip: Passer
+  Next: Suivant
+  getStarted: Démarrer
+  subtitle: "Zéro distraction. Simplicité. Respect de la vie privée."
+  page2: "Une expérience simple et sans distraction pour vous concentrer sur vos idées."
+  page3: "Vos notes sont stockées en texte. Synchronisez les avec n'importe quel service d'hébergement de code."
+
+widgets:
+  rename:
+    yes: Renommer
+    no: Annuler
+    validator:
+      empty: Indiquez un nom
+      exists: Existe déjà
+      contains: Ne peut contenir /
+  FolderView:
+    noteDeleted: Note supprimée
+    undo: Annuler
+    syncError: Erreur de synchronisation {}
+    searchFailed: Aucun résultat
+  NoteDeleteDialog:
+    title: Voulez vous supprimer cette note ?
+    yes: Oui
+    no: Non
+  NoteEditor:
+    renameFile: Renommer le fichier
+    fileName: Nom de fichier
+  SyncButton:
+    error: Erreur de synchronisation {}
+  NoteViewer:
+    linkNotFound: Lien '{}' non trouvé
+  FolderSelectionDialog:
+    title: Choisissez un dossier
+
+rootFolder: Notium
+ignoredFiles:
+  dot: Commence par un .
+  ext: Ne se termine pas par .md ou .txt
+drawer:
+  setup: Configurer la sauvegarde
+  all: Notes
+  folders: Dossiers
+  tags: Tags
+  bug: Rapport de bug
+setup:
+  gitErrors:
+    invalidCredentials: "Vous avez probablement oublié de sauvegarder la clé à l'étape précédente. Revenez en arrière et essayez à nouveau avant de lancer la synchro !"
+  cloneUrl:
+    enter: Indiquez l'url de clone par SSH
+    validator:
+      empty: Ce champ ne peut être vide
+      invalid: Format incorrect
+      onlySsh: Mauvaise URL - Devrait commencer par git@nom-du-service...
+    manual:
+      title: 2/3 Gérer le stockage
+      description: Maintenant, créons un espace pour stocker vos notes. En langage Git, on appelle ça un repository.
+      createRepo: 1. Créez un nouveau repository, puis revenez ici. Assurez vous qu'il soit privé.
+      step2: 2. Dans la partie clone, copiez l'URL SSH du repository (elle va commencer par git@nom-du-service) et copiez la ici.
+      button: Créer un nouveau repository
+  next: Suivant
+  fail: "Oops, la synchro a raté !
+
+:-(
+
+Voici l'erreur:"
+  keyEditors:
+    public: Mauvaise clé publique - Elle devrait commencer par ssh-rsa
+    private: Clé privée invalide
+  sshKey:
+    generate: Génération de la clé
+    title: 3/3 Donnez la clé à l'application
+    description: Presque fini ! Nous devons donner accès à l'application en fournissant une clé.
+    step1: 1. Copiez la clé
+    step2a: 2. Ouvrez cette page, et collez la clé. Assurez vous de cocher la case pour donner la permission d'écrire.
+    step2b: 2. Donnez accès au repo avec cette clé. (nous ne pouvons pas vous guider plus)
+    step3: 3. Démarrez la synchro !
+    copy: Copier la clé
+    copied: Clé copiée
+    regenerate: Regénérer la clé
+    openDeploy: Ouvrir la page
+    clone: Démarrer la synchro !
+    addDeploy: Ajout comme clé de déploiement
+  cloning: Démarrage de la synchro !
+  gitSetupIntro:
+    title: Configurer la sauvegarde
+    description: "Vos notes ne sont pas encore sauvegardées ! Si elles vous sont importantes, vous devriez en garder une copie.
+
+
+Vous allez choisir où les stocker et assurer leur sécurité dans les prochaines étapes. Nous allons vous guider pour cela.
+
+
+Cela vous prendra environ 5 minutes. Une fois fait, vous n'aurez plus à vous soucier de quoi que ce soit. Prêt ?"
+    confirm: Allons y !
+  host:
+    title: 1/3 Qui stockera vos notes ?
+    description: Vous devrez avoir un compte gratuit auprès d'un service d'hébergement de code pour continuer. Notium n'est affilié à aucun d'entre eux.
+    custom: Autre fournisseur
+    helpMeChoose: Aidez moi à choisir

@@ -52,12 +52,14 @@ class JournalApp extends StatefulWidget {
 
     runApp(EasyLocalization(
       child: app,
+      assetLoader: YamlAssetLoader(),
+      path: 'assets/langs',
       supportedLocales: [
         const Locale('en', 'US'),
+        const Locale('fr', 'FR'),
       ], // Remember to update Info.plist
-      path: 'assets/langs',
+      fallbackLocale: Locale('en', 'US'),
       useOnlyLangCode: true,
-      assetLoader: YamlAssetLoader(),
     ));
   }
 
@@ -176,7 +178,7 @@ class _JournalAppState extends State<JournalApp> {
 
       localizationsDelegates: EasyLocalization.of(context).delegates,
       supportedLocales: EasyLocalization.of(context).supportedLocales,
-      locale: EasyLocalization.of(context).locale,
+      locale: context.locale,
 
       theme: themeData,
       navigatorObservers: <NavigatorObserver>[
