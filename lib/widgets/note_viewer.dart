@@ -183,6 +183,7 @@ Uri parseFileUri(String imageDirectory, Uri uri) {
 
   String rawUri = Uri.decodeFull(uri.toString());
   if(!rawUri.contains(imageKeyword)) {
+    uri = Uri.parse(imageDirectory + uri.toString());
     return uri;
   }
 
