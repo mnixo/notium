@@ -13,4 +13,10 @@ Notium provides a simple, distraction free experience to let your ideas flow.
 
 # Contributing
 
-Feel free to [open an issue](https://github.com/notium/notium/issues/new) for any bug or feature request.
+All help is welcome. Note this is a one man project at this stage (if we exclude the work done upstream that helps a lot) and I work on it on my spare time. Do not expect a quick answer or a professional setup ;-)
+
+To contact me privately: notium.app@gmail.com 
+
+# Bugs and Feature Requests
+
+Feel free to [open an issue](https://github.com/notium/notium/issues/new).
