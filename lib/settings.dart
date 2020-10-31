@@ -45,6 +45,7 @@ class Settings extends ChangeNotifier {
       SettingsMarkdownDefaultView.Edit;
 
   String imageLocationSpec = ".notium_img";
+  String imageKeyword = "{{notium_img}}";
 
   bool zenMode = true;
   bool saveTitleInH1 = false;
@@ -103,6 +104,8 @@ class Settings extends ChangeNotifier {
 
     imageLocationSpec =
         pref.getString("imageLocationSpec") ?? imageLocationSpec;
+    imageKeyword =
+        pref.getString("imageKeyword") ?? imageKeyword;
 
     zenMode = pref.getBool("zenMode") ?? zenMode;
     saveTitleInH1 = pref.getBool("saveTitleInH1") ?? saveTitleInH1;
@@ -171,6 +174,8 @@ class Settings extends ChangeNotifier {
         defaultSet.homeScreen.toInternalString());
     _setString(pref, "imageLocationSpec", imageLocationSpec,
         defaultSet.imageLocationSpec);
+    _setString(pref, "imageKeyword", imageKeyword,
+        defaultSet.imageKeyword);
     _setBool(pref, "zenMode", zenMode, defaultSet.zenMode);
     _setBool(pref, "saveTitleInH1", saveTitleInH1, defaultSet.saveTitleInH1);
     _setBool(pref, "swipeToDelete", swipeToDelete, defaultSet.swipeToDelete);
@@ -250,6 +255,7 @@ class Settings extends ChangeNotifier {
       'markdownLastUsedView': markdownLastUsedView.toInternalString(),
       'homeScreen': homeScreen.toInternalString(),
       'imageLocationSpec': imageLocationSpec,
+      'imageKeyword': imageKeyword,
       'zenMode': zenMode.toString(),
       'saveTitleInH1': saveTitleInH1.toString(),
       'swipeToDelete': swipeToDelete.toString(),

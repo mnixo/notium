@@ -408,13 +408,14 @@ class Note with NotesNotifier {
   }
 
   Future<void> addImage(File file) async {
-    var absImagePath = _buildImagePath(file);
+    String absImagePath = _buildImagePath(file);
     await file.copy(absImagePath);
 
-    var relativeImagePath = p.relative(absImagePath, from: parent.folderPath);
-    if (!relativeImagePath.startsWith('.')) {
-      relativeImagePath = './$relativeImagePath';
-    }
+    var relativeImagePath = Settings.instance.imageKeyword
+    + absImagePath.substring(
+      absImagePath.indexOf(Settings.instance.imageLocationSpec) + Settings.instance.imageLocationSpec.length,
+      absImagePath.length
+    );
     var imageMarkdown = "![Image]($relativeImagePath)\n";
     if (body.isEmpty) {
       body = imageMarkdown;
@@ -427,10 +428,11 @@ class Note with NotesNotifier {
     var absImagePath = _buildImagePath(file);
     file.copySync(absImagePath);
 
-    var relativeImagePath = p.relative(absImagePath, from: parent.folderPath);
-    if (!relativeImagePath.startsWith('.')) {
-      relativeImagePath = './$relativeImagePath';
-    }
+    var relativeImagePath = Settings.instance.imageKeyword
+    + absImagePath.substring(
+      absImagePath.indexOf(Settings.instance.imageLocationSpec) + Settings.instance.imageLocationSpec.length,
+      absImagePath.length
+    );
     var imageMarkdown = "![Image]($relativeImagePath)\n";
     if (body.isEmpty) {
       body = imageMarkdown;
@@ -446,7 +448,7 @@ class Note with NotesNotifier {
     var year = now.year;
     var month = now.month;
     var imageSpec = Settings.instance.imageLocationSpec;
-    baseFolder = parent.rootFolder.folderPath + "/" + imageSpec + "/" + year.toString() + "/" + month.toString() + "";
+    baseFolder = p.join(parent.rootFolder.folderPath, imageSpec, year.toString(), month.toString());
 
     if(!Directory(baseFolder).existsSync()) {
       Directory(baseFolder).createSync(recursive: true);
@@ -526,22 +528,6 @@ class Note with NotesNotifier {
 
   NoteFileFormat get fileFormat {
     return _fileFormat;
-  }
-
-  Future<void> updateNoteImagesPath(NotesFolderFS destFolder) async {
-    var settings = Settings.instance;
-    for(NoteImage image in _images) {
-      String imageUrl = image.url;
-      String newImageUrl = "";
-
-      if(imageUrl.contains(settings.imageLocationSpec)) {
-        int indexOfImgLocationSpec = imageUrl.indexOf(settings.imageLocationSpec) + settings.imageLocationSpec.length;
-        String newBasePath = p.relative(settings.imageLocationSpec, from: destFolder.pathSpec());
-        newImageUrl = newBasePath + imageUrl.substring(indexOfImgLocationSpec, imageUrl.length);
-
-        _body = _body.replaceAll(imageUrl, newImageUrl);
-      }
-    }
   }
 }
 

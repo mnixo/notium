@@ -1,27 +1,24 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;
-import 'package:path/path.dart' as p;
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import 'package:notium/app_settings.dart';
 import 'package:notium/core/link.dart';
 import 'package:notium/core/note.dart';
 import 'package:notium/core/notes_folder.dart';
 import 'package:notium/core/notes_folder_fs.dart';
 import 'package:notium/folder_views/common.dart';
+import 'package:notium/settings.dart';
 import 'package:notium/utils.dart';
 import 'package:notium/utils/link_resolver.dart';
 import 'package:notium/utils/logger.dart';
 import 'package:notium/widgets/editor_scroll_view.dart';
-import 'package:notium/widgets/notes_backlinks.dart';
+import 'package:path/path.dart' as p;
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NoteViewer extends StatelessWidget {
   final Note note;
@@ -41,7 +38,6 @@ class NoteViewer extends StatelessWidget {
       ),
     );
 
-    var appSettings = Provider.of<AppSettings>(context);
     var isDark = theme.brightness == Brightness.dark;
 
     // Copied from MarkdownStyleSheet except Grey is replaced with Highlight color
@@ -123,32 +119,6 @@ class NoteViewer extends StatelessWidget {
     markdownExtensions.inlineSyntaxes.insert(1, TaskListSyntax());
     return markdownExtensions;
   }
-
-  /*
-  Widget _buildFooter(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: Row(
-        children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.arrow_left),
-            tooltip: 'Previous Entry',
-            onPressed: showPrevNoteFunc,
-          ),
-          Expanded(
-            flex: 10,
-            child: Text(''),
-          ),
-          IconButton(
-            icon: Icon(Icons.arrow_right),
-            tooltip: 'Next Entry',
-            onPressed: showNextNoteFunc,
-          ),
-        ],
-      ),
-    );
-  }
-  */
 }
 
 class NoteTitleHeader extends StatelessWidget {
@@ -192,7 +162,7 @@ final ImageBuilder kDefaultImageBuilder = (
     return Image.asset(uri.path, width: width, height: height);
   } else {
     Uri fileUri = imageDirectory != null
-        ? Uri.parse(imageDirectory + uri.toString())
+        ? parseFileUri(imageDirectory, uri)
         : uri;
     if (fileUri.scheme == 'http' || fileUri.scheme == 'https') {
       return CachedNetworkImage(
@@ -207,6 +177,29 @@ final ImageBuilder kDefaultImageBuilder = (
     }
   }
 };
+
+Uri parseFileUri(String imageDirectory, Uri uri) {
+  String imageKeyword = Settings.instance.imageKeyword;
+
+  String rawUri = Uri.decodeFull(uri.toString());
+  if(!rawUri.contains(imageKeyword)) {
+    return uri;
+  }
+
+  // image directory will be the subfolder where the note is located
+  // => we need to get the root of the repo instead
+  String basePath = p.absolute(imageDirectory);
+  basePath = basePath.substring(
+    0,
+    basePath.indexOf(Settings.instance.folderName) + Settings.instance.folderName.length
+  );
+  // Now we replace the keyword with the actual path to the images folder
+  rawUri = rawUri.replaceAll(imageKeyword, Settings.instance.imageLocationSpec);
+  // And we join both, then make it a Uri
+  // => Path to the image will work no matter where the note is located
+  uri = Uri.parse(p.join(basePath, rawUri));
+  return uri;
+}
 
 Widget _handleDataSchemeUri(Uri uri, final double width, final double height) {
   final String mimeType = uri.data.mimeType;
