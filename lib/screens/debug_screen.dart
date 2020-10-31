@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:easy_localization/easy_localization.dart';
-import 'package:provider/provider.dart';
-
+import 'package:flutter/material.dart';
 import 'package:notium/app_settings.dart';
 import 'package:notium/utils/logger.dart';
+import 'package:provider/provider.dart';
 
 class DebugScreen extends StatefulWidget {
   @override
@@ -199,7 +197,7 @@ class _DebugScreenState extends State<DebugScreen> {
   }
 
   void _showFilterSelection() async {
-    var appSettings = Provider.of<AppSettings>(context);
+    var appSettings = Provider.of<AppSettings>(context, listen: false);
     var filterLevel = appSettings.debugLogLevel;
 
     var dialog = AlertDialog(
@@ -244,16 +242,9 @@ class FilterListTile extends StatelessWidget {
 
   Icon _getIcon(BuildContext context) {
     var theme = Theme.of(context);
-    var color = theme.textTheme.headline6.color;
+    var color = theme.primaryColorLight;
     if (_isSelected()) {
-      switch (theme.brightness) {
-        case Brightness.light:
-          color = theme.primaryColor;
-          break;
-        case Brightness.dark:
-          color = theme.accentColor;
-          break;
-      }
+      color = theme.accentColor;
     }
 
     switch (internalLevel) {
