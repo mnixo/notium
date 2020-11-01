@@ -60,7 +60,7 @@ editors:
     add: Ajouter
   common:
     defaultBodyHint: "Ecrivez ici. Tapez deux fois: magie !"
-    defaultTitleHint: Titre
+    defaultTitleHint: "Titre. Tapez deux fois: magie !"
     discard: Effacer les changements
     share: Partager
     takePhoto: Prendre une photo

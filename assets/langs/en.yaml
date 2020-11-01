@@ -60,7 +60,7 @@ editors:
     add: Add Item
   common:
     defaultBodyHint: Write here. Double tap for magic.
-    defaultTitleHint: Title
+    defaultTitleHint: Title. Double tap for magic.
     discard: Discard Changes
     share: Share Note
     takePhoto: Take Photo
